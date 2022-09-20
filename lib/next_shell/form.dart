@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 /// The pages determine what pages the pageview will contain via a [List] of [ShellFormPage]s.
 ///
 /// Using a checkpage gives the ability for the user to check all input values before commiting by [CheckPage].
-/// If [checkpage] is null no check page will be shown.
+/// If [checkPage] is null no check page will be shown.
 ///
 /// [nextButton] and [backButton] are both a way to give controls to user.
 /// Both are just plain widgets used in a [Stack]. So the widgets can be aligned where ever.
 /// The formcontroller of [ShellForm] should be used to give control to the widgets/buttons.
 ///
 /// [onFinished] and [onNext] are both callbacks which give the users results.
-/// onNext is called when the user goes to the next page.
-/// onFinished is called when the form is finished. When checkpage is set onFinished is called when the checkpage is finished.
+/// [onNext] is called when the user goes to the next page.
+/// [onFinished] is called when the form is finished. When checkpage is set [onFinished] is called when the checkpage is finished.
 class ShellFormOptions {
   final List<ShellFormPage> pages;
 

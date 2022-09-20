@@ -17,7 +17,7 @@ class ShellFormInputPassword extends ShellFormInputWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     super.registerController(context);
 
-    return PasswordTextfield(
+    return PasswordTextField(
       label: label,
       controller: controller,
     );
@@ -62,11 +62,11 @@ class ShellFormInputPasswordController
       String Function(String, {List<String>? params}) translator) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('shell.form.error.empty');
+        return translator('Field cannot be empty');
       }
 
       if (value.length < 6) {
-        return translator('shell.form.error.empty');
+        return translator('Field cannot be empty');
       }
     }
 

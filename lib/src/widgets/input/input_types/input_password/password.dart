@@ -3,21 +3,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../flutter_form.dart';
 import 'package:flutter_form/next_shell/translation_service.dart';
 
-class PasswordTextfield extends ConsumerStatefulWidget {
+/// Generates a [TextFormField] for passwords. It requires a [ShellFormInputController]
+/// as the [controller] parameter and an optional [Widget] as [label]
+class PasswordTextField extends ConsumerStatefulWidget {
   final Widget? label;
   final ShellFormInputController controller;
 
-  const PasswordTextfield({
+  const PasswordTextField({
     Key? key,
     required this.controller,
     this.label,
   }) : super(key: key);
 
   @override
-  ConsumerState<PasswordTextfield> createState() => _PasswordTextfieldState();
+  ConsumerState<PasswordTextField> createState() => _PasswordTextFieldState();
 }
 
-class _PasswordTextfieldState extends ConsumerState<PasswordTextfield> {
+class _PasswordTextFieldState extends ConsumerState<PasswordTextField> {
   bool obscured = true;
 
   @override

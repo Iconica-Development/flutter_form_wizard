@@ -35,7 +35,7 @@ class ShellFormInputSlider extends ShellFormInputWidget {
   }
 }
 
-/// Controller for slider used by a [ShellFormInputWidget] used in a [ShellFrom].
+/// Controller for slider used by a [ShellFormInputWidget] used in a [ShellForm].
 ///
 /// Mainly used by [ShellFormInputSlider].
 class ShellFormInputSliderController

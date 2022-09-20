@@ -100,7 +100,8 @@ class CarouselControllerImpl implements CarouselController {
     return _state!.pageController!.jumpToPage(pageToJump);
   }
 
-  /// Animates the controlled [CarouselSlider] from the current page to the given page.
+  /// Animates the controlled [CarouselSlider] from the current page to the
+  /// given page.
   ///
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
@@ -136,7 +137,8 @@ class CarouselControllerImpl implements CarouselController {
   /// Stops the controlled [CarouselSlider] from autoplaying.
   ///
   /// This is a more on-demand way of doing this. Use the [autoPlay]
-  /// parameter in [CarouselOptions] to specify the autoPlay behaviour of the carousel.
+  /// parameter in [CarouselOptions] to specify the autoPlay behaviour of the
+  /// carousel.
   @override
   void stopAutoPlay() {
     _state!.onResetTimer();

@@ -17,14 +17,14 @@ typedef ExtendedIndexedWidgetBuilder = Widget Function(
     BuildContext context, int index, int realIndex);
 
 class CarouselSlider extends StatefulWidget {
-  /// [CarouselOptions] to create a [CarouselState] with
+  /// [CarouselOptions] to create a [CarouselState] with.
   final CarouselOptions options;
 
-  /// The widgets to be shown in the carousel of default constructor
+  /// The widgets to be shown in the carousel of default constructor.
   final List<Widget>? items;
 
   /// The widget item builder that will be used to build item on demand
-  /// The third argument is the PageView's real index, can be used to cooperate
+  /// The third argument is the [PageView]'s real index, can be used to cooperate
   /// with Hero.
   final ExtendedIndexedWidgetBuilder? itemBuilder;
 
@@ -45,7 +45,7 @@ class CarouselSlider extends StatefulWidget {
             : CarouselController() as CarouselControllerImpl,
         super(key: key);
 
-  /// The on demand item builder constructor
+  /// The on demand item builder constructor/
   CarouselSlider.builder(
       {required this.itemCount,
       required this.itemBuilder,
@@ -73,7 +73,7 @@ class CarouselSliderState extends State<CarouselSlider>
 
   PageController? pageController;
 
-  /// mode is related to why the page is being changed
+  /// [mode] is related to why the page is being changed
   CarouselPageChangedReason mode = CarouselPageChangedReason.controller;
 
   CarouselSliderState();

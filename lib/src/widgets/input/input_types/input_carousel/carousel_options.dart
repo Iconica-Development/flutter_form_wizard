@@ -35,17 +35,17 @@ class CarouselOptions {
 
   /// Enables auto play, sliding one page at a time.
   ///
-  /// Use [autoPlayInterval] to determent the frequency of slides.
+  /// Use [autoPlayInterval] to determine the frequency of slides.
   /// Defaults to false.
   final bool autoPlay;
 
-  /// Sets Duration to determent the frequency of slides when
-  ///
-  /// [autoPlay] is set to true.
+  /// Sets Duration to determine the frequency of slides when [autoPlay] is set
+  /// to true.
   /// Defaults to 4 seconds.
   final Duration autoPlayInterval;
 
-  /// The animation duration between two transitioning pages while in auto playback.
+  /// The animation duration between two transitioning pages while in auto
+  /// playback.
   ///
   /// Defaults to 800 ms.
   final Duration autoPlayAnimationDuration;
@@ -88,40 +88,46 @@ class CarouselOptions {
   /// Default to `true`.
   final bool pageSnapping;
 
-  /// If `true`, the auto play function will be paused when user is interacting with
-  /// the carousel, and will be resumed when user finish interacting.
+  /// If `true`, the auto play function will be paused when user is interacting
+  /// with the carousel, and will be resumed when user finish interacting.
+  ///
   /// Default to `true`.
   final bool pauseAutoPlayOnTouch;
 
   /// If `true`, the auto play function will be paused when user is calling
-  /// pageController's `nextPage` or `previousPage` or `animateToPage` method.
+  /// [PageController]'s [nextPage] or [previousPage] or [animateToPage] method.
   /// And after the animation complete, the auto play will be resumed.
+  ///
   /// Default to `true`.
   final bool pauseAutoPlayOnManualNavigate;
 
-  /// If `enableInfiniteScroll` is `false`, and `autoPlay` is `true`, this option
+  /// If [enableInfiniteScroll] is `false`, and [autoPlay] is `true`, this option
   /// decide the carousel should go to the first item when it reach the last item or not.
   /// If set to `true`, the auto play will be paused when it reach the last item.
-  /// If set to `false`, the auto play function will animate to the first item when it was
-  /// in the last item.
+  /// If set to `false`, the auto play function will animate to the first item
+  /// when it was in the last item.
   final bool pauseAutoPlayInFiniteScroll;
 
-  /// Pass a `PageStoragekey` if you want to keep the pageview's position when it was recreated.
+  /// Pass a [PageStorageKey] if you want to keep the pageview's position when
+  /// it was recreated.
   final PageStorageKey? pageViewKey;
 
-  /// Use `enlargeStrategy` to determine which method to enlarge the center page.
+  /// Use [enlargeStrategy] to determine which method to enlarge the center page.
   final CenterPageEnlargeStrategy enlargeStrategy;
 
-  /// Whether or not to disable the `Center` widget for each slide.
+  /// Whether or not to disable the [Center] widget for each slide.
   final bool disableCenter;
 
   /// Whether to add padding to both ends of the list.
-  /// If this is set to true and [viewportFraction] < 1.0, padding will be added such that the first and last child slivers will be in the center of the viewport when scrolled all the way to the start or end, respectively.
+  /// If this is set to true and [viewportFraction] < 1.0, padding will be added
+  /// such that the first and last child slivers will be in the center of the 1
+  /// viewport when scrolled all the way to the start or end, respectively.
+  ///
   /// If [viewportFraction] >= 1.0, this property has no effect.
   /// This property defaults to true and must not be null.
   final bool padEnds;
 
-  /// Exposed clipBehavior of PageView
+  /// Exposed [clipBehavior] of [PageView]
   final Clip clipBehavior;
 
   CarouselOptions({

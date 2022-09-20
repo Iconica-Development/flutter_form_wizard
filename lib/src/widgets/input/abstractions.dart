@@ -31,13 +31,13 @@ abstract class ShellFormInputWidget extends ConsumerWidget {
 
 /// Abstract class for the controller for inputs used in a [ShellForm].
 ///
-/// The id determines the key in the [Map] returned by the [ShellForm].
+/// The [id] determines the key in the [Map] returned by the [ShellForm].
 ///
-/// value is a way to set a initial value.
+/// [value] is a way to set a initial value.
 ///
-/// mandatory determines if the input is mandatory.
+/// [mandatory] determines if the input is mandatory.
 ///
-/// checkPageTitle is a function where you can transform the value from the input into something representable.
+/// [checkPageTitle] is a function where you can transform the value from the input into something representable.
 /// This value will be given when defining the check page widgets.
 /// If this function is not set, the value will be used as is.
 /// Example:
@@ -47,7 +47,7 @@ abstract class ShellFormInputWidget extends ConsumerWidget {
 /// },
 /// ```
 ///
-/// checkPageDescription is the same as checkPageTitle but for the description.
+/// [checkPageDescription] is the same as checkPageTitle but for the description.
 /// If null no description will be shown.
 abstract class ShellFormInputController<T> {
   String? id;
