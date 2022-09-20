@@ -11,14 +11,14 @@ class CheckPageExample {
     return CheckPage(
       title: Container(
         margin: const EdgeInsets.only(
-          top: 60,
+          top: 70,
           bottom: 10,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Text(
-          checkPageText,
+        child: const Text(
+          "Check answers",
           style: TextStyle(
-            fontSize: fontSize,
+            fontSize: 25,
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -30,7 +30,7 @@ class CheckPageExample {
             await onPressed();
           },
           child: Container(
-            width: size.width * 0.9,
+            width: MediaQuery.of(context).size.width * 0.9,
             padding: const EdgeInsets.only(
               top: 18,
               bottom: 16,
@@ -80,7 +80,7 @@ class CheckPageExample {
                 if (description != null)
                   Text(
                     description,
-                    style: TextStyle(fontSize: fontSize / 1.3),
+                    style: const TextStyle(fontSize: 16),
                   )
               ],
             ),

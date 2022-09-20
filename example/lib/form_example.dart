@@ -24,85 +24,88 @@ class _FormExampleState extends ConsumerState<FormExample> {
     var size = MediaQuery.of(context).size;
     var fontSize = size.height / 40;
 
-    return Scaffold(
-      body: Center(
-        child: ShellForm(
-          formController: formController,
-          options: ShellFormOptions(
-            onFinished: (Map<int, Map<String, dynamic>> results) {
-              print("Totale resultaten: $results");
-              Navigator.of(context).pushNamed('/thanks');
-            },
-            onNext: (int pageNumber, Map<String, dynamic> results) {
-              print("Resultaten pagina $pageNumber: $results");
-            },
-            nextButton: (int pageNumber, bool checkingPages) {
-              return Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    bottom: size.height / 20,
-                  ),
-                  child: SizedBox(
-                    height: size.height / 15,
-                    width: size.width / 1.5,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: Center(
+          child: ShellForm(
+            formController: formController,
+            options: ShellFormOptions(
+              onFinished: (Map<int, Map<String, dynamic>> results) {
+                print("Final full results: $results");
+                Navigator.of(context).pushNamed('/thanks');
+              },
+              onNext: (int pageNumber, Map<String, dynamic> results) {
+                print("Results page $pageNumber: $results");
+              },
+              nextButton: (int pageNumber, bool checkingPages) {
+                return Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      bottom: size.height * 0.05,
+                    ),
+                    child: SizedBox(
+                      height: size.height * 0.07,
+                      width: size.width * 0.7,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          backgroundColor: Colors.black,
+                          textStyle: TextStyle(
+                            fontSize: fontSize,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
                         ),
-                        backgroundColor: Colors.black,
-                        textStyle: TextStyle(
-                          fontSize: fontSize,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
+                        onPressed: () {
+                          formController.autoNextStep();
+                        },
+                        child: Text(checkingPages ? "Save" : "Next Page"),
                       ),
-                      onPressed: () {
-                        formController.autoNextStep();
-                      },
-                      child: Text(checkingPages ? "Save" : "Next Page"),
                     ),
                   ),
-                ),
-              );
-            },
-            backButton: (int pageNumber, bool checkingPages, int pageAmount) {
-              if (pageNumber != 0) {
-                if (!checkingPages || pageNumber >= pageAmount) {
-                  return Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                        margin: EdgeInsets.only(
-                          top: size.height / 20,
-                          left: size.width / 15,
-                        ),
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(90),
-                          color: const Color(0xFFD8D8D8).withOpacity(0.50),
-                        ),
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          splashRadius: 29,
-                          onPressed: () {
-                            formController.previousStep();
-                          },
-                          icon: const Icon(Icons.chevron_left),
-                        )),
-                  );
+                );
+              },
+              backButton: (int pageNumber, bool checkingPages, int pageAmount) {
+                if (pageNumber != 0) {
+                  if (!checkingPages || pageNumber >= pageAmount) {
+                    return Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                          margin: EdgeInsets.only(
+                            top: size.height * 0.045,
+                            left: size.width * 0.07,
+                          ),
+                          width: size.width * 0.08,
+                          height: size.width * 0.08,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(90),
+                            color: const Color(0xFFD8D8D8).withOpacity(0.50),
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            splashRadius: size.width * 0.06,
+                            onPressed: () {
+                              formController.previousStep();
+                            },
+                            icon: const Icon(Icons.chevron_left),
+                          )),
+                    );
+                  }
                 }
-              }
-              return Container();
-            },
-            pages: [
-              AgePage().returnPage(size, fontSize, 1, 3),
-              NamePage().returnPage(size, fontSize, 2, 3),
-              CarouselPage().returnPage(size, fontSize, 3, 3),
-            ],
-            checkPage: CheckPageExample()
-                .showCheckpage(context, size, fontSize, checkPageText),
+                return Container();
+              },
+              pages: [
+                AgePage().returnPage(size, fontSize, 1, 3),
+                // NamePage().returnPage(size, fontSize, 2, 3),
+                CarouselPage().returnPage(size, fontSize, 3, 3),
+              ],
+              checkPage: CheckPageExample()
+                  .showCheckpage(context, size, fontSize, checkPageText),
+            ),
           ),
         ),
       ),

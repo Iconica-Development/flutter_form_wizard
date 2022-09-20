@@ -18,6 +18,19 @@ class NamePage {
         amountOfPages: amountOfPages,
         title: "Please enter your name",
         shellFormWidgets: [
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
+          //   child: ShellFormInputPlainText(
+          //     label: const Text("Name"),
+          //     controller: ShellFormInputPlainTextController(
+          //       mandatory: true,
+          //       id: "name",
+          //       checkPageTitle: (dynamic name) {
+          //         return "Name: $name";
+          //       },
+          //     ),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
             child: ShellFormInputPlainText(
@@ -31,19 +44,19 @@ class NamePage {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-            child: ShellFormInputPlainText(
-              label: const Text("Last Name"),
-              controller: ShellFormInputPlainTextController(
-                mandatory: true,
-                id: "lastName",
-                checkPageTitle: (dynamic lastName) {
-                  return "Last Name: $lastName";
-                },
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+          //   child: ShellFormInputPlainText(
+          //     label: const Text("Last Name"),
+          //     controller: ShellFormInputPlainTextController(
+          //       mandatory: true,
+          //       id: "lastName",
+          //       checkPageTitle: (dynamic lastName) {
+          //         return "Last Name: $lastName";
+          //       },
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

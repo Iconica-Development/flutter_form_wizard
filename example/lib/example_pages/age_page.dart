@@ -19,6 +19,8 @@ class AgePage {
         amountOfPages: amountOfPages,
         shellFormWidgets: [
           ShellFormInputNumberPicker(
+            minValue: 12,
+            maxValue: 120,
             controller: ShellFormInputNumberPickerController(
               id: "age",
               checkPageTitle: (dynamic amount) {

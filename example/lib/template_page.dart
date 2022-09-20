@@ -20,50 +20,47 @@ class TemplatePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width / 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: size.height / 10,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: size.width / 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: size.height / 10,
+                ),
+                Text(
+                  "$pageNumber / $amountOfPages",
+                  style: TextStyle(
+                    fontSize: fontSize,
                   ),
-                  Text(
-                    "$pageNumber / $amountOfPages",
-                    style: TextStyle(
-                      fontSize: fontSize,
-                    ),
+                ),
+                SizedBox(
+                  height: size.height / 80,
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.w900,
                   ),
-                  SizedBox(
-                    height: size.height / 80,
-                  ),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          const Spacer(),
-          for (var widget in shellFormWidgets) ...[
-            widget,
-          ],
-          const Spacer(
-            flex: 2,
-          ),
+        ),
+        const Spacer(),
+        for (var widget in shellFormWidgets) ...[
+          widget,
         ],
-      ),
+        const Spacer(
+          flex: 2,
+        ),
+      ],
     );
   }
 }

@@ -25,7 +25,7 @@ import 'src/utils/formstate.dart' as fs;
 ///       // print(results);
 ///     },
 ///     onNext: (int pageNumber, Map<String, dynamic> results) {
-///       // print("Resultaten pagina $pageNumber: $results");
+///       // print("Results page $pageNumber: $results");
 ///     },
 ///     nextButton: (int pageNumber, bool checkingPages) {
 ///       return Align(
@@ -38,7 +38,7 @@ import 'src/utils/formstate.dart' as fs;
 ///             onPressed: () {
 ///               shellFormController.autoNextStep();
 ///             },
-///             child: Text(checkingPages ? "Opslaan" : "Volgende stap"),
+///             child: Text(checkingPages ? "Save" : "Next Page"),
 ///           ),
 ///         ),
 ///       );
@@ -100,7 +100,7 @@ import 'src/utils/formstate.dart' as fs;
 ///     ],
 ///     checkPage: CheckPage(
 ///       title: const Text(
-///         "Hier zijn je wensen voor het afscheidsfeestje",
+///         "All entered info: ",
 ///         style: TextStyle(
 ///           fontSize: 25,
 ///           fontWeight: FontWeight.w900,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Creates a slider with the given input parameters
 class SliderFormField extends FormField<double> {
   SliderFormField({
     Key? key,

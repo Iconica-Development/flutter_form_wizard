@@ -73,7 +73,7 @@ class CarouselSliderState extends State<CarouselSlider>
 
   PageController? pageController;
 
-  /// [mode] is related to why the page is being changed
+  /// [mode] is related to why the page is being changed.
   CarouselPageChangedReason mode = CarouselPageChangedReason.controller;
 
   CarouselSliderState();
@@ -87,14 +87,14 @@ class CarouselSliderState extends State<CarouselSlider>
     carouselState!.options = options;
     carouselState!.itemCount = widget.itemCount;
 
-    // pageController needs to be re-initialized to respond to state changes
+    /// [pageController] needs to be re-initialized to respond to state changes.
     pageController = PageController(
       viewportFraction: options.viewportFraction,
       initialPage: carouselState!.realPage,
     );
     carouselState!.pageController = pageController;
 
-    // handle autoplay when state changes
+    /// handle autoplay when state changes
     handleAutoPlay();
 
     super.didUpdateWidget(oldWidget);
@@ -296,13 +296,13 @@ class CarouselSliderState extends State<CarouselSlider>
               : widget.itemBuilder!(context, index, idx),
           builder: (BuildContext context, child) {
             double distortionValue = 1.0;
-            // if `enlargeCenterPage` is true, we must calculate the carousel item's height
+            // if [enlargeCenterPage] is true, we must calculate the carousel item's height
             // to display the visual effect
 
             if (widget.options.enlargeCenterPage != null &&
                 widget.options.enlargeCenterPage == true) {
-              // pageController.page can only be accessed after the first build,
-              // so in the first build we calculate the itemoffset manually
+              // [pageController.page] can only be accessed after the first build,
+              // so in the first build we calculate the [itemOffset] manually
               double itemOffset = 0;
               var position = carouselState?.pageController?.position;
               if (position != null &&

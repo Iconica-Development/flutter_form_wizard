@@ -43,8 +43,8 @@ class ShellFormPage {
   });
 }
 
-/// CheckPage is used to set a check page at the end of a [ShellForm].
-/// A CheckPage is a page where the user can check all input values before commiting.
+/// [CheckPage] is used to set a check page at the end of a [ShellForm].
+/// A [CheckPage] is a page where the user can check all input values before commiting.
 ///
 /// [title] is the widget shown at the top of the page.
 ///

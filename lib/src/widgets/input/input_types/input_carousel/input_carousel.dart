@@ -8,7 +8,7 @@ import 'carousel_form.dart';
 
 /// Input for a carousel of items used in a [ShellForm].
 ///
-/// items will be the [Widget]s to be displayed in the carousel.
+/// [items] will be the [Widget]s to be displayed in the carousel.
 ///
 /// Standard controller is [ShellFormInputCarouselController].
 class ShellFormInputCarousel extends ShellFormInputWidget {
@@ -37,7 +37,7 @@ class ShellFormInputCarousel extends ShellFormInputWidget {
   }
 }
 
-/// Controller for the carousel used by a [ShellFormInputWidget] used in a [ShellFrom].
+/// Controller for the carousel used by a [ShellFormInputWidget] used in a [ShellForm].
 ///
 /// Mainly used by [ShellFormInputCarousel].
 class ShellFormInputCarouselController

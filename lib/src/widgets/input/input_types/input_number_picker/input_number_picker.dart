@@ -26,9 +26,11 @@ class ShellFormInputNumberPicker extends ShellFormInputWidget {
     super.registerController(context);
 
     return NumberPickerFormField(
+      minValue: minValue,
+      maxValue: maxValue,
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
-      initialValue: controller.value ?? 0,
+      initialValue: controller.value ?? minValue,
     );
   }
 }

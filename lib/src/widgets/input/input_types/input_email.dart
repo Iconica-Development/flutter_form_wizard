@@ -39,7 +39,7 @@ class ShellFormInputEmail extends ShellFormInputWidget {
   }
 }
 
-/// Controller for emails used by a [ShellFormInputWidget] used in a [ShellFrom].
+/// Controller for emails used by a [ShellFormInputWidget] used in a [ShellForm].
 ///
 /// Mainly used by [ShellFormInputEmail].
 class ShellFormInputEmailController
