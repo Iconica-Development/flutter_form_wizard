@@ -3,6 +3,8 @@ description: A new Flutter package project.
 version: 0.0.1
 homepage:
 
+publish_to: none
+
 environment:
   sdk: '>=2.18.0 <3.0.0'
   flutter: ">=1.17.0"
@@ -10,16 +12,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^1.0.4
+  localization: ^2.1.0
+  shell_model:
+    git:
+      url: git@bitbucket.org:iconicadevs/next_shell.git
+      ref: dbf7155ab18e79b5ff1da73f31c7fe3b06c4c82a
+      path: packages/shell_model
+  sliding_up_panel: ^2.0.0+1
+  uuid: ^3.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
 
   # To add assets to your package, add an assets section, like this:

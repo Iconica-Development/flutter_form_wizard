@@ -1,7 +1,4 @@
-library flutter_form;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'shell_form.dart';
+export 'src/widgets/input/abstractions.dart';
+export 'src/widgets/input/input_types/input_types.dart';
+export 'src/widgets/page_indicator/page_indicators.dart';
