@@ -430,6 +430,8 @@ class ShellFormController extends ChangeNotifier {
       _options.onFinished(getAllResults());
     } else {
       if (validateAndSaveCurrentStep()) {
+        FocusManager.instance.primaryFocus?.unfocus();
+
         _options.onNext(
             _currentStep, _formPageControllers[_currentStep].getAllValues());
 

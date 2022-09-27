@@ -1,64 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form/flutter_form.dart';
-import 'package:flutter_form/next_shell/form.dart';
 import 'package:form_example/template_page.dart';
 
-class NamePage {
-  ShellFormPage returnPage(
-    Size size,
-    double fontSize,
-    int pageNumber,
-    int amountOfPages,
-  ) {
-    return ShellFormPage(
-      child: TemplatePage(
-        size: size,
-        fontSize: fontSize,
-        pageNumber: pageNumber,
-        amountOfPages: amountOfPages,
-        title: "Please enter your name",
-        shellFormWidgets: [
-          // Padding(
-          //   padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
-          //   child: ShellFormInputPlainText(
-          //     label: const Text("Name"),
-          //     controller: ShellFormInputPlainTextController(
-          //       mandatory: true,
-          //       id: "name",
-          //       checkPageTitle: (dynamic name) {
-          //         return "Name: $name";
-          //       },
-          //     ),
-          //   ),
-          // ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
-            child: ShellFormInputPlainText(
-              label: const Text("First Name"),
-              controller: ShellFormInputPlainTextController(
-                mandatory: true,
-                id: "firstName",
-                checkPageTitle: (dynamic firstName) {
-                  return "First Name: $firstName";
-                },
-              ),
-            ),
+class NamePage extends StatefulWidget {
+  const NamePage({
+    required this.firstNameController,
+    required this.lastNameController,
+    super.key,
+  });
+
+  final ShellFormInputPlainTextController firstNameController;
+  final ShellFormInputPlainTextController lastNameController;
+
+  @override
+  State<NamePage> createState() => _NamePageState();
+}
+
+class _NamePageState extends State<NamePage> {
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var fontSize = size.height / 40;
+
+    return TemplatePage(
+      size: size,
+      fontSize: fontSize,
+      pageNumber: 3,
+      amountOfPages: 3,
+      title: "Please enter your name",
+      shellFormWidgets: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
+          child: ShellFormInputPlainText(
+            label: const Text("First Name"),
+            controller: widget.firstNameController,
           ),
-          // Padding(
-          //   padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-          //   child: ShellFormInputPlainText(
-          //     label: const Text("Last Name"),
-          //     controller: ShellFormInputPlainTextController(
-          //       mandatory: true,
-          //       id: "lastName",
-          //       checkPageTitle: (dynamic lastName) {
-          //         return "Last Name: $lastName";
-          //       },
-          //     ),
-          //   ),
-          // ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+          child: ShellFormInputPlainText(
+            label: const Text("Last Name"),
+            controller: widget.lastNameController,
+          ),
+        ),
+      ],
     );
   }
 }

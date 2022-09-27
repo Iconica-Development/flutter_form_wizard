@@ -19,6 +19,62 @@ class _FormExampleState extends ConsumerState<FormExample> {
 
   final String checkPageText = "All entered info: ";
 
+  final ageInputController = ShellFormInputNumberPickerController(
+    id: "age",
+    checkPageTitle: (dynamic amount) {
+      return "Age: $amount years";
+    },
+  );
+
+  late final ShellFormInputCarouselController carouselInputController;
+
+  final List<Map<String, dynamic>> cars = [
+    {
+      "title": "Mercedes",
+      "description": "Mercedes is a car",
+    },
+    {
+      "title": "BMW",
+      "description": "BMW is a car",
+    },
+    {
+      "title": "Mazda",
+      'description': "Mazda is a car",
+    },
+  ];
+
+  ShellFormInputPlainTextController firstNameController =
+      ShellFormInputPlainTextController(
+    mandatory: true,
+    id: "firstName",
+    checkPageTitle: (dynamic firstName) {
+      return "First Name: $firstName";
+    },
+  );
+
+  ShellFormInputPlainTextController lastNameController =
+      ShellFormInputPlainTextController(
+    mandatory: true,
+    id: "lastName",
+    checkPageTitle: (dynamic lastName) {
+      return "Last Name: $lastName";
+    },
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    carouselInputController = ShellFormInputCarouselController(
+      id: 'carCarousel',
+      checkPageTitle: (dynamic index) {
+        return cars[index]["title"];
+      },
+      checkPageDescription: (dynamic index) {
+        return cars[index]["description"];
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -60,8 +116,8 @@ class _FormExampleState extends ConsumerState<FormExample> {
                             color: Colors.white,
                           ),
                         ),
-                        onPressed: () {
-                          formController.autoNextStep();
+                        onPressed: () async {
+                          await formController.autoNextStep();
                         },
                         child: Text(checkingPages ? "Save" : "Next Page"),
                       ),
@@ -99,9 +155,23 @@ class _FormExampleState extends ConsumerState<FormExample> {
                 return Container();
               },
               pages: [
-                AgePage().returnPage(size, fontSize, 1, 3),
-                // NamePage().returnPage(size, fontSize, 2, 3),
-                CarouselPage().returnPage(size, fontSize, 3, 3),
+                ShellFormPage(
+                  child: AgePage(
+                    inputController: ageInputController,
+                  ),
+                ),
+                ShellFormPage(
+                  child: CarouselPage(
+                    inputController: carouselInputController,
+                    cars: cars,
+                  ),
+                ),
+                ShellFormPage(
+                  child: NamePage(
+                    firstNameController: firstNameController,
+                    lastNameController: lastNameController,
+                  ),
+                ),
               ],
               checkPage: CheckPageExample()
                   .showCheckpage(context, size, fontSize, checkPageText),

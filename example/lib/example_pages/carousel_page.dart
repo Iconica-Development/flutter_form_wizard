@@ -1,26 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form/flutter_form.dart';
-import 'package:flutter_form/next_shell/form.dart';
 import 'package:form_example/template_page.dart';
 
-class CarouselPage {
-  final List<Map<String, dynamic>> cars = [
-    {
-      "title": "Mercedes",
-      "description": "Mercedes is a car",
-    },
-    {
-      "title": "BMW",
-      "description": "BMW is a car",
-    },
-    {
-      "title": "Mazda",
-      'description': "Mazda is a car",
-    },
-  ];
+class CarouselPage extends StatefulWidget {
+  const CarouselPage({
+    required this.inputController,
+    required this.cars,
+    super.key,
+  });
+
+  final ShellFormInputCarouselController inputController;
+  final List<Map<String, dynamic>> cars;
+
+  @override
+  State<CarouselPage> createState() => _CarouselPageState();
+}
+
+class _CarouselPageState extends State<CarouselPage> {
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var fontSize = size.height / 40;
+
+    return TemplatePage(
+      size: size,
+      fontSize: fontSize,
+      title: "What's your favorite car?",
+      pageNumber: 2,
+      amountOfPages: 3,
+      shellFormWidgets: [
+        ShellFormInputCarousel(
+            controller: widget.inputController, items: getCars())
+      ],
+    );
+  }
 
   List<Widget> getCars() {
-    return cars.map((car) {
+    return widget.cars.map((car) {
       return Builder(
         builder: (BuildContext context) {
           return Column(
@@ -60,35 +76,5 @@ class CarouselPage {
         },
       );
     }).toList();
-  }
-
-  ShellFormPage returnPage(
-    Size size,
-    double fontSize,
-    int pageNumber,
-    int amountOfPages,
-  ) {
-    return ShellFormPage(
-      child: TemplatePage(
-        size: size,
-        fontSize: fontSize,
-        title: "What's your favorite car?",
-        pageNumber: pageNumber,
-        amountOfPages: amountOfPages,
-        shellFormWidgets: [
-          ShellFormInputCarousel(
-              controller: ShellFormInputCarouselController(
-                id: 'carCarousel',
-                checkPageTitle: (dynamic index) {
-                  return cars[index]["title"];
-                },
-                checkPageDescription: (dynamic index) {
-                  return cars[index]["description"];
-                },
-              ),
-              items: getCars())
-        ],
-      ),
-    );
   }
 }
