@@ -4,11 +4,11 @@ Flutter Form is a package you can use to create a single or multi page form with
 
 ## Features
 
-Single or multi page form with the ability to define the navigational buttons.
-A handfull premade fields with their own controllers.
-Full posibilty to create custom inputfields and controllers which can be used along side the premade fields and controllers.
-A checkpage where the end user can check his answers and jump back to the page of an inputfield to change his answer without going through the whole form.
-The look of the checkpage answers can be set own desire.
+- Single or multi page form with the ability to define the navigational buttons.
+- A handfull premade fields with their own controllers.
+- Full posibilty to create custom inputfields and controllers which can be used along side the premade fields and controllers.
+- A checkpage where the end user can check his answers and jump back to the page of an inputfield to change his answer without going through the whole form.
+- The look of the checkpage answers can be set own desire.
 
 ## Setup
 

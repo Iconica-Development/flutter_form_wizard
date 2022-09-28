@@ -12,6 +12,8 @@ import 'utils/formstate.dart' as fs;
 /// A [ShellFormController] has to be given to control what happens to values and pages within the ShellForm.
 ///
 /// [ShellFormOptions] have to be provided to control the appearance of the form.
+///
+/// WARNING Define your FormInputController above your FlutterForm. Otherwise when rebuild the controller will differ from the registered ones.
 /// ``` dart
 /// ShellFormInputEmailController emailController =
 ///     ShellFormInputEmailController(id: 'email');

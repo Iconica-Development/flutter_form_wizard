@@ -90,11 +90,11 @@ class _FormExampleState extends ConsumerState<FormExample> {
             formController: formController,
             options: ShellFormOptions(
               onFinished: (Map<int, Map<String, dynamic>> results) {
-                print("Final full results: $results");
+                debugPrint("Final full results: $results");
                 Navigator.of(context).pushNamed('/thanks');
               },
               onNext: (int pageNumber, Map<String, dynamic> results) {
-                print("Results page $pageNumber: $results");
+                debugPrint("Results page $pageNumber: $results");
 
                 if (pageNumber == 0) {
                   if (results['age'] >= 18) {
