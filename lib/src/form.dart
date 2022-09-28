@@ -335,63 +335,44 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
                   onTap: () async {
                     await _formController.jumpToPage(pageNumber);
                   },
-                  child: Container(
-                    width: 390,
-                    padding: const EdgeInsets.only(
-                      top: 18,
-                      bottom: 16,
-                      right: 18,
-                      left: 27,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF000000).withOpacity(0.20),
-                          blurRadius: 5,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFD8D8D8),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFD8D8D8),
+                              borderRadius: BorderRadius.circular(5),
                             ),
-                            const SizedBox(
-                              width: 16,
-                            ),
-                            Text(
-                              inputController.checkPageTitle != null
-                                  ? inputController.checkPageTitle!(inputResult)
-                                  : inputResult.toString(),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w900,
-                                fontSize: 20,
-                              ),
-                            ),
-                            const Spacer(),
-                            const Icon(Icons.arrow_forward),
-                          ],
-                        ),
-                        if (inputController.checkPageDescription != null)
-                          const SizedBox(
-                            height: 9,
                           ),
-                        if (inputController.checkPageDescription != null)
+                          const SizedBox(
+                            width: 16,
+                          ),
                           Text(
-                            inputController.checkPageDescription!(inputResult),
-                            style: const TextStyle(fontSize: 16),
-                          )
-                      ],
-                    ),
+                            inputController.checkPageTitle != null
+                                ? inputController.checkPageTitle!(inputResult)
+                                : inputResult.toString(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const Spacer(),
+                          const Icon(Icons.arrow_forward),
+                        ],
+                      ),
+                      if (inputController.checkPageDescription != null)
+                        const SizedBox(
+                          height: 9,
+                        ),
+                      if (inputController.checkPageDescription != null)
+                        Text(
+                          inputController.checkPageDescription!(inputResult),
+                          style: const TextStyle(fontSize: 16),
+                        )
+                    ],
                   ),
                 ),
               );
