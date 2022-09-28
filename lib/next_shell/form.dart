@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-/// The options used to set parameters to a [ShellForm].
+/// The options used to set parameters to a [FlutterForm].
 ///
-/// The pages determine what pages the pageview will contain via a [List] of [ShellFormPage]s.
+/// The pages determine what pages the pageview will contain via a [List] of [FlutterFormPage]s.
 ///
 /// Using a checkpage gives the ability for the user to check all input values before commiting by [CheckPage].
 /// If [checkPage] is null no check page will be shown.
 ///
 /// [nextButton] and [backButton] are both a way to give controls to user.
 /// Both are just plain widgets used in a [Stack]. So the widgets can be aligned where ever.
-/// The formcontroller of [ShellForm] should be used to give control to the widgets/buttons.
+/// The formcontroller of [FlutterForm] should be used to give control to the widgets/buttons.
 ///
 /// [onFinished] and [onNext] are both callbacks which give the users results.
 /// [onNext] is called when the user goes to the next page.
 /// [onFinished] is called when the form is finished. When checkpage is set [onFinished] is called when the checkpage is finished.
-class ShellFormOptions {
-  final List<ShellFormPage> pages;
+class FlutterFormOptions {
+  final List<FlutterFormPage> pages;
 
   final CheckPage? checkPage;
   final Widget Function(int pageNumber, bool checkingPages)? nextButton;
@@ -24,7 +24,7 @@ class ShellFormOptions {
   final void Function(Map<int, Map<String, dynamic>>) onFinished;
   final void Function(int pageNumber, Map<String, dynamic>) onNext;
 
-  const ShellFormOptions({
+  const FlutterFormOptions({
     required this.pages,
     this.checkPage,
     this.nextButton,
@@ -34,16 +34,16 @@ class ShellFormOptions {
   });
 }
 
-/// The defines every page in a [ShellForm].
-class ShellFormPage {
+/// The defines every page in a [FlutterForm].
+class FlutterFormPage {
   final Widget child;
 
-  ShellFormPage({
+  FlutterFormPage({
     required this.child,
   });
 }
 
-/// [CheckPage] is used to set a check page at the end of a [ShellForm].
+/// [CheckPage] is used to set a check page at the end of a [FlutterForm].
 /// A [CheckPage] is a page where the user can check all input values before commiting.
 ///
 /// [title] is the widget shown at the top of the page.

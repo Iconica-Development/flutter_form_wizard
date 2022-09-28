@@ -10,8 +10,8 @@ class NamePage extends StatefulWidget {
     super.key,
   });
 
-  final ShellFormInputPlainTextController firstNameController;
-  final ShellFormInputPlainTextController lastNameController;
+  final FlutterFormInputPlainTextController firstNameController;
+  final FlutterFormInputPlainTextController lastNameController;
   final bool showLastName;
 
   @override
@@ -30,10 +30,10 @@ class _NamePageState extends State<NamePage> {
       pageNumber: 2,
       amountOfPages: 3,
       title: "Please enter your name",
-      shellFormWidgets: [
+      FlutterFormWidgets: [
         Padding(
           padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
-          child: ShellFormInputPlainText(
+          child: FlutterFormInputPlainText(
             label: const Text("First Name"),
             controller: widget.firstNameController,
           ),
@@ -41,7 +41,7 @@ class _NamePageState extends State<NamePage> {
         if (widget.showLastName)
           Padding(
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-            child: ShellFormInputPlainText(
+            child: FlutterFormInputPlainText(
               label: const Text("Last Name"),
               controller: widget.lastNameController,
             ),

@@ -15,18 +15,18 @@ class FormExample extends ConsumerStatefulWidget {
 }
 
 class _FormExampleState extends ConsumerState<FormExample> {
-  final ShellFormController formController = ShellFormController();
+  final FlutterFormController formController = FlutterFormController();
 
   final String checkPageText = "All entered info: ";
 
-  final ageInputController = ShellFormInputNumberPickerController(
+  final ageInputController = FlutterFormInputNumberPickerController(
     id: "age",
     checkPageTitle: (dynamic amount) {
       return "Age: $amount years";
     },
   );
 
-  late final ShellFormInputCarouselController carouselInputController;
+  late final FlutterFormInputCarouselController carouselInputController;
 
   final List<Map<String, dynamic>> cars = [
     {
@@ -43,8 +43,8 @@ class _FormExampleState extends ConsumerState<FormExample> {
     },
   ];
 
-  ShellFormInputPlainTextController firstNameController =
-      ShellFormInputPlainTextController(
+  FlutterFormInputPlainTextController firstNameController =
+      FlutterFormInputPlainTextController(
     mandatory: true,
     id: "firstName",
     checkPageTitle: (dynamic firstName) {
@@ -52,8 +52,8 @@ class _FormExampleState extends ConsumerState<FormExample> {
     },
   );
 
-  ShellFormInputPlainTextController lastNameController =
-      ShellFormInputPlainTextController(
+  FlutterFormInputPlainTextController lastNameController =
+      FlutterFormInputPlainTextController(
     mandatory: true,
     id: "lastName",
     checkPageTitle: (dynamic lastName) {
@@ -64,7 +64,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
   @override
   void initState() {
     super.initState();
-    carouselInputController = ShellFormInputCarouselController(
+    carouselInputController = FlutterFormInputCarouselController(
       id: 'carCarousel',
       checkPageTitle: (dynamic index) {
         return cars[index]["title"];
@@ -88,7 +88,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
         body: Center(
           child: FlutterForm(
             formController: formController,
-            options: ShellFormOptions(
+            options: FlutterFormOptions(
               onFinished: (Map<int, Map<String, dynamic>> results) {
                 debugPrint("Final full results: $results");
                 Navigator.of(context).pushNamed('/thanks');
@@ -172,19 +172,19 @@ class _FormExampleState extends ConsumerState<FormExample> {
                 return Container();
               },
               pages: [
-                ShellFormPage(
+                FlutterFormPage(
                   child: AgePage(
                     inputController: ageInputController,
                   ),
                 ),
-                ShellFormPage(
+                FlutterFormPage(
                   child: NamePage(
                     firstNameController: firstNameController,
                     lastNameController: lastNameController,
                     showLastName: showLastName,
                   ),
                 ),
-                ShellFormPage(
+                FlutterFormPage(
                   child: CarouselPage(
                     inputController: carouselInputController,
                     cars: cars,

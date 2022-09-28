@@ -18,7 +18,7 @@ To use this package, add `flutter_form` as a [dependency in your pubspec.yaml fi
 
 See the [Example Code](example/lib/form_example.dart) for an example on how to use this package.
 
-WARNING Make sure to define your ShellFormInputControllers above your Flutter Form and not inside each page. This prevents that the used controllers differ from the registered ones.
+WARNING Make sure to define your FlutterFormInputControllers above your Flutter Form and not inside each page. This prevents that the used controllers differ from the registered ones.
 
 Flutter Form has two paramaters: options and formController. Each of these parameters' own parameters will be explained in tabels below.
 

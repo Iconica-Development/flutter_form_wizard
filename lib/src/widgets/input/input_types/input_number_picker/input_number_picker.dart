@@ -5,10 +5,10 @@ import 'package:flutter_form/next_shell/translation_service.dart';
 
 import 'numberpicker.dart';
 
-class ShellFormInputNumberPicker extends ShellFormInputWidget {
-  const ShellFormInputNumberPicker({
+class FlutterFormInputNumberPicker extends FlutterFormInputWidget {
+  const FlutterFormInputNumberPicker({
     Key? key,
-    required ShellFormInputController controller,
+    required FlutterFormInputController controller,
     Widget? label,
     this.minValue = 0,
     this.maxValue = 100,
@@ -65,9 +65,9 @@ class NumberPickerFormField extends FormField<int> {
             });
 }
 
-class ShellFormInputNumberPickerController
-    implements ShellFormInputController<int> {
-  ShellFormInputNumberPickerController({
+class FlutterFormInputNumberPickerController
+    implements FlutterFormInputController<int> {
+  FlutterFormInputNumberPickerController({
     required this.id,
     this.mandatory = true,
     this.value,

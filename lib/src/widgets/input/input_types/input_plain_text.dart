@@ -6,11 +6,11 @@ import 'package:flutter_form/next_shell/translation_service.dart';
 
 /// Input for plain text input used in a [FlutterForm].
 ///
-/// Standard controller is [ShellFormInputPlainTextController].
-class ShellFormInputPlainText extends ShellFormInputWidget {
-  const ShellFormInputPlainText({
+/// Standard controller is [FlutterFormInputPlainTextController].
+class FlutterFormInputPlainText extends FlutterFormInputWidget {
+  const FlutterFormInputPlainText({
     Key? key,
-    required ShellFormInputController controller,
+    required FlutterFormInputController controller,
     Widget? label,
   }) : super(key: key, controller: controller, label: label);
 
@@ -34,11 +34,11 @@ class ShellFormInputPlainText extends ShellFormInputWidget {
 
 /// Input for an plain text with extra styling used in a [FlutterForm].
 ///
-/// Standard controller is [ShellFormInputPlainTextController].
-class ShellFormInputPlainTextWhiteWithBorder extends ShellFormInputWidget {
-  const ShellFormInputPlainTextWhiteWithBorder({
+/// Standard controller is [FlutterFormInputPlainTextController].
+class FlutterFormInputPlainTextWhiteWithBorder extends FlutterFormInputWidget {
+  const FlutterFormInputPlainTextWhiteWithBorder({
     Key? key,
-    required ShellFormInputController controller,
+    required FlutterFormInputController controller,
     Widget? label,
     this.hint,
   }) : super(key: key, controller: controller, label: label);
@@ -73,12 +73,12 @@ class ShellFormInputPlainTextWhiteWithBorder extends ShellFormInputWidget {
   }
 }
 
-/// Controller for plain text used by a [ShellFormInputWidget] used in a [FlutterForm].
+/// Controller for plain text used by a [FlutterFormInputWidget] used in a [FlutterForm].
 ///
-/// Mainly used by [ShellFormInputPlainText].
-class ShellFormInputPlainTextController
-    implements ShellFormInputController<String> {
-  ShellFormInputPlainTextController({
+/// Mainly used by [FlutterFormInputPlainText].
+class FlutterFormInputPlainTextController
+    implements FlutterFormInputController<String> {
+  FlutterFormInputPlainTextController({
     required this.id,
     this.mandatory = false,
     this.value,

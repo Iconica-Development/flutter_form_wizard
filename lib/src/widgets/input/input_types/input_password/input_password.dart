@@ -5,11 +5,11 @@ import '../../../../../flutter_form.dart';
 
 /// Input for a password used in a [FlutterForm].
 ///
-/// Standard controller is [ShellFormInputEmailController].
-class ShellFormInputPassword extends ShellFormInputWidget {
-  const ShellFormInputPassword({
+/// Standard controller is [FlutterFormInputEmailController].
+class FlutterFormInputPassword extends FlutterFormInputWidget {
+  const FlutterFormInputPassword({
     Key? key,
-    required ShellFormInputController controller,
+    required FlutterFormInputController controller,
     Widget? label,
   }) : super(key: key, controller: controller, label: label);
 
@@ -24,12 +24,12 @@ class ShellFormInputPassword extends ShellFormInputWidget {
   }
 }
 
-/// Controller for passwords used by a [ShellFormInputWidget] used in a [ShellFrom].
+/// Controller for passwords used by a [FlutterFormInputWidget] used in a [ShellFrom].
 ///
-/// Mainly used by [ShellFormInputPassword].
-class ShellFormInputPasswordController
-    implements ShellFormInputController<String> {
-  ShellFormInputPasswordController({
+/// Mainly used by [FlutterFormInputPassword].
+class FlutterFormInputPasswordController
+    implements FlutterFormInputController<String> {
+  FlutterFormInputPasswordController({
     required this.id,
     this.mandatory = true,
     this.value,

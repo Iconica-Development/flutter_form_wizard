@@ -6,11 +6,11 @@ import '../../../../flutter_form.dart';
 
 /// Input for an email used in a [FlutterForm].
 ///
-/// Standard controller is [ShellFormInputEmailController].
-class ShellFormInputEmail extends ShellFormInputWidget {
-  const ShellFormInputEmail({
+/// Standard controller is [FlutterFormInputEmailController].
+class FlutterFormInputEmail extends FlutterFormInputWidget {
+  const FlutterFormInputEmail({
     Key? key,
-    required ShellFormInputController controller,
+    required FlutterFormInputController controller,
     Widget? label,
   }) : super(
           key: key,
@@ -39,12 +39,12 @@ class ShellFormInputEmail extends ShellFormInputWidget {
   }
 }
 
-/// Controller for emails used by a [ShellFormInputWidget] used in a [FlutterForm].
+/// Controller for emails used by a [FlutterFormInputWidget] used in a [FlutterForm].
 ///
-/// Mainly used by [ShellFormInputEmail].
-class ShellFormInputEmailController
-    implements ShellFormInputController<String> {
-  ShellFormInputEmailController({
+/// Mainly used by [FlutterFormInputEmail].
+class FlutterFormInputEmailController
+    implements FlutterFormInputController<String> {
+  FlutterFormInputEmailController({
     required this.id,
     this.mandatory = true,
     this.value,

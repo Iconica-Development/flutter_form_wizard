@@ -9,20 +9,20 @@ import 'utils/formstate.dart' as fs;
 /// A wrapper for flutters [Form] that can be controlled by a controller and provides multiple pre-defined input types/fields
 /// [FlutterForm] also provides multi page forms and a check page for validation.
 ///
-/// A [ShellFormController] has to be given to control what happens to values and pages within the ShellForm.
+/// A [FlutterFormController] has to be given to control what happens to values and pages within the FlutterForm.
 ///
-/// [ShellFormOptions] have to be provided to control the appearance of the form.
+/// [FlutterFormOptions] have to be provided to control the appearance of the form.
 ///
 /// WARNING Define your FormInputController above your FlutterForm. Otherwise when rebuild the controller will differ from the registered ones.
 /// ``` dart
-/// ShellFormInputEmailController emailController =
-///     ShellFormInputEmailController(id: 'email');
-/// ShellFormInputPasswordController passwordController =
-///     ShellFormInputPasswordController(id: 'password');
+/// FlutterFormInputEmailController emailController =
+///     FlutterFormInputEmailController(id: 'email');
+/// FlutterFormInputPasswordController passwordController =
+///     FlutterFormInputPasswordController(id: 'password');
 ///
-/// ShellForm(
-///   formController: shellFormController,
-///   options: ShellFormOptions(
+/// FlutterForm(
+///   formController: FlutterFormController,
+///   options: FlutterFormOptions(
 ///     onFinished: (Map<int, Map<String, dynamic>> results) {
 ///       // print(results);
 ///     },
@@ -38,7 +38,7 @@ import 'utils/formstate.dart' as fs;
 ///           ),
 ///           child: ElevatedButton(
 ///             onPressed: () {
-///               shellFormController.autoNextStep();
+///               FlutterFormController.autoNextStep();
 ///             },
 ///             child: Text(checkingPages ? "Save" : "Next Page"),
 ///           ),
@@ -54,7 +54,7 @@ import 'utils/formstate.dart' as fs;
 ///               padding: EdgeInsets.zero,
 ///               splashRadius: 29,
 ///               onPressed: () {
-///                 shellFormController.previousStep();
+///                 FlutterFormController.previousStep();
 ///               },
 ///               icon: const Icon(Icons.chevron_left),
 ///             ),
@@ -64,7 +64,7 @@ import 'utils/formstate.dart' as fs;
 ///       return Container();
 ///     },
 ///     pages: [
-///       ShellFormPage(
+///       FlutterFormPage(
 ///         child: Column(
 ///           mainAxisAlignment: MainAxisAlignment.center,
 ///           children: [
@@ -90,11 +90,11 @@ import 'utils/formstate.dart' as fs;
 ///               ),
 ///             ),
 ///             const Spacer(),
-///             ShellFormInputEmail(controller: emailController),
+///             FlutterFormInputEmail(controller: emailController),
 ///             const SizedBox(
 ///               height: 25,
 ///             ),
-///             ShellFormInputPassword(controller: passwordController),
+///             FlutterFormInputPassword(controller: passwordController),
 ///             const Spacer(),
 ///           ],
 ///         ),
@@ -184,15 +184,15 @@ class FlutterForm extends ConsumerStatefulWidget {
     required this.formController,
   }) : super(key: key);
 
-  final ShellFormOptions options;
-  final ShellFormController formController;
+  final FlutterFormOptions options;
+  final FlutterFormController formController;
 
   @override
-  ConsumerState<FlutterForm> createState() => _ShellFormState();
+  ConsumerState<FlutterForm> createState() => _FlutterFormState();
 }
 
-class _ShellFormState extends ConsumerState<FlutterForm> {
-  late ShellFormController _formController;
+class _FlutterFormState extends ConsumerState<FlutterForm> {
+  late FlutterFormController _formController;
 
   @override
   void initState() {
@@ -200,11 +200,11 @@ class _ShellFormState extends ConsumerState<FlutterForm> {
 
     _formController = widget.formController;
 
-    _formController.setShellFormOptions(widget.options);
+    _formController.setFlutterFormOptions(widget.options);
 
     List<GlobalKey<FormState>> keys = [];
 
-    for (ShellFormPage _ in widget.options.pages) {
+    for (FlutterFormPage _ in widget.options.pages) {
       keys.add(GlobalKey<FormState>());
     }
 
@@ -214,10 +214,10 @@ class _ShellFormState extends ConsumerState<FlutterForm> {
       setState(() {});
     });
 
-    List<ShellFormPageController> controllers = [];
+    List<FlutterFormPageController> controllers = [];
 
     for (int i = 0; i < widget.options.pages.length; i++) {
-      controllers.add(ShellFormPageController());
+      controllers.add(FlutterFormPageController());
     }
 
     _formController.setFormPageControllers(controllers);
@@ -304,7 +304,7 @@ class _ShellFormState extends ConsumerState<FlutterForm> {
     _formController.getAllResults().forEach(
       (pageNumber, pageResults) {
         pageResults.forEach((inputId, inputResult) {
-          ShellFormInputController? inputController = _formController
+          FlutterFormInputController? inputController = _formController
               .getFormPageControllers()[pageNumber]
               .getController(inputId);
 
@@ -406,8 +406,8 @@ class _ShellFormState extends ConsumerState<FlutterForm> {
   }
 }
 
-class ShellFormController extends ChangeNotifier {
-  late ShellFormOptions _options;
+class FlutterFormController extends ChangeNotifier {
+  late FlutterFormOptions _options;
 
   int _currentStep = 0;
 
@@ -417,13 +417,13 @@ class ShellFormController extends ChangeNotifier {
 
   final PageController _pageController = PageController();
 
-  late List<ShellFormPageController> _formPageControllers;
+  late List<FlutterFormPageController> _formPageControllers;
 
-  List<ShellFormPageController> getFormPageControllers() {
+  List<FlutterFormPageController> getFormPageControllers() {
     return _formPageControllers;
   }
 
-  setFormPageControllers(List<ShellFormPageController> controllers) {
+  setFormPageControllers(List<FlutterFormPageController> controllers) {
     _formPageControllers = controllers;
   }
 
@@ -544,7 +544,7 @@ class ShellFormController extends ChangeNotifier {
     return allValues;
   }
 
-  setShellFormOptions(ShellFormOptions options) {
+  setFlutterFormOptions(FlutterFormOptions options) {
     _options = options;
   }
 

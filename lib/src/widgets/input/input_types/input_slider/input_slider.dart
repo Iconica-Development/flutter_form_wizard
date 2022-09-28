@@ -7,11 +7,11 @@ import '../../../../../flutter_form.dart';
 
 /// Input for a number value between two values via a slider. Used in a [FlutterForm].
 ///
-/// Standard controller is [ShellFormInputSliderController].
-class ShellFormInputSlider extends ShellFormInputWidget {
-  const ShellFormInputSlider({
+/// Standard controller is [FlutterFormInputSliderController].
+class FlutterFormInputSlider extends FlutterFormInputWidget {
+  const FlutterFormInputSlider({
     Key? key,
-    required ShellFormInputController controller,
+    required FlutterFormInputController controller,
     Widget? label,
     this.minValue = 0,
     this.maxValue = 100,
@@ -35,12 +35,12 @@ class ShellFormInputSlider extends ShellFormInputWidget {
   }
 }
 
-/// Controller for slider used by a [ShellFormInputWidget] used in a [FlutterForm].
+/// Controller for slider used by a [FlutterFormInputWidget] used in a [FlutterForm].
 ///
-/// Mainly used by [ShellFormInputSlider].
-class ShellFormInputSliderController
-    implements ShellFormInputController<double> {
-  ShellFormInputSliderController({
+/// Mainly used by [FlutterFormInputSlider].
+class FlutterFormInputSliderController
+    implements FlutterFormInputController<double> {
+  FlutterFormInputSliderController({
     required this.id,
     this.mandatory = true,
     this.value,

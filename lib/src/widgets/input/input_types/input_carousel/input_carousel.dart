@@ -10,11 +10,11 @@ import 'carousel_form.dart';
 ///
 /// [items] will be the [Widget]s to be displayed in the carousel.
 ///
-/// Standard controller is [ShellFormInputCarouselController].
-class ShellFormInputCarousel extends ShellFormInputWidget {
-  const ShellFormInputCarousel({
+/// Standard controller is [FlutterFormInputCarouselController].
+class FlutterFormInputCarousel extends FlutterFormInputWidget {
+  const FlutterFormInputCarousel({
     Key? key,
-    required ShellFormInputController controller,
+    required FlutterFormInputController controller,
     Widget? label,
     required this.items,
   }) : super(key: key, controller: controller, label: label);
@@ -37,12 +37,12 @@ class ShellFormInputCarousel extends ShellFormInputWidget {
   }
 }
 
-/// Controller for the carousel used by a [ShellFormInputWidget] used in a [FlutterForm].
+/// Controller for the carousel used by a [FlutterFormInputWidget] used in a [FlutterForm].
 ///
-/// Mainly used by [ShellFormInputCarousel].
-class ShellFormInputCarouselController
-    implements ShellFormInputController<int> {
-  ShellFormInputCarouselController({
+/// Mainly used by [FlutterFormInputCarousel].
+class FlutterFormInputCarouselController
+    implements FlutterFormInputController<int> {
+  FlutterFormInputCarouselController({
     required this.id,
     this.mandatory = true,
     this.value,

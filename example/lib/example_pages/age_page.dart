@@ -8,7 +8,7 @@ class AgePage extends StatefulWidget {
     super.key,
   });
 
-  final ShellFormInputNumberPickerController inputController;
+  final FlutterFormInputNumberPickerController inputController;
 
   @override
   State<AgePage> createState() => _AgePageState();
@@ -26,8 +26,8 @@ class _AgePageState extends State<AgePage> {
       title: "What is your age?",
       pageNumber: 1,
       amountOfPages: 3,
-      shellFormWidgets: [
-        ShellFormInputNumberPicker(
+      FlutterFormWidgets: [
+        FlutterFormInputNumberPicker(
           minValue: 12,
           maxValue: 120,
           controller: widget.inputController,

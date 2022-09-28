@@ -8,7 +8,7 @@ class TemplatePage extends StatelessWidget {
     required this.title,
     required this.pageNumber,
     required this.amountOfPages,
-    required this.shellFormWidgets,
+    required this.FlutterFormWidgets,
   });
 
   final Size size;
@@ -16,7 +16,7 @@ class TemplatePage extends StatelessWidget {
   final String title;
   final int pageNumber;
   final int amountOfPages;
-  final List<Widget> shellFormWidgets;
+  final List<Widget> FlutterFormWidgets;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class TemplatePage extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        for (var widget in shellFormWidgets) ...[
+        for (var widget in FlutterFormWidgets) ...[
           widget,
         ],
         const Spacer(

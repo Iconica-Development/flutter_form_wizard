@@ -9,7 +9,7 @@ class CarouselPage extends StatefulWidget {
     super.key,
   });
 
-  final ShellFormInputCarouselController inputController;
+  final FlutterFormInputCarouselController inputController;
   final List<Map<String, dynamic>> cars;
 
   @override
@@ -28,8 +28,8 @@ class _CarouselPageState extends State<CarouselPage> {
       title: "What's your favorite car?",
       pageNumber: 3,
       amountOfPages: 3,
-      shellFormWidgets: [
-        ShellFormInputCarousel(
+      FlutterFormWidgets: [
+        FlutterFormInputCarousel(
             controller: widget.inputController, items: getCars())
       ],
     );

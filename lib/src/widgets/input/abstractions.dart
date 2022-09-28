@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/src/utils/formstate.dart' as fs;
 
-/// Abstract class for the input widgets used in a [ShellForm].
+/// Abstract class for the input widgets used in a [FlutterForm].
 ///
-/// The controller [ShellFormInputController] has to be given to the widget.
+/// The controller [FlutterFormInputController] has to be given to the widget.
 /// Whicht controller is used determines how to value will be handled.
 ///
 /// label is a standard parameter to normally sets the label of the input.
-abstract class ShellFormInputWidget extends ConsumerWidget {
-  const ShellFormInputWidget({
+abstract class FlutterFormInputWidget extends ConsumerWidget {
+  const FlutterFormInputWidget({
     Key? key,
     required this.controller,
     this.label,
     String? hintText,
   }) : super(key: key);
 
-  final ShellFormInputController controller;
+  final FlutterFormInputController controller;
   final Widget? label;
 
   registerController(BuildContext context) {
-    ShellFormInputController? localController =
+    FlutterFormInputController? localController =
         fs.FormState.of(context).formController.getController(controller.id!);
 
     if (localController == null) {
@@ -29,9 +29,9 @@ abstract class ShellFormInputWidget extends ConsumerWidget {
   }
 }
 
-/// Abstract class for the controller for inputs used in a [ShellForm].
+/// Abstract class for the controller for inputs used in a [FlutterForm].
 ///
-/// The [id] determines the key in the [Map] returned by the [ShellForm].
+/// The [id] determines the key in the [Map] returned by the [FlutterForm].
 ///
 /// [value] is a way to set a initial value.
 ///
@@ -49,7 +49,7 @@ abstract class ShellFormInputWidget extends ConsumerWidget {
 ///
 /// [checkPageDescription] is the same as checkPageTitle but for the description.
 /// If null no description will be shown.
-abstract class ShellFormInputController<T> {
+abstract class FlutterFormInputController<T> {
   String? id;
   T? value;
   bool mandatory = false;

@@ -8,7 +8,7 @@ class FormState extends InheritedWidget {
     required this.formController,
   }) : super(key: key, child: child);
 
-  final ShellFormPageController formController;
+  final FlutterFormPageController formController;
 
   static FormState of(BuildContext context) {
     final FormState? result =
