@@ -4,7 +4,7 @@ import 'package:flutter_form/next_shell/translation_service.dart';
 
 import '../../../../flutter_form.dart';
 
-/// Input for an email used in a [ShellForm].
+/// Input for an email used in a [FlutterForm].
 ///
 /// Standard controller is [ShellFormInputEmailController].
 class ShellFormInputEmail extends ShellFormInputWidget {
@@ -39,7 +39,7 @@ class ShellFormInputEmail extends ShellFormInputWidget {
   }
 }
 
-/// Controller for emails used by a [ShellFormInputWidget] used in a [ShellForm].
+/// Controller for emails used by a [ShellFormInputWidget] used in a [FlutterForm].
 ///
 /// Mainly used by [ShellFormInputEmail].
 class ShellFormInputEmailController

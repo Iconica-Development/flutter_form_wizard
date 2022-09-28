@@ -5,7 +5,7 @@ import 'package:flutter_form/next_shell/translation_service.dart';
 
 import '../../../../../flutter_form.dart';
 
-/// Input for a number value between two values via a slider. Used in a [ShellForm].
+/// Input for a number value between two values via a slider. Used in a [FlutterForm].
 ///
 /// Standard controller is [ShellFormInputSliderController].
 class ShellFormInputSlider extends ShellFormInputWidget {
@@ -35,7 +35,7 @@ class ShellFormInputSlider extends ShellFormInputWidget {
   }
 }
 
-/// Controller for slider used by a [ShellFormInputWidget] used in a [ShellForm].
+/// Controller for slider used by a [ShellFormInputWidget] used in a [FlutterForm].
 ///
 /// Mainly used by [ShellFormInputSlider].
 class ShellFormInputSliderController

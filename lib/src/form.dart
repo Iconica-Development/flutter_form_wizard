@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'flutter_form.dart';
-import 'next_shell/form.dart';
-import 'next_shell/translation_service.dart';
-import 'src/utils/form_page_controller.dart';
-import 'src/utils/formstate.dart' as fs;
+import '../flutter_form.dart';
+import '../next_shell/form.dart';
+import '../next_shell/translation_service.dart';
+import 'utils/form_page_controller.dart';
+import 'utils/formstate.dart' as fs;
 
 /// A wrapper for flutters [Form] that can be controlled by a controller and provides multiple pre-defined input types/fields
-/// [ShellForm] also provides multi page forms and a check page for validation.
+/// [FlutterForm] also provides multi page forms and a check page for validation.
 ///
 /// A [ShellFormController] has to be given to control what happens to values and pages within the ShellForm.
 ///
@@ -175,8 +175,8 @@ import 'src/utils/formstate.dart' as fs;
 ///   ),
 /// ),
 /// ```
-class ShellForm extends ConsumerStatefulWidget {
-  const ShellForm({
+class FlutterForm extends ConsumerStatefulWidget {
+  const FlutterForm({
     Key? key,
     required this.options,
     required this.formController,
@@ -186,10 +186,10 @@ class ShellForm extends ConsumerStatefulWidget {
   final ShellFormController formController;
 
   @override
-  ConsumerState<ShellForm> createState() => _ShellFormState();
+  ConsumerState<FlutterForm> createState() => _ShellFormState();
 }
 
-class _ShellFormState extends ConsumerState<ShellForm> {
+class _ShellFormState extends ConsumerState<FlutterForm> {
   late ShellFormController _formController;
 
   @override
@@ -428,10 +428,6 @@ class ShellFormController extends ChangeNotifier {
   disableCheckingPages() {
     _checkingPages = false;
 
-    clearController();
-  }
-
-  clearController() {
     for (var controller in _formPageControllers) {
       controller.clearControllers();
     }

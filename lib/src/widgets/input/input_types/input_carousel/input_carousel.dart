@@ -6,7 +6,7 @@ import 'package:flutter_form/next_shell/translation_service.dart';
 
 import 'carousel_form.dart';
 
-/// Input for a carousel of items used in a [ShellForm].
+/// Input for a carousel of items used in a [FlutterForm].
 ///
 /// [items] will be the [Widget]s to be displayed in the carousel.
 ///
@@ -37,7 +37,7 @@ class ShellFormInputCarousel extends ShellFormInputWidget {
   }
 }
 
-/// Controller for the carousel used by a [ShellFormInputWidget] used in a [ShellForm].
+/// Controller for the carousel used by a [ShellFormInputWidget] used in a [FlutterForm].
 ///
 /// Mainly used by [ShellFormInputCarousel].
 class ShellFormInputCarouselController

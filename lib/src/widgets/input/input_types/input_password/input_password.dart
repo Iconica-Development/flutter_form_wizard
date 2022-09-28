@@ -3,7 +3,7 @@ import 'package:flutter_form/src/widgets/input/input_types/input_password/passwo
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../flutter_form.dart';
 
-/// Input for a password used in a [ShellForm].
+/// Input for a password used in a [FlutterForm].
 ///
 /// Standard controller is [ShellFormInputEmailController].
 class ShellFormInputPassword extends ShellFormInputWidget {

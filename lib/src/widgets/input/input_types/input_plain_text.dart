@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../flutter_form.dart';
 import 'package:flutter_form/next_shell/translation_service.dart';
 
-/// Input for plain text input used in a [ShellForm].
+/// Input for plain text input used in a [FlutterForm].
 ///
 /// Standard controller is [ShellFormInputPlainTextController].
 class ShellFormInputPlainText extends ShellFormInputWidget {
@@ -32,7 +32,7 @@ class ShellFormInputPlainText extends ShellFormInputWidget {
   }
 }
 
-/// Input for an plain text with extra styling used in a [ShellForm].
+/// Input for an plain text with extra styling used in a [FlutterForm].
 ///
 /// Standard controller is [ShellFormInputPlainTextController].
 class ShellFormInputPlainTextWhiteWithBorder extends ShellFormInputWidget {
@@ -73,7 +73,7 @@ class ShellFormInputPlainTextWhiteWithBorder extends ShellFormInputWidget {
   }
 }
 
-/// Controller for plain text used by a [ShellFormInputWidget] used in a [ShellForm].
+/// Controller for plain text used by a [ShellFormInputWidget] used in a [FlutterForm].
 ///
 /// Mainly used by [ShellFormInputPlainText].
 class ShellFormInputPlainTextController

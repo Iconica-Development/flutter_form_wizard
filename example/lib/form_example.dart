@@ -86,7 +86,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         body: Center(
-          child: ShellForm(
+          child: FlutterForm(
             formController: formController,
             options: ShellFormOptions(
               onFinished: (Map<int, Map<String, dynamic>> results) {
