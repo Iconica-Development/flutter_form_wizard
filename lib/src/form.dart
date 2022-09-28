@@ -275,18 +275,23 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
         widget.options.nextButton != null
             ? widget.options.nextButton!(_formController.getCurrentStep(),
                 _formController.getCheckpages())
-            : ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 15),
-                    textStyle: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold)),
-                onPressed: () => _formController.autoNextStep(),
-                child: Text(_formController.getCurrentStep() >=
-                        widget.options.pages.length - 1
-                    ? "Finish"
-                    : "Next"),
+            : Align(
+                alignment: AlignmentDirectional.bottomCenter,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).primaryColor,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 15),
+                      textStyle: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold)),
+                  onPressed: () async {
+                    await _formController.autoNextStep();
+                  },
+                  child: Text(_formController.getCurrentStep() >=
+                          widget.options.pages.length - 1
+                      ? "Finish"
+                      : "Next"),
+                ),
               ),
         if (widget.options.backButton != null)
           widget.options.backButton!(

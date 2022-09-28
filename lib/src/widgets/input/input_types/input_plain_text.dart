@@ -111,7 +111,7 @@ class FlutterFormInputPlainTextController
       String Function(String, {List<String>? params}) translator) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('Field cannot be empty');
+        return translator('Field can not be empty');
       }
     }
 

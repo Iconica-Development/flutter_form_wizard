@@ -62,11 +62,11 @@ class FlutterFormInputPasswordController
       String Function(String, {List<String>? params}) translator) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('Field cannot be empty');
+        return translator('Field can not be empty');
       }
 
       if (value.length < 6) {
-        return translator('Field cannot be empty');
+        return translator('Field should be atleast 6 characters long');
       }
     }
 
