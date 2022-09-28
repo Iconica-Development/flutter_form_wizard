@@ -5,6 +5,12 @@ import 'package:flutter_form/next_shell/translation_service.dart';
 
 import 'numberpicker.dart';
 
+/// Input for a number used in a [FlutterForm].
+///
+/// [minValue] sets the minimal value of the picker.
+/// [maxValue] sets the maximal value of the picker.
+///
+/// Standard controller is [FlutterFormInputNumberPickerController].
 class FlutterFormInputNumberPicker extends FlutterFormInputWidget {
   const FlutterFormInputNumberPicker({
     Key? key,
@@ -37,6 +43,9 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget {
   }
 }
 
+/// Controller for the numberPicker used by a [FlutterFormInputWidget] used in a [FlutterForm].
+///
+/// Mainly used by [FlutterFormInputNumberPicker].
 class NumberPickerFormField extends FormField<int> {
   NumberPickerFormField({
     Key? key,
