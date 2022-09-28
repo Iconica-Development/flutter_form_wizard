@@ -6,11 +6,13 @@ class NamePage extends StatefulWidget {
   const NamePage({
     required this.firstNameController,
     required this.lastNameController,
+    required this.showLastName,
     super.key,
   });
 
   final ShellFormInputPlainTextController firstNameController;
   final ShellFormInputPlainTextController lastNameController;
+  final bool showLastName;
 
   @override
   State<NamePage> createState() => _NamePageState();
@@ -25,7 +27,7 @@ class _NamePageState extends State<NamePage> {
     return TemplatePage(
       size: size,
       fontSize: fontSize,
-      pageNumber: 3,
+      pageNumber: 2,
       amountOfPages: 3,
       title: "Please enter your name",
       shellFormWidgets: [
@@ -36,13 +38,14 @@ class _NamePageState extends State<NamePage> {
             controller: widget.firstNameController,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-          child: ShellFormInputPlainText(
-            label: const Text("Last Name"),
-            controller: widget.lastNameController,
+        if (widget.showLastName)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+            child: ShellFormInputPlainText(
+              label: const Text("Last Name"),
+              controller: widget.lastNameController,
+            ),
           ),
-        ),
       ],
     );
   }

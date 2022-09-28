@@ -1,10 +1,14 @@
 import 'package:flutter_form/flutter_form.dart';
 
 class ShellFormPageController {
-  final List<ShellFormInputController> _controllers = [];
+  List<ShellFormInputController> _controllers = [];
 
   void register(ShellFormInputController inputController) {
     _controllers.add(inputController);
+  }
+
+  clearControllers() {
+    _controllers = [];
   }
 
   bool _isRegisteredById(String id) {

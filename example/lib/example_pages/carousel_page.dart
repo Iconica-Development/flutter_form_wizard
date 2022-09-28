@@ -26,7 +26,7 @@ class _CarouselPageState extends State<CarouselPage> {
       size: size,
       fontSize: fontSize,
       title: "What's your favorite car?",
-      pageNumber: 2,
+      pageNumber: 3,
       amountOfPages: 3,
       shellFormWidgets: [
         ShellFormInputCarousel(

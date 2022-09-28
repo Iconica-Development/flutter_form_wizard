@@ -425,6 +425,18 @@ class ShellFormController extends ChangeNotifier {
     _formPageControllers = controllers;
   }
 
+  disableCheckingPages() {
+    _checkingPages = false;
+
+    clearController();
+  }
+
+  clearController() {
+    for (var controller in _formPageControllers) {
+      controller.clearControllers();
+    }
+  }
+
   Future<void> autoNextStep() async {
     if (_currentStep >= _options.pages.length && _options.checkPage != null) {
       _options.onFinished(getAllResults());

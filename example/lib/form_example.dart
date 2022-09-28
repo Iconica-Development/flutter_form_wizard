@@ -75,6 +75,8 @@ class _FormExampleState extends ConsumerState<FormExample> {
     );
   }
 
+  bool showLastName = true;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -93,6 +95,21 @@ class _FormExampleState extends ConsumerState<FormExample> {
               },
               onNext: (int pageNumber, Map<String, dynamic> results) {
                 print("Results page $pageNumber: $results");
+
+                if (pageNumber == 0) {
+                  if (results['age'] >= 18) {
+                    if (showLastName == false) {
+                      showLastName = true;
+                      formController.disableCheckingPages();
+                    }
+                  } else {
+                    if (showLastName == true) {
+                      showLastName = false;
+                      formController.disableCheckingPages();
+                    }
+                  }
+                  setState(() {});
+                }
               },
               nextButton: (int pageNumber, bool checkingPages) {
                 return Align(
@@ -161,15 +178,16 @@ class _FormExampleState extends ConsumerState<FormExample> {
                   ),
                 ),
                 ShellFormPage(
-                  child: CarouselPage(
-                    inputController: carouselInputController,
-                    cars: cars,
-                  ),
-                ),
-                ShellFormPage(
                   child: NamePage(
                     firstNameController: firstNameController,
                     lastNameController: lastNameController,
+                    showLastName: showLastName,
+                  ),
+                ),
+                ShellFormPage(
+                  child: CarouselPage(
+                    inputController: carouselInputController,
+                    cars: cars,
                   ),
                 ),
               ],
