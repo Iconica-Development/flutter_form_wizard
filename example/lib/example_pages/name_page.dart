@@ -30,7 +30,7 @@ class _NamePageState extends State<NamePage> {
       pageNumber: 2,
       amountOfPages: 3,
       title: "Please enter your name",
-      FlutterFormWidgets: [
+      flutterFormWidgets: [
         Padding(
           padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
           child: FlutterFormInputPlainText(

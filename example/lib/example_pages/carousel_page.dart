@@ -28,7 +28,7 @@ class _CarouselPageState extends State<CarouselPage> {
       title: "What's your favorite car?",
       pageNumber: 3,
       amountOfPages: 3,
-      FlutterFormWidgets: [
+      flutterFormWidgets: [
         FlutterFormInputCarousel(
             controller: widget.inputController, items: getCars())
       ],
