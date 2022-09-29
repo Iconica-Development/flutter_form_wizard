@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form/utils/translation_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../flutter_form.dart';
-import 'package:flutter_form/next_shell/translation_service.dart';
 
 /// Generates a [TextFormField] for passwords. It requires a [FlutterFormInputController]
 /// as the [controller] parameter and an optional [Widget] as [label]

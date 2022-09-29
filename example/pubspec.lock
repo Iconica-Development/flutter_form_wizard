@@ -50,13 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  equatable:
-    dependency: transitive
-    description:
-      name: equatable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:
@@ -156,15 +149,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  shell_model:
-    dependency: transitive
-    description:
-      path: "packages/shell_model"
-      ref: dbf7155ab18e79b5ff1da73f31c7fe3b06c4c82a
-      resolved-ref: dbf7155ab18e79b5ff1da73f31c7fe3b06c4c82a
-      url: "git@bitbucket.org:iconicadevs/next_shell.git"
-    source: git
-    version: "0.0.3"
   sky_engine:
     dependency: transitive
     description: flutter

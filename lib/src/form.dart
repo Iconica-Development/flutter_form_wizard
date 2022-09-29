@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form/utils/translation_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../flutter_form.dart';
-import '../next_shell/form.dart';
-import '../next_shell/translation_service.dart';
 import 'utils/form_page_controller.dart';
 import 'utils/formstate.dart' as fs;
 

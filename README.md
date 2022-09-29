@@ -1,4 +1,4 @@
-# Flutter Image Picker
+# Flutter Form
 
 Flutter Form is a package you can use to create a single or multi page form with premade or custom inputfields.
 

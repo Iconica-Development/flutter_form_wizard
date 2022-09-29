@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form/next_shell/providers.dart';
+import 'package:flutter_form/utils/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class TranslationService {

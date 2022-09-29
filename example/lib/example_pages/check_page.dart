@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_form/next_shell/form.dart';
+import 'package:flutter_form/flutter_form.dart';
 
 class CheckPageExample {
   CheckPage showCheckpage(
