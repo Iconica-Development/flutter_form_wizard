@@ -23,6 +23,7 @@ class FlutterFormOptions {
       backButton;
   final void Function(Map<int, Map<String, dynamic>>) onFinished;
   final void Function(int pageNumber, Map<String, dynamic>) onNext;
+  final Axis scrollDirection;
 
   const FlutterFormOptions({
     required this.pages,
@@ -31,6 +32,7 @@ class FlutterFormOptions {
     this.backButton,
     required this.onFinished,
     required this.onNext,
+    this.scrollDirection = Axis.horizontal,
   });
 }
 
