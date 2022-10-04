@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_example/route.dart';
 
 void main() {
-  runApp(const FormsExample());
+  runApp(const ProviderScope(child: FormsExample()));
 }
 
 class FormsExample extends StatelessWidget {
@@ -15,7 +17,22 @@ class FormsExample extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FormsHomePage(title: 'Flutter Demo Home Page'),
+      home: const FormsHomePage(title: 'Flutter Forms'),
+      initialRoute: '/',
+      onGenerateRoute: (settings) {
+        var routes = getRoutes();
+        if (routes.containsKey(settings.name)) {
+          return PageRouteBuilder(
+            pageBuilder: (_, __, ___) => routes[settings.name]!(context),
+            settings: settings,
+          );
+        } else {
+          return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => const Text('Page not found'),
+          );
+        }
+      },
     );
   }
 }
@@ -38,12 +55,10 @@ class _FormsHomePageState extends State<FormsHomePage> {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: (() => createForm()),
+          onPressed: (() => Navigator.of(context).pushNamed('/form')),
           child: const Text('Create form'),
         ),
       ),
     );
   }
-
-  void createForm() {}
 }
