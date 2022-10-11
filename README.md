@@ -24,13 +24,15 @@ Flutter Form has two paramaters: options and formController. Each of these param
 
 Options:
 
-| Parameter  | Explaination                                                                                                                                                                  |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| checkPage  | If this is set the form will feature a checkpage at the end so the end user can verify and alter his answers.                                                                 |
-| nextButton | The button which is put in the stack of the Form. An onTap has to be implemented and should call to the FormController. Standard call is autoNextStep().                      |
-| backButton | Same as the nextButton. A widget that is put in the stack of the Form. An onTap has to be implemented and should call to the FormController. Standard call is previousStep(). |
-| onFinised  | The callback that will be called when the last page is finished. If checkPage is enabled this will call after the checkPage is passed.                                        |
-| onNext     | The callback that is called when the user finishes a page. PageNumber is also provided.                                                                                       |
+| Parameter       | Explaination                                                                                                                                                                  |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| checkPage       | If this is set the form will feature a checkpage at the end so the end user can verify and alter his answers.                                                                 |
+| nextButton      | The button which is put in the stack of the Form. An onTap has to be implemented and should call to the FormController. Standard call is autoNextStep().                      |
+| backButton      | Same as the nextButton. A widget that is put in the stack of the Form. An onTap has to be implemented and should call to the FormController. Standard call is previousStep(). |
+| onFinised       | The callback that will be called when the last page is finished. If checkPage is enabled this will call after the checkPage is passed.                                        |
+| onNext          | The callback that is called when the user finishes a page. PageNumber is also provided.                                                                                       |
+| scrollDirection | The abilty to set the scroll direction of the forms .pageview                                                                                                                 |
+| scrollPhysics   | The ability to set the scroll physics of scroll views in each form page.                                                                                                      |
 
 FormController:
 

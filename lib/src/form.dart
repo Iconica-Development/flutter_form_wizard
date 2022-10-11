@@ -239,7 +239,8 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
                 child: fs.FormState(
                   formController: _formController.getFormPageControllers()[i],
                   child: CustomScrollView(
-                    physics: const ClampingScrollPhysics(),
+                    physics: _formController._options.scrollPhysics ??
+                        const ClampingScrollPhysics(),
                     slivers: [
                       SliverFillRemaining(
                         hasScrollBody: false,
@@ -257,7 +258,8 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
                     widget.options.checkPage!.title!,
                   Expanded(
                     child: CustomScrollView(
-                      physics: const ClampingScrollPhysics(),
+                      physics: _formController._options.scrollPhysics ??
+                          const ClampingScrollPhysics(),
                       slivers: [
                         SliverFillRemaining(
                           hasScrollBody: false,
