@@ -32,7 +32,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget {
   }
 }
 
-/// Input for an plain text with extra styling used in a [FlutterForm].
+/// Input for a plain text with extra styling used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputPlainTextController].
 class FlutterFormInputPlainTextWhiteWithBorder extends FlutterFormInputWidget {
@@ -69,6 +69,62 @@ class FlutterFormInputPlainTextWhiteWithBorder extends FlutterFormInputWidget {
         fillColor: Colors.white,
         filled: true,
       ),
+    );
+  }
+}
+
+/// Input for a multi line plain text field [FlutterForm].
+///
+/// Standard controller is [FlutterFormInputPlainTextController].
+/// 
+/// Hint can be set to set a hint inside the field.
+/// 
+/// MaxCharacters can be set to set a maximum amount of characters.
+class FlutterFormInputMultiLine extends FlutterFormInputWidget {
+  const FlutterFormInputMultiLine({
+    Key? key,
+    required FlutterFormInputController controller,
+    Widget? label,
+    this.hint,
+    this.maxCharacters,
+  }) : super(key: key, controller: controller, label: label);
+
+  final String? hint;
+  final int? maxCharacters;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    String Function(String, {List<String>? params}) _ =
+        getTranslator(context, ref);
+
+    super.registerController(context);
+
+    return Column(
+      children: [
+        Expanded(
+          child: TextFormField(
+            textAlignVertical: TextAlignVertical.top,
+            expands: true,
+            maxLines: null,
+            maxLength: maxCharacters,
+            initialValue: controller.value,
+            onSaved: (value) => controller.onSaved(value),
+            validator: (value) => controller.onValidate(value, _),
+            decoration: InputDecoration(
+              hintText: hint,
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              isDense: true,
+              border: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xFF979797)),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xFF979797)),
+              ),
+              filled: true,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
