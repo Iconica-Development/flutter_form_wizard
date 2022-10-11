@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
 /// [onFinished] and [onNext] are both callbacks which give the users results.
 /// [onNext] is called when the user goes to the next page.
 /// [onFinished] is called when the form is finished. When checkpage is set [onFinished] is called when the checkpage is finished.
+///
+/// [scrollDirection] can be set to change the Axis on which the pageview slides. Defaults to horizontal.
 class FlutterFormOptions {
   final List<FlutterFormPage> pages;
 
