@@ -56,7 +56,7 @@ abstract class FlutterFormInputWidget<T> extends ConsumerWidget {
 /// [checkPageDescription] is the same as checkPageTitle but for the description.
 /// If null no description will be shown.
 ///
-/// [onChanged] can be set to get the value whenever the user changes it.
+/// [onChanged] can be set to get the value whenever the user changes it. Should not be used to save the value.
 ///
 /// [onSaved] goes of when the save function is called for the page if [onValidate] return null.
 ///
@@ -86,7 +86,7 @@ abstract class FlutterFormInputController<T> {
   /// If null no description will be shown.
   String Function(T? value)? checkPageDescription;
 
-  /// [onChanged] can be set to get the value whenever the user changes it.
+  /// [onChanged] can be set to get the value whenever the user changes it. Should not be used to save the value.
   void Function(T? value)? onChanged;
 
   /// [onSaved] goes of when the save function is called for the page if [onValidate] return null.
