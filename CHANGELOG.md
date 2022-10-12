@@ -1,3 +1,3 @@
-## 0.0.1 - September 29th 2022
+## 0.0.2 - October 10th 2022
 
-- Initial release
+- Add input date picker

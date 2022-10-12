@@ -16,6 +16,7 @@ dependencies:
   flutter_riverpod: ^1.0.4
   flutter_form:
     path: ../
+  intl: ^0.17.0
 
 
 dev_dependencies:
