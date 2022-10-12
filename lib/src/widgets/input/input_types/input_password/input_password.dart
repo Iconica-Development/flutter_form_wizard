@@ -6,10 +6,10 @@ import '../../../../../flutter_form.dart';
 /// Input for a password used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputEmailController].
-class FlutterFormInputPassword extends FlutterFormInputWidget {
+class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   const FlutterFormInputPassword({
     Key? key,
-    required FlutterFormInputController controller,
+    required FlutterFormInputController<String> controller,
     Widget? label,
   }) : super(key: key, controller: controller, label: label);
 
@@ -35,6 +35,7 @@ class FlutterFormInputPasswordController
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    this.onChanged,
   });
 
   @override
@@ -47,10 +48,13 @@ class FlutterFormInputPasswordController
   bool mandatory;
 
   @override
-  String Function(String value)? checkPageTitle;
+  String Function(String? value)? checkPageTitle;
 
   @override
-  String Function(String value)? checkPageDescription;
+  String Function(String? value)? checkPageDescription;
+
+  @override
+  void Function(String? value)? onChanged;
 
   @override
   void onSaved(dynamic value) {

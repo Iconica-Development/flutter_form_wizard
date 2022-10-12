@@ -6,6 +6,7 @@ class SliderFormField extends FormField<double> {
     Key? key,
     required FormFieldSetter<double> onSaved,
     required FormFieldValidator<double> validator,
+    void Function(double value)? onChanged,
     double initialValue = 0.5,
   }) : super(
             key: key,
@@ -16,6 +17,8 @@ class SliderFormField extends FormField<double> {
               return Slider(
                 value: state.value ?? initialValue,
                 onChanged: (double value) {
+                  onChanged?.call(value);
+
                   state.didChange(value);
                 },
               );

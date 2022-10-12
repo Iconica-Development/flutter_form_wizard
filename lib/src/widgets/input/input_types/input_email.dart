@@ -7,10 +7,10 @@ import '../../../../flutter_form.dart';
 /// Input for an email used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputEmailController].
-class FlutterFormInputEmail extends FlutterFormInputWidget {
+class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
   const FlutterFormInputEmail({
     Key? key,
-    required FlutterFormInputController controller,
+    required FlutterFormInputController<String> controller,
     Widget? label,
   }) : super(
           key: key,
@@ -31,6 +31,7 @@ class FlutterFormInputEmail extends FlutterFormInputWidget {
         controller.onSaved(value);
       },
       validator: (value) => controller.onValidate(value, _),
+      onChanged: (value) => controller.onChanged?.call(value),
       decoration: InputDecoration(
         focusColor: Theme.of(context).primaryColor,
         label: label ?? const Text("Email"),
@@ -50,6 +51,7 @@ class FlutterFormInputEmailController
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    this.onChanged,
   });
 
   @override
@@ -62,10 +64,13 @@ class FlutterFormInputEmailController
   bool mandatory;
 
   @override
-  String Function(String value)? checkPageTitle;
+  String Function(String? value)? checkPageTitle;
 
   @override
-  String Function(String value)? checkPageDescription;
+  String Function(String? value)? checkPageDescription;
+
+  @override
+  void Function(String? value)? onChanged;
 
   @override
   void onSaved(dynamic value) {

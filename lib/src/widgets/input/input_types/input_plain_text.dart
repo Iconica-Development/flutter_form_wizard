@@ -7,10 +7,10 @@ import '../../../../flutter_form.dart';
 /// Input for plain text input used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputPlainTextController].
-class FlutterFormInputPlainText extends FlutterFormInputWidget {
+class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   const FlutterFormInputPlainText({
     Key? key,
-    required FlutterFormInputController controller,
+    required FlutterFormInputController<String> controller,
     Widget? label,
     this.decoration,
     this.textAlignVertical,
@@ -41,6 +41,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget {
       initialValue: controller.value,
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
+      onChanged: (value) => controller.onChanged?.call(value),
       decoration: inputDecoration,
       textAlignVertical: textAlignVertical,
       expands: expands,
@@ -66,7 +67,7 @@ class FlutterFormInputMultiLine extends StatelessWidget {
     this.maxCharacters,
   }) : super(key: key);
 
-  final FlutterFormInputController controller;
+  final FlutterFormInputController<String> controller;
   final Widget? label;
 
   final String? hint;
@@ -114,6 +115,7 @@ class FlutterFormInputPlainTextController
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    this.onChanged,
   });
 
   @override
@@ -126,13 +128,16 @@ class FlutterFormInputPlainTextController
   bool mandatory;
 
   @override
-  String Function(String value)? checkPageTitle;
+  String Function(String? value)? checkPageTitle;
 
   @override
-  String Function(String value)? checkPageDescription;
+  String Function(String? value)? checkPageDescription;
 
   @override
-  void onSaved(String value) {
+  void Function(String? value)? onChanged;
+
+  @override
+  void onSaved(String? value) {
     this.value = value;
   }
 
