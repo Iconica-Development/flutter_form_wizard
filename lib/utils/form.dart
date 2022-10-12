@@ -14,6 +14,10 @@ import 'package:flutter/material.dart';
 /// [onFinished] and [onNext] are both callbacks which give the users results.
 /// [onNext] is called when the user goes to the next page.
 /// [onFinished] is called when the form is finished. When checkpage is set [onFinished] is called when the checkpage is finished.
+///
+/// [scrollDirection] can be set to change the Axis on which the pageview slides. Defaults to horizontal.
+///
+/// [scrollPhysics] can be set to set the scroll phyisics of the scroll views in each page. Default to [ClampingScrollPhysics].
 class FlutterFormOptions {
   final List<FlutterFormPage> pages;
 
@@ -23,6 +27,8 @@ class FlutterFormOptions {
       backButton;
   final void Function(Map<int, Map<String, dynamic>>) onFinished;
   final void Function(int pageNumber, Map<String, dynamic>) onNext;
+  final Axis scrollDirection;
+  final ScrollPhysics? scrollPhysics;
 
   const FlutterFormOptions({
     required this.pages,
@@ -31,6 +37,8 @@ class FlutterFormOptions {
     this.backButton,
     required this.onFinished,
     required this.onNext,
+    this.scrollDirection = Axis.horizontal,
+    this.scrollPhysics,
   });
 }
 

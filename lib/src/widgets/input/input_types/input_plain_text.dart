@@ -12,7 +12,18 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget {
     Key? key,
     required FlutterFormInputController controller,
     Widget? label,
+    this.decoration,
+    this.textAlignVertical,
+    this.expands = false,
+    this.maxLines,
+    this.maxLength,
   }) : super(key: key, controller: controller, label: label);
+
+  final InputDecoration? decoration;
+  final TextAlignVertical? textAlignVertical;
+  final bool expands;
+  final int? maxLines;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,54 +32,73 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget {
 
     super.registerController(context);
 
+    InputDecoration inputDecoration = decoration ??
+        InputDecoration(
+          label: label ?? const Text("Plain text"),
+        );
+
     return TextFormField(
       initialValue: controller.value,
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
-      decoration: InputDecoration(
-        label: label ?? const Text("Plain text"),
-      ),
+      decoration: inputDecoration,
+      textAlignVertical: textAlignVertical,
+      expands: expands,
+      maxLines: maxLines,
+      maxLength: maxLength,
     );
   }
 }
 
-/// Input for an plain text with extra styling used in a [FlutterForm].
+/// Input for a multi line plain text field [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputPlainTextController].
-class FlutterFormInputPlainTextWhiteWithBorder extends FlutterFormInputWidget {
-  const FlutterFormInputPlainTextWhiteWithBorder({
+///
+/// Hint can be set to set a hint inside the field.
+///
+/// MaxCharacters can be set to set a maximum amount of characters.
+class FlutterFormInputMultiLine extends StatelessWidget {
+  const FlutterFormInputMultiLine({
     Key? key,
-    required FlutterFormInputController controller,
-    Widget? label,
+    required this.controller,
+    this.label,
     this.hint,
-  }) : super(key: key, controller: controller, label: label);
+    this.maxCharacters,
+  }) : super(key: key);
+
+  final FlutterFormInputController controller;
+  final Widget? label;
 
   final String? hint;
+  final int? maxCharacters;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context, ref);
-
-    super.registerController(context);
-
-    return TextFormField(
-      initialValue: controller.value,
-      onSaved: (value) => controller.onSaved(value),
-      validator: (value) => controller.onValidate(value, _),
-      decoration: InputDecoration(
-        hintText: hint,
-        floatingLabelBehavior: FloatingLabelBehavior.never,
-        isDense: true,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF979797)),
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: FlutterFormInputPlainText(
+            label: label,
+            controller: controller,
+            textAlignVertical: TextAlignVertical.top,
+            expands: true,
+            maxLines: null,
+            maxLength: maxCharacters,
+            decoration: InputDecoration(
+              hintText: hint,
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              isDense: true,
+              border: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xFF979797)),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xFF979797)),
+              ),
+              filled: true,
+            ),
+          ),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF979797)),
-        ),
-        fillColor: Colors.white,
-        filled: true,
-      ),
+      ],
     );
   }
 }

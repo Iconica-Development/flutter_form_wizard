@@ -229,6 +229,7 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
     return Stack(
       children: [
         PageView(
+          scrollDirection: _formController._options.scrollDirection,
           controller: _formController.getPageController(),
           physics: const NeverScrollableScrollPhysics(),
           children: [
@@ -238,6 +239,8 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
                 child: fs.FormState(
                   formController: _formController.getFormPageControllers()[i],
                   child: CustomScrollView(
+                    physics: _formController._options.scrollPhysics ??
+                        const ClampingScrollPhysics(),
                     slivers: [
                       SliverFillRemaining(
                         hasScrollBody: false,
@@ -255,6 +258,8 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
                     widget.options.checkPage!.title!,
                   Expanded(
                     child: CustomScrollView(
+                      physics: _formController._options.scrollPhysics ??
+                          const ClampingScrollPhysics(),
                       slivers: [
                         SliverFillRemaining(
                           hasScrollBody: false,
@@ -504,6 +509,9 @@ class FlutterFormController extends ChangeNotifier {
   }
 
   Future<void> nextStep() async {
+    _options.onNext(
+        _currentStep, _formPageControllers[_currentStep].getAllValues());
+
     _currentStep += 1;
 
     if (_currentStep >= _options.pages.length && _options.checkPage != null) {
