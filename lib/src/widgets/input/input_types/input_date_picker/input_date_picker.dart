@@ -51,6 +51,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget {
     super.registerController(context);
 
     return DateTimeInputField(
+      label: label,
       firstDate: firstDate,
       lastDate: lastDate,
       inputType: inputType,

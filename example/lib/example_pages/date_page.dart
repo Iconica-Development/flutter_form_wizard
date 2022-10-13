@@ -40,7 +40,7 @@ class _DatePageState extends State<DatePage> {
                 const Duration(days: 7),
               ),
             ),
-            label: const Text("Date"),
+            label: const Text("Custom date label"),
             controller: widget.dateController,
           ),
         ),
