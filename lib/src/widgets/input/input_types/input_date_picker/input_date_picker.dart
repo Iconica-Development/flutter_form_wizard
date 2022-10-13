@@ -69,6 +69,7 @@ class FlutterFormInputDateTimeController
     this.checkPageDescription,
     required this.dateTimeType,
     required this.dateFormat,
+    this.onChanged,
   });
 
   final DateFormat dateFormat;
