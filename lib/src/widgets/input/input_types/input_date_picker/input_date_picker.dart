@@ -27,6 +27,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget {
     required this.dateFormat,
     this.firstDate,
     this.lastDate,
+    this.initialDate,
+    this.initialDateTimeRange,
     this.icon = Icons.calendar_today,
   }) : super(
           key: key,
@@ -36,6 +38,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget {
   final bool showIcon;
   final FlutterFormDateTimeType inputType;
   final DateFormat dateFormat;
+  final DateTime? initialDate;
+  final DateTimeRange? initialDateTimeRange;
   final DateTime? firstDate;
   final DateTime? lastDate;
   final IconData icon;
@@ -52,6 +56,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget {
       inputType: inputType,
       controller: controller,
       dateFormat: dateFormat,
+      initialDate: initialDate,
+      initialDateTimeRange: initialDateTimeRange,
     );
   }
 }
@@ -67,11 +73,15 @@ class FlutterFormInputDateTimeController
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    this.initialDate,
+    this.initialDateTimeRange,
     required this.dateTimeType,
     required this.dateFormat,
     this.onChanged,
   });
 
+  final DateTime? initialDate;
+  final DateTimeRange? initialDateTimeRange;
   final DateFormat dateFormat;
   final FlutterFormDateTimeType dateTimeType;
 

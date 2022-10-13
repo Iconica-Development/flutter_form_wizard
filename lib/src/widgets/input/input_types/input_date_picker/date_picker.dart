@@ -19,6 +19,8 @@ class DateTimeInputField extends ConsumerStatefulWidget {
     required this.dateFormat,
     required this.firstDate,
     required this.lastDate,
+    this.initialDate,
+    this.initialDateTimeRange,
   }) : super(
           key: key,
         );
@@ -28,6 +30,8 @@ class DateTimeInputField extends ConsumerStatefulWidget {
   final bool showIcon;
   final DateTime? firstDate;
   final DateTime? lastDate;
+  final DateTime? initialDate;
+  final DateTimeRange? initialDateTimeRange;
   final IconData icon;
   final Widget? label;
   @override
@@ -37,6 +41,8 @@ class DateTimeInputField extends ConsumerStatefulWidget {
 class _DateInputFieldState extends ConsumerState<DateTimeInputField> {
   late final DateTime firstDate;
   late final DateTime lastDate;
+  late final DateTime initialDate;
+  late final DateTimeRange initialDateRange;
 
   @override
   void initState() {
@@ -47,6 +53,14 @@ class _DateInputFieldState extends ConsumerState<DateTimeInputField> {
     lastDate = widget.lastDate ??
         DateTime.now().add(
           const Duration(days: 1000),
+        );
+    initialDate = widget.initialDate ?? DateTime.now();
+    initialDateRange = widget.initialDateTimeRange ??
+        DateTimeRange(
+          start: DateTime.now(),
+          end: DateTime.now().add(
+            const Duration(days: 7),
+          ),
         );
 
     super.initState();
@@ -62,8 +76,8 @@ class _DateInputFieldState extends ConsumerState<DateTimeInputField> {
       switch (inputType) {
         case FlutterFormDateTimeType.date:
           DateTime? unformatted = await showDatePicker(
+            initialDate: initialDate,
             context: context,
-            initialDate: DateTime.now(),
             firstDate: firstDate,
             lastDate: lastDate,
           );
@@ -85,10 +99,11 @@ class _DateInputFieldState extends ConsumerState<DateTimeInputField> {
           break;
         case FlutterFormDateTimeType.range:
           userInput = (await showDateRangePicker(
-            context: context,
-            firstDate: firstDate,
-            lastDate: lastDate,
-          ).then((value) {
+                      context: context,
+                      firstDate: firstDate,
+                      lastDate: lastDate,
+                      initialDateRange: initialDateRange)
+                  .then((value) {
             return value != null
                 ? '${widget.dateFormat.format(value.start)} - ${widget.dateFormat.format(value.end)}'
                 : '';
