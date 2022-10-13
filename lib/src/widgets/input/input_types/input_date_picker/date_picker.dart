@@ -133,6 +133,7 @@ class _DateInputFieldState extends ConsumerState<DateTimeInputField> {
               userInput != '' ? userInput : widget.controller.value;
         });
       },
+      onChanged: (value) => widget.controller.onChanged?.call(value),
       validator: (value) => widget.controller.onValidate(value, _),
       decoration: InputDecoration(
         suffixIcon: widget.showIcon ? Icon(widget.icon) : null,
