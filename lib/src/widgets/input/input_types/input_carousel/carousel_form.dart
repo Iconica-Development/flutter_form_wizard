@@ -6,6 +6,7 @@ class CarouselFormField extends FormField<int> {
     Key? key,
     required FormFieldSetter<int> onSaved,
     required FormFieldValidator<int> validator,
+    void Function(int value)? onChanged,
     int initialValue = 0,
     bool autovalidate = false,
     required List<Widget> items,
@@ -19,6 +20,8 @@ class CarouselFormField extends FormField<int> {
                 options: CarouselOptions(
                   initialPage: initialValue,
                   onPageChanged: (index, reason) {
+                    onChanged?.call(index);
+
                     state.didChange(index);
                   },
                   height: 425,

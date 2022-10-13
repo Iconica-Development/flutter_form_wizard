@@ -25,6 +25,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
     checkPageTitle: (dynamic amount) {
       return "Age: $amount years";
     },
+    onChanged: (value) => debugPrint(value.toString()),
   );
 
   late final FlutterFormInputCarouselController carouselInputController;
@@ -51,6 +52,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
     checkPageTitle: (dynamic firstName) {
       return "First Name: $firstName";
     },
+    onChanged: (value) => debugPrint(value),
   );
 
   FlutterFormInputPlainTextController lastNameController =
@@ -60,6 +62,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
     checkPageTitle: (dynamic lastName) {
       return "Last Name: $lastName";
     },
+    onChanged: (value) => debugPrint(value),
   );
 
   FlutterFormInputPlainTextController dateController =
@@ -82,6 +85,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
       checkPageDescription: (dynamic index) {
         return cars[index]["description"];
       },
+      onChanged: (value) => debugPrint(value.toString()),
     );
   }
 

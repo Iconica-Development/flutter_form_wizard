@@ -10,7 +10,7 @@ import '/src/utils/formstate.dart' as fs;
 /// label is a standard parameter to normally sets the label of the input.
 ///
 /// [registerController] should be called to register the given [controller] to the form page.
-abstract class FlutterFormInputWidget extends ConsumerWidget {
+abstract class FlutterFormInputWidget<T> extends ConsumerWidget {
   const FlutterFormInputWidget({
     Key? key,
     required this.controller,
@@ -19,7 +19,7 @@ abstract class FlutterFormInputWidget extends ConsumerWidget {
   }) : super(key: key);
 
   /// The [controller] which determines how the value is handled and how the value is shown on the checkpage.
-  final FlutterFormInputController controller;
+  final FlutterFormInputController<T> controller;
 
   /// [label] is a standard parameter to normally sets the label of the input.
   final Widget? label;
@@ -56,6 +56,8 @@ abstract class FlutterFormInputWidget extends ConsumerWidget {
 /// [checkPageDescription] is the same as checkPageTitle but for the description.
 /// If null no description will be shown.
 ///
+/// [onChanged] can be set to get the value whenever the user changes it. Should not be used to save the value.
+///
 /// [onSaved] goes of when the save function is called for the page if [onValidate] return null.
 ///
 /// [onValidate] is used to validate the given input by the user.
@@ -78,16 +80,19 @@ abstract class FlutterFormInputController<T> {
   ///   return "$amount persons";
   /// },
   /// ```
-  String Function(T value)? checkPageTitle;
+  String Function(T? value)? checkPageTitle;
 
   /// [checkPageDescription] is the same as checkPageTitle but for the description.
   /// If null no description will be shown.
-  String Function(T value)? checkPageDescription;
+  String Function(T? value)? checkPageDescription;
+
+  /// [onChanged] can be set to get the value whenever the user changes it. Should not be used to save the value.
+  void Function(T? value)? onChanged;
 
   /// [onSaved] goes of when the save function is called for the page if [onValidate] return null.
-  void onSaved(T value);
+  void onSaved(T? value);
 
   /// [onValidate] is used to validate the given input by the user.
   String? onValidate(
-      T value, String Function(String, {List<String>? params}) translator);
+      T? value, String Function(String, {List<String>? params}) translator);
 }

@@ -11,3 +11,9 @@
 ## 0.2.0 - October 13th 2022
 
 - Added date input widget
+
+## 1.0.0 - October 13th 2022
+
+- Fix: Proper use of generics
+- Inputcontrollers now have an onChange.
+- Added switch input field

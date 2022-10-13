@@ -10,10 +10,10 @@ import 'carousel_form.dart';
 /// [items] will be the [Widget]s to be displayed in the carousel.
 ///
 /// Standard controller is [FlutterFormInputCarouselController].
-class FlutterFormInputCarousel extends FlutterFormInputWidget {
+class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
   const FlutterFormInputCarousel({
     Key? key,
-    required FlutterFormInputController controller,
+    required FlutterFormInputController<int> controller,
     Widget? label,
     required this.items,
   }) : super(key: key, controller: controller, label: label);
@@ -30,6 +30,7 @@ class FlutterFormInputCarousel extends FlutterFormInputWidget {
     return CarouselFormField(
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
+      onChanged: controller.onChanged,
       initialValue: controller.value ?? 0,
       items: items,
     );
@@ -47,6 +48,7 @@ class FlutterFormInputCarouselController
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    this.onChanged,
   });
 
   @override
@@ -59,19 +61,22 @@ class FlutterFormInputCarouselController
   bool mandatory;
 
   @override
-  String Function(int value)? checkPageTitle;
+  String Function(int? value)? checkPageTitle;
 
   @override
-  String Function(int value)? checkPageDescription;
+  String Function(int? value)? checkPageDescription;
 
   @override
-  void onSaved(int value) {
+  void Function(int? value)? onChanged;
+
+  @override
+  void onSaved(int? value) {
     this.value = value;
   }
 
   @override
   String? onValidate(
-      int value, String Function(String, {List<String>? params}) translator) {
+      int? value, String Function(String, {List<String>? params}) translator) {
     if (mandatory) {}
 
     return null;

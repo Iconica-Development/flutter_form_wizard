@@ -11,10 +11,10 @@ import 'numberpicker.dart';
 /// [maxValue] sets the maximal value of the picker.
 ///
 /// Standard controller is [FlutterFormInputNumberPickerController].
-class FlutterFormInputNumberPicker extends FlutterFormInputWidget {
+class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
   const FlutterFormInputNumberPicker({
     Key? key,
-    required FlutterFormInputController controller,
+    required FlutterFormInputController<int> controller,
     Widget? label,
     this.minValue = 0,
     this.maxValue = 100,
@@ -34,10 +34,9 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget {
     return NumberPickerFormField(
       minValue: minValue,
       maxValue: maxValue,
-      onSaved: (value) {
-        controller.onSaved(value);
-      },
+      onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
+      onChanged: (value) => controller.onChanged?.call(value),
       initialValue: controller.value ?? minValue,
     );
   }
@@ -51,6 +50,7 @@ class NumberPickerFormField extends FormField<int> {
     Key? key,
     required FormFieldSetter<int> onSaved,
     required FormFieldValidator<int> validator,
+    void Function(int value)? onChanged,
     int initialValue = 0,
     bool autovalidate = false,
     int minValue = 0,
@@ -66,6 +66,8 @@ class NumberPickerFormField extends FormField<int> {
                 maxValue: maxValue,
                 value: initialValue,
                 onChanged: (int value) {
+                  onChanged?.call(value);
+
                   state.didChange(value);
                 },
                 itemHeight: 35,
@@ -82,6 +84,7 @@ class FlutterFormInputNumberPickerController
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    this.onChanged,
   });
 
   @override
@@ -94,19 +97,22 @@ class FlutterFormInputNumberPickerController
   bool mandatory;
 
   @override
-  String Function(int value)? checkPageTitle;
+  String Function(int? value)? checkPageTitle;
 
   @override
-  String Function(int value)? checkPageDescription;
+  String Function(int? value)? checkPageDescription;
 
   @override
-  void onSaved(int value) {
+  void Function(int? value)? onChanged;
+
+  @override
+  void onSaved(int? value) {
     this.value = value;
   }
 
   @override
   String? onValidate(
-      int value, String Function(String, {List<String>? params}) translator) {
+      int? value, String Function(String, {List<String>? params}) translator) {
     if (mandatory) {}
 
     return null;

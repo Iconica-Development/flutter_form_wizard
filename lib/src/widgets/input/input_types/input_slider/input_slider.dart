@@ -8,10 +8,10 @@ import '../../../../../flutter_form.dart';
 /// Input for a number value between two values via a slider. Used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputSliderController].
-class FlutterFormInputSlider extends FlutterFormInputWidget {
+class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
   const FlutterFormInputSlider({
     Key? key,
-    required FlutterFormInputController controller,
+    required FlutterFormInputController<double> controller,
     Widget? label,
     this.minValue = 0,
     this.maxValue = 100,
@@ -46,6 +46,7 @@ class FlutterFormInputSliderController
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    this.onChanged,
   });
 
   @override
@@ -58,18 +59,21 @@ class FlutterFormInputSliderController
   bool mandatory;
 
   @override
-  String Function(double value)? checkPageTitle;
+  String Function(double? value)? checkPageTitle;
 
   @override
-  String Function(double value)? checkPageDescription;
+  String Function(double? value)? checkPageDescription;
 
   @override
-  void onSaved(double value) {
+  void Function(double? value)? onChanged;
+
+  @override
+  void onSaved(double? value) {
     this.value = value;
   }
 
   @override
-  String? onValidate(double value,
+  String? onValidate(double? value,
       String Function(String, {List<String>? params}) translator) {
     if (mandatory) {}
 

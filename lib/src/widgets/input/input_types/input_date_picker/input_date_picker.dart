@@ -84,10 +84,13 @@ class FlutterFormInputDateTimeController
   bool mandatory;
 
   @override
-  String Function(String value)? checkPageTitle;
+  String Function(String? value)? checkPageTitle;
 
   @override
-  String Function(String value)? checkPageDescription;
+  String Function(String? value)? checkPageDescription;
+
+  @override
+  void Function(String? value)? onChanged;
 
   @override
   void onSaved(dynamic value) {

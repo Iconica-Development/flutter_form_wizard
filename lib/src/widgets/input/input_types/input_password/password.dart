@@ -32,6 +32,7 @@ class _PasswordTextFieldState extends ConsumerState<PasswordTextField> {
       obscureText: obscured,
       onSaved: (value) => widget.controller.onSaved(value),
       validator: (value) => widget.controller.onValidate(value, _),
+      onChanged: (value) => widget.controller.onChanged?.call(value),
       decoration: InputDecoration(
         label: widget.label ?? const Text("Password"),
         suffixIcon: IconButton(
