@@ -28,7 +28,7 @@ class _NamePageState extends State<NamePage> {
       size: size,
       fontSize: fontSize,
       pageNumber: 2,
-      amountOfPages: 3,
+      amountOfPages: 4,
       title: "Please enter your name",
       flutterFormWidgets: [
         Padding(

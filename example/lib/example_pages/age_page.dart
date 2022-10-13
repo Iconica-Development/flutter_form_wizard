@@ -25,7 +25,7 @@ class _AgePageState extends State<AgePage> {
       fontSize: fontSize,
       title: "What is your age?",
       pageNumber: 1,
-      amountOfPages: 3,
+      amountOfPages: 4,
       flutterFormWidgets: [
         FlutterFormInputNumberPicker(
           minValue: 12,
