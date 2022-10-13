@@ -30,8 +30,10 @@ class _DatePageState extends State<DatePage> {
       flutterFormWidgets: [
         Padding(
           padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
-          child: FlutterFormInputDate(
+          child: FlutterFormInputDateTime(
+            inputType: FlutterFormDateTimeType.dateTime,
             dateFormat: DateFormat.yMd(),
+            firstDate: DateTime.now(),
             label: const Text("Date"),
             controller: widget.dateController,
           ),

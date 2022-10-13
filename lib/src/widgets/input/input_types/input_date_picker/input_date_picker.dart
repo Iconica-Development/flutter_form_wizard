@@ -6,24 +6,38 @@ import 'package:intl/intl.dart';
 
 import '../../../../../flutter_form.dart';
 
-/// Input for a date used in a [FlutterForm].
+/// Select Input Types in a [FlutterFormInputDateTime]
+enum FlutterFormDateTimeType {
+  date,
+  time,
+  dateTime,
+  range,
+}
+
+/// Input for a dateTime used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputDateController].
-class FlutterFormInputDate extends FlutterFormInputWidget {
-  const FlutterFormInputDate(
-      {Key? key,
-      required FlutterFormInputController controller,
-      Widget? label,
-      this.showIcon = true,
-      this.icon = Icons.calendar_today,
-      required this.dateFormat})
-      : super(
+class FlutterFormInputDateTime extends FlutterFormInputWidget {
+  const FlutterFormInputDateTime({
+    Key? key,
+    required FlutterFormInputController controller,
+    Widget? label,
+    this.showIcon = true,
+    required this.inputType,
+    required this.dateFormat,
+    this.firstDate,
+    this.lastDate,
+    this.icon = Icons.calendar_today,
+  }) : super(
           key: key,
           controller: controller,
           label: label,
         );
-  final DateFormat dateFormat;
   final bool showIcon;
+  final FlutterFormDateTimeType inputType;
+  final DateFormat dateFormat;
+  final DateTime? firstDate;
+  final DateTime? lastDate;
   final IconData icon;
 
   @override
@@ -32,22 +46,33 @@ class FlutterFormInputDate extends FlutterFormInputWidget {
         getTranslator(context, ref);
     super.registerController(context);
 
-    return DateInputField(controller: controller, dateFormat: dateFormat);
+    return DateTimeInputField(
+      firstDate: firstDate,
+      lastDate: lastDate,
+      inputType: inputType,
+      controller: controller,
+      dateFormat: dateFormat,
+    );
   }
 }
 
 /// Controller for dates used by a [FlutterFormInputWidget] used in a [FlutterForm].
 ///
-/// Mainly used by [FlutterFormInputDate].
-class FlutterFormInputDateController
+/// Mainly used by [FlutterFormInputDateTime].
+class FlutterFormInputDateTimeController
     implements FlutterFormInputController<String> {
-  FlutterFormInputDateController({
+  FlutterFormInputDateTimeController({
     required this.id,
     this.mandatory = true,
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
+    required this.dateTimeType,
+    required this.dateFormat,
   });
+
+  final DateFormat dateFormat;
+  final FlutterFormDateTimeType dateTimeType;
 
   @override
   String? id;
