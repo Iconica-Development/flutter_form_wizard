@@ -17,10 +17,10 @@ enum FlutterFormDateTimeType {
 /// Input for a dateTime used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputDateController].
-class FlutterFormInputDateTime extends FlutterFormInputWidget {
+class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
   const FlutterFormInputDateTime({
     Key? key,
-    required FlutterFormInputController controller,
+    required FlutterFormInputController<String> controller,
     Widget? label,
     this.showIcon = true,
     required this.inputType,

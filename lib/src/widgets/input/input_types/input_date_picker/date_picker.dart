@@ -25,7 +25,7 @@ class DateTimeInputField extends ConsumerStatefulWidget {
           key: key,
         );
   final FlutterFormDateTimeType inputType;
-  final FlutterFormInputController controller;
+  final FlutterFormInputController<String> controller;
   final DateFormat dateFormat;
   final bool showIcon;
   final DateTime? firstDate;
@@ -131,6 +131,8 @@ class _DateInputFieldState extends ConsumerState<DateTimeInputField> {
         setState(() {
           widget.controller.value =
               userInput != '' ? userInput : widget.controller.value;
+          widget.controller.onChanged
+              ?.call(userInput != '' ? userInput : widget.controller.value);
         });
       },
       validator: (value) => widget.controller.onValidate(value, _),
