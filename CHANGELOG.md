@@ -17,3 +17,7 @@
 - Fix: Proper use of generics
 - Inputcontrollers now have an onChange.
 - Added switch input field
+
+## 1.0.1 - October 13th 2022
+
+- Added forgotten onChanged parameter on date input field
