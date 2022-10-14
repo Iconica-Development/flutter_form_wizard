@@ -15,7 +15,7 @@ class DateTimeInputField extends ConsumerStatefulWidget {
     required this.controller,
     this.label,
     this.showIcon = true,
-    this.icon = Icons.calendar_today,
+    required this.icon,
     required this.dateFormat,
     required this.firstDate,
     required this.lastDate,
