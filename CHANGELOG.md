@@ -21,3 +21,7 @@
 ## 1.0.1 - October 13th 2022
 
 - Added forgotten onChanged parameter on date input field
+
+## 1.0.2 - October 13th 2022
+
+- Added forgotten icon parameter on date input field and scrollpadding on text inputfield
