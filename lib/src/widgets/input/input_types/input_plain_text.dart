@@ -16,6 +16,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.textAlignVertical,
     this.expands = false,
     this.maxLines,
+    this.scrollPadding,
     this.maxLength,
   }) : super(key: key, controller: controller, label: label);
 
@@ -24,6 +25,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   final bool expands;
   final int? maxLines;
   final int? maxLength;
+  final EdgeInsets? scrollPadding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,6 +40,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
         );
 
     return TextFormField(
+      scrollPadding: scrollPadding ?? const EdgeInsets.all(20.0),
       initialValue: controller.value,
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),

@@ -15,7 +15,7 @@ class DateTimeInputField extends ConsumerStatefulWidget {
     required this.controller,
     this.label,
     this.showIcon = true,
-    required this.icon,
+    this.icon,
     required this.dateFormat,
     required this.firstDate,
     required this.lastDate,
@@ -32,7 +32,7 @@ class DateTimeInputField extends ConsumerStatefulWidget {
   final DateTime? lastDate;
   final DateTime? initialDate;
   final DateTimeRange? initialDateTimeRange;
-  final IconData icon;
+  final IconData? icon;
   final Widget? label;
   @override
   ConsumerState<DateTimeInputField> createState() => _DateInputFieldState();
