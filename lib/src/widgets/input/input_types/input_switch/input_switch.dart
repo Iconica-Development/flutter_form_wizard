@@ -64,6 +64,9 @@ class FlutterFormInputSwitchController
   void Function(bool? value)? onChanged;
 
   @override
+  void Function(bool? value)? onSubmit;
+
+  @override
   void onSaved(bool? value) {
     this.value = value;
   }

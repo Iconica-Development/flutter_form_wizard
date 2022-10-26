@@ -106,6 +106,9 @@ class FlutterFormInputNumberPickerController
   void Function(int? value)? onChanged;
 
   @override
+  void Function(int? value)? onSubmit;
+
+  @override
   void onSaved(int? value) {
     this.value = value;
   }

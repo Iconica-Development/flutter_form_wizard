@@ -25,3 +25,8 @@
 ## 1.0.2 - October 13th 2022
 
 - Added forgotten icon parameter on date input field and scrollpadding on text inputfield
+## 2.0.0 - October 26th 2022
+
+- Added the id of the input field on the input check widget.
+- Ability to set the height of the carousel input field.
+- InputController now contains the onSubmit callback.

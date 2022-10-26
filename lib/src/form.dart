@@ -321,6 +321,7 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
             if (widget.options.checkPage!.inputCheckWidget != null) {
               widgets.add(
                 widget.options.checkPage!.inputCheckWidget!(
+                  inputController.id ?? '',
                   inputController.checkPageTitle != null
                       ? inputController.checkPageTitle!(inputController.value)
                       : inputController.value.toString(),

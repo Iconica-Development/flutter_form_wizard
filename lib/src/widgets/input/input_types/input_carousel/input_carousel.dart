@@ -10,15 +10,19 @@ import 'carousel_form.dart';
 /// [items] will be the [Widget]s to be displayed in the carousel.
 ///
 /// Standard controller is [FlutterFormInputCarouselController].
+///
+/// Height sets the height of the inputfield. Default to 425.
 class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
   const FlutterFormInputCarousel({
     Key? key,
     required FlutterFormInputController<int> controller,
     Widget? label,
     required this.items,
+    this.height = 425,
   }) : super(key: key, controller: controller, label: label);
 
   final List<Widget> items;
+  final double height;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +37,7 @@ class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
       onChanged: controller.onChanged,
       initialValue: controller.value ?? 0,
       items: items,
+      height: height,
     );
   }
 }
@@ -68,6 +73,9 @@ class FlutterFormInputCarouselController
 
   @override
   void Function(int? value)? onChanged;
+
+  @override
+  void Function(int? value)? onSubmit;
 
   @override
   void onSaved(int? value) {
