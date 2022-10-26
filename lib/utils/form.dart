@@ -69,7 +69,8 @@ class FlutterFormPage {
 class CheckPage {
   final Widget? title;
   final MainAxisAlignment mainAxisAlignment;
-  final Widget Function(String title, String? description, Function onPressed)?
+  final Widget Function(
+          String id, String title, String? description, Function onPressed)?
       inputCheckWidget;
 
   const CheckPage({

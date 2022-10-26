@@ -68,6 +68,9 @@ class FlutterFormInputSliderController
   void Function(double? value)? onChanged;
 
   @override
+  void Function(double? value)? onSubmit;
+
+  @override
   void onSaved(double? value) {
     this.value = value;
   }

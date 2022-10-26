@@ -58,6 +58,8 @@ abstract class FlutterFormInputWidget<T> extends ConsumerWidget {
 ///
 /// [onChanged] can be set to get the value whenever the user changes it. Should not be used to save the value.
 ///
+/// [onSubmit] can be set to get the value whenever the user submits it. Should not be used to save the value.
+///
 /// [onSaved] goes of when the save function is called for the page if [onValidate] return null.
 ///
 /// [onValidate] is used to validate the given input by the user.
@@ -88,6 +90,9 @@ abstract class FlutterFormInputController<T> {
 
   /// [onChanged] can be set to get the value whenever the user changes it. Should not be used to save the value.
   void Function(T? value)? onChanged;
+
+  /// [onSubmit] can be set to get the value whenever the user submits it. Should not be used to save the value.
+  void Function(T? value)? onSubmit;
 
   /// [onSaved] goes of when the save function is called for the page if [onValidate] return null.
   void onSaved(T? value);

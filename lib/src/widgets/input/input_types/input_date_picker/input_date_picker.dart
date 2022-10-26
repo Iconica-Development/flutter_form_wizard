@@ -106,6 +106,9 @@ class FlutterFormInputDateTimeController
   void Function(String? value)? onChanged;
 
   @override
+  void Function(String? value)? onSubmit;
+
+  @override
   void onSaved(dynamic value) {
     this.value = value;
   }

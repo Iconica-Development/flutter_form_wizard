@@ -24,7 +24,7 @@ class CheckPageExample {
         ),
       ),
       inputCheckWidget:
-          (String title, String? description, Function onPressed) {
+          (String id, String title, String? description, Function onPressed) {
         return GestureDetector(
           onTap: () async {
             await onPressed();

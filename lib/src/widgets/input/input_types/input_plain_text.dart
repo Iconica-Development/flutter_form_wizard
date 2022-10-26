@@ -15,7 +15,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.decoration,
     this.textAlignVertical,
     this.expands = false,
-    this.maxLines,
+    this.maxLines = 1,
     this.scrollPadding,
     this.maxLength,
   }) : super(key: key, controller: controller, label: label);
@@ -45,6 +45,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
       onChanged: (value) => controller.onChanged?.call(value),
+      onFieldSubmitted: (value) => controller.onSubmit?.call(value),
       decoration: inputDecoration,
       textAlignVertical: textAlignVertical,
       expands: expands,
@@ -119,6 +120,7 @@ class FlutterFormInputPlainTextController
     this.checkPageTitle,
     this.checkPageDescription,
     this.onChanged,
+    this.onSubmit,
   });
 
   @override
@@ -138,6 +140,9 @@ class FlutterFormInputPlainTextController
 
   @override
   void Function(String? value)? onChanged;
+
+  @override
+  void Function(String? value)? onSubmit;
 
   @override
   void onSaved(String? value) {

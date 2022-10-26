@@ -7,9 +7,11 @@ class CarouselFormField extends FormField<int> {
     required FormFieldSetter<int> onSaved,
     required FormFieldValidator<int> validator,
     void Function(int value)? onChanged,
+    void Function(int value)? onSubmit,
     int initialValue = 0,
     bool autovalidate = false,
     required List<Widget> items,
+    double height = 425,
   }) : super(
             key: key,
             onSaved: onSaved,
@@ -24,7 +26,7 @@ class CarouselFormField extends FormField<int> {
 
                     state.didChange(index);
                   },
-                  height: 425,
+                  height: height,
                   aspectRatio: 2.0,
                   enlargeCenterPage: true,
                   enableInfiniteScroll: false,
