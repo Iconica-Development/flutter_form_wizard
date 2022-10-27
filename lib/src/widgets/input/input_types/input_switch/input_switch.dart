@@ -25,6 +25,7 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
       onSaved: (value) {
         controller.onSaved(value);
       },
+      onChanged: controller.onChanged,
       validator: (value) => controller.onValidate(value, _),
       initialValue: controller.value ?? false,
     );
