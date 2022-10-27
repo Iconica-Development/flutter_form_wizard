@@ -30,3 +30,7 @@
 - Added the id of the input field on the input check widget.
 - Ability to set the height of the carousel input field.
 - InputController now contains the onSubmit callback.
+
+## 2.0.1 - October 27th 2022
+
+- onChange of switch input not firing fixed
