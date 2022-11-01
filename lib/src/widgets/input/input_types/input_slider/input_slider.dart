@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 Iconica
+//
+// SPDX-License-Identifier: BSD-3-Clause
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form/src/widgets/input/input_types/input_slider/slider.dart';
 import 'package:flutter_form/utils/translation_service.dart';

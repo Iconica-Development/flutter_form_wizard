@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 Iconica
+//
+// SPDX-License-Identifier: BSD-3-Clause
+
 export 'input_carousel/input_carousel.dart';
 export 'input_email.dart';
 export 'input_number_picker/input_number_picker.dart';

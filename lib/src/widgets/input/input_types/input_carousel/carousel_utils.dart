@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 Iconica
+//
+// SPDX-License-Identifier: BSD-3-Clause
+
 /// Converts an index of a set size to the corresponding index of a collection of another size
 /// as if they were circular.
 ///
