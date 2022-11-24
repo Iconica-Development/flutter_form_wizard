@@ -109,7 +109,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
             options: FlutterFormOptions(
               onFinished: (Map<int, Map<String, dynamic>> results) {
                 debugPrint("Final full results: $results");
-                Navigator.of(context).pushNamed('/thanks');
+                Navigator.of(context).pushReplacementNamed('/thanks');
               },
               onNext: (int pageNumber, Map<String, dynamic> results) {
                 debugPrint("Results page $pageNumber: $results");
@@ -170,8 +170,6 @@ class _FormExampleState extends ConsumerState<FormExample> {
                             top: size.height * 0.045,
                             left: size.width * 0.07,
                           ),
-                          width: size.width * 0.08,
-                          height: size.width * 0.08,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(90),
                             color: const Color(0xFFD8D8D8).withOpacity(0.50),
