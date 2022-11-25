@@ -22,6 +22,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.maxLines = 1,
     this.scrollPadding,
     this.maxLength,
+    this.keyboardType,
   }) : super(key: key, controller: controller, label: label);
 
   final InputDecoration? decoration;
@@ -30,6 +31,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   final int? maxLines;
   final int? maxLength;
   final EdgeInsets? scrollPadding;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -55,6 +57,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
       expands: expands,
       maxLines: maxLines,
       maxLength: maxLength,
+      keyboardType: keyboardType,
     );
   }
 }
