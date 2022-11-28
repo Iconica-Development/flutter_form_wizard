@@ -70,7 +70,8 @@ class CheckPageExample {
                       title,
                       style: const TextStyle(
                         fontWeight: FontWeight.w900,
-                        fontSize: 20,
+                        fontSize: 16,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     const Spacer(),

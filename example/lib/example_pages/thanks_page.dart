@@ -22,7 +22,8 @@ class ThanksPage extends StatelessWidget {
               height: 20,
             ),
             ElevatedButton(
-                onPressed: () => Navigator.of(context).pushNamed('/'),
+                onPressed: () =>
+                    Navigator.of(context).popUntil(ModalRoute.withName('/')),
                 child: const Text("Next"))
           ],
         ),

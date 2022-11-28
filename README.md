@@ -1,6 +1,9 @@
+[![pub package](https://img.shields.io/pub/v/flutter_date_time_picker.svg)](https://github.com/Iconica-Development) [![Build status](https://img.shields.io/github/workflow/status/Iconica-Development/flutter_form/CI)](https://github.com/Iconica-Development/flutter_form/actions/new) [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart) 
 # Flutter Form
 
 Flutter Form is a package you can use to create a single or multi page form with premade or custom inputfields.
+
+![Form GIF](flutter_form.gif)
 
 ## Features
 
@@ -12,11 +15,9 @@ Flutter Form is a package you can use to create a single or multi page form with
 
 ## Setup
 
-To use this package, add `flutter_form` as a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/platform-integration/platform-channels).
+To use this package, add `flutter_form` as a dependency in your pubspec.yaml file.
 
 ## How To Use
-
-See the [Example Code](example/lib/form_example.dart) for an example on how to use this package.
 
 WARNING Make sure to define your FlutterFormInputControllers above your Flutter Form and not inside each page. This prevents that the used controllers differ from the registered ones.
 
@@ -49,6 +50,7 @@ FormController:
 | nextStep()                   | Called to go to the next step. This is does not do anything else like autoNextStep does do.                               |
 | finishForm()                 | Calls the onFinished of the form options.                                                                                 |
 
+See the [Example Code](example/lib/form_example.dart) for an example on how to use this package.
 ## Issues
 
 Please file any issues, bugs or feature request as an issue on our [GitHub](https://github.com/Iconica-Development/flutter_form/pulls) page. Commercial support is available if you need help with integration with your app or services. You can contact us at [support@iconica.nl](mailto:support@iconica.nl).
