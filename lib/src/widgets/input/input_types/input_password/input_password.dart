@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form/src/widgets/input/input_types/input_password/password.dart';
+import 'package:flutter_form_wizard/src/widgets/input/input_types/input_password/password.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../flutter_form.dart';
 

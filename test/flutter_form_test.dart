@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form/flutter_form.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

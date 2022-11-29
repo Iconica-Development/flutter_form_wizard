@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.1.1
-  flutter_form:
+  flutter_form_wizard:
     path: ../
   intl: ^0.17.0
 

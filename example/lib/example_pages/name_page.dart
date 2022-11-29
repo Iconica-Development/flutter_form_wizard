@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form/flutter_form.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:form_example/template_page.dart';
 
 class NamePage extends StatefulWidget {

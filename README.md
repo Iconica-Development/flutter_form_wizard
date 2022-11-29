@@ -1,13 +1,13 @@
 [![pub package](https://img.shields.io/pub/v/flutter_date_time_picker.svg)](https://github.com/Iconica-Development) [![Build status](https://img.shields.io/github/workflow/status/Iconica-Development/flutter_form/CI)](https://github.com/Iconica-Development/flutter_form/actions/new) [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart) 
 # Flutter Form
 
-Flutter Form is a package you can use to create a single or multi page form with premade or custom inputfields.
+Flutter Form Wizard is a package you can use to create a multi page form with premade or custom inputfields.
 
 ![Form GIF](flutter_form.gif)
 
 ## Features
 
-- Single or multi page form with the ability to define the navigational buttons.
+- Multi page form with the ability to define the navigational buttons.
 - A handfull premade fields with their own controllers.
 - Full posibilty to create custom inputfields and controllers which can be used along side the premade fields and controllers.
 - A checkpage where the end user can check his answers and jump back to the page of an inputfield to change his answer without going through the whole form.
@@ -15,7 +15,7 @@ Flutter Form is a package you can use to create a single or multi page form with
 
 ## Setup
 
-To use this package, add `flutter_form` as a dependency in your pubspec.yaml file.
+To use this package, add `flutter_form_wizard` as a dependency in your pubspec.yaml file.
 
 ## How To Use
 
@@ -61,4 +61,4 @@ If you would like to contribute to the plugin (e.g. by improving the documentati
 
 ## Author
 
-`flutter-form` for Flutter is developed by [Iconica](https://iconica.nl). You can contact us at <support@iconica.nl>
+`flutter_form_wizard` for Flutter is developed by [Iconica](https://iconica.nl). You can contact us at <support@iconica.nl>
