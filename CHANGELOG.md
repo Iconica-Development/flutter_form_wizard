@@ -34,3 +34,7 @@
 ## 2.0.1 - October 27th 2022
 
 - onChange of switch input not firing fixed
+
+## 4.0.2 - November 29th 2022
+
+- Name change to flutter_form_wizard

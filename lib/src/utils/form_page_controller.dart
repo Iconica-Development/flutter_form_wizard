@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-import 'package:flutter_form/flutter_form.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 
 class FlutterFormPageController {
   List<FlutterFormInputController> _controllers = [];

@@ -55,13 +55,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_form:
+  flutter_form_wizard:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.0.2"
+    version: "4.0.2"
   flutter_lints:
     dependency: "direct dev"
     description:
