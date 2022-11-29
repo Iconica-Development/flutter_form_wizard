@@ -3,7 +3,8 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_wizard/src/widgets/input/input_types/input_password/password.dart';
+import 'package:flutter_form_wizard/utils/translation_service.dart';
+import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../flutter_form.dart';
 
@@ -21,9 +22,15 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   Widget build(BuildContext context, WidgetRef ref) {
     super.registerController(context);
 
-    return PasswordTextField(
-      label: label,
-      controller: controller,
+    String Function(String, {List<String>? params}) _ =
+        getTranslator(context, ref);
+
+    return input.FlutterFormInputPassword(
+      initialValue: controller.value,
+      onSaved: (value) => controller.onSaved(value),
+      validator: (value) => controller.onValidate(value, _),
+      onChanged: (value) => controller.onChanged?.call(value),
+      onFieldSubmitted: (value) => controller.onSubmit?.call(value),
     );
   }
 }

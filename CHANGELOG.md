@@ -38,3 +38,8 @@
 ## 4.0.2 - November 29th 2022
 
 - Name change to flutter_form_wizard
+
+
+## 4.0.3 - November 29th 2022
+
+- Change from input to `flutter_input_library`

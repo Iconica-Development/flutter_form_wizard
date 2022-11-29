@@ -4,10 +4,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_wizard/utils/translation_service.dart';
+import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../flutter_form.dart';
-
-import 'numberpicker.dart';
 
 /// Input for a number used in a [FlutterForm].
 ///
@@ -35,7 +34,7 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
 
     super.registerController(context);
 
-    return NumberPickerFormField(
+    return input.FlutterFormInputNumberPicker(
       minValue: minValue,
       maxValue: maxValue,
       onSaved: (value) => controller.onSaved(value),
@@ -44,40 +43,6 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
       initialValue: controller.value ?? minValue,
     );
   }
-}
-
-/// Controller for the numberPicker used by a [FlutterFormInputWidget] used in a [FlutterForm].
-///
-/// Mainly used by [FlutterFormInputNumberPicker].
-class NumberPickerFormField extends FormField<int> {
-  NumberPickerFormField({
-    Key? key,
-    required FormFieldSetter<int> onSaved,
-    required FormFieldValidator<int> validator,
-    void Function(int value)? onChanged,
-    int initialValue = 0,
-    bool autovalidate = false,
-    int minValue = 0,
-    int maxValue = 100,
-  }) : super(
-            key: key,
-            onSaved: onSaved,
-            validator: validator,
-            initialValue: initialValue,
-            builder: (FormFieldState<int> state) {
-              return NumberPicker(
-                minValue: minValue,
-                maxValue: maxValue,
-                value: initialValue,
-                onChanged: (int value) {
-                  onChanged?.call(value);
-
-                  state.didChange(value);
-                },
-                itemHeight: 35,
-                itemCount: 5,
-              );
-            });
 }
 
 class FlutterFormInputNumberPickerController

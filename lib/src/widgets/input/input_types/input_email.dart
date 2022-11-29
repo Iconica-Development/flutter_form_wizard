@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_wizard/utils/translation_service.dart';
+import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../flutter_form.dart';
@@ -29,7 +30,7 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
 
     super.registerController(context);
 
-    return TextFormField(
+    return input.FlutterFormInputPlainText(
       initialValue: controller.value,
       onSaved: (value) {
         controller.onSaved(value);

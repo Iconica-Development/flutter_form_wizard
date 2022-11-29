@@ -3,20 +3,12 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_wizard/src/widgets/input/input_types/input_date_picker/date_picker.dart';
+import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:flutter_form_wizard/utils/translation_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../flutter_form.dart';
-
-/// Select Input Types in a [FlutterFormInputDateTime]
-enum FlutterFormDateTimeType {
-  date,
-  time,
-  dateTime,
-  range,
-}
 
 /// Input for a dateTime used in a [FlutterForm].
 ///
@@ -40,7 +32,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
           label: label,
         );
   final bool showIcon;
-  final FlutterFormDateTimeType inputType;
+  final input.FlutterFormDateTimeType inputType;
   final DateFormat dateFormat;
   final DateTime? initialDate;
   final DateTimeRange? initialDateTimeRange;
@@ -54,13 +46,16 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
         getTranslator(context, ref);
     super.registerController(context);
 
-    return DateTimeInputField(
+    return input.FlutterFormInputDateTime(
       label: label,
       icon: icon,
       firstDate: firstDate,
       lastDate: lastDate,
       inputType: inputType,
-      controller: controller,
+      onChanged: (value) => controller.onChanged?.call(value),
+      onSaved: (value) => controller.onSaved(value),
+      validator: (value) => controller.onValidate(value, _),
+      initialValue: controller.value,
       dateFormat: dateFormat,
       initialDate: initialDate,
       initialDateTimeRange: initialDateTimeRange,
@@ -89,7 +84,7 @@ class FlutterFormInputDateTimeController
   final DateTime? initialDate;
   final DateTimeRange? initialDateTimeRange;
   final DateFormat dateFormat;
-  final FlutterFormDateTimeType dateTimeType;
+  final input.FlutterFormDateTimeType dateTimeType;
 
   @override
   String? id;
