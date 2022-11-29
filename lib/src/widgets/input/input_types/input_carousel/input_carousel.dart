@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_wizard/utils/translation_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_form_wizard/flutter_form.dart';
-
-import 'carousel_form.dart';
+import 'package:flutter_input_library/flutter_input_library.dart' as input;
 
 /// Input for a carousel of items used in a [FlutterForm].
 ///
@@ -35,7 +34,7 @@ class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
 
     super.registerController(context);
 
-    return CarouselFormField(
+    return input.FlutterFormInputCarousel(
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
       onChanged: controller.onChanged,

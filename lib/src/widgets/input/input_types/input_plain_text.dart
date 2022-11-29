@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_wizard/utils/translation_service.dart';
+import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../flutter_form.dart';
@@ -45,7 +46,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
           label: label ?? const Text("Plain text"),
         );
 
-    return TextFormField(
+    return input.FlutterFormInputPlainText(
       scrollPadding: scrollPadding ?? const EdgeInsets.all(20.0),
       initialValue: controller.value,
       onSaved: (value) => controller.onSaved(value),
@@ -69,7 +70,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
 /// Hint can be set to set a hint inside the field.
 ///
 /// MaxCharacters can be set to set a maximum amount of characters.
-class FlutterFormInputMultiLine extends StatelessWidget {
+class FlutterFormInputMultiLine extends ConsumerWidget {
   const FlutterFormInputMultiLine({
     Key? key,
     required this.controller,
@@ -85,32 +86,17 @@ class FlutterFormInputMultiLine extends StatelessWidget {
   final int? maxCharacters;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: FlutterFormInputPlainText(
-            label: label,
-            controller: controller,
-            textAlignVertical: TextAlignVertical.top,
-            expands: true,
-            maxLines: null,
-            maxLength: maxCharacters,
-            decoration: InputDecoration(
-              hintText: hint,
-              floatingLabelBehavior: FloatingLabelBehavior.never,
-              isDense: true,
-              border: const OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFF979797)),
-              ),
-              focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFF979797)),
-              ),
-              filled: true,
-            ),
-          ),
-        ),
-      ],
+  Widget build(BuildContext context, WidgetRef ref) {
+    String Function(String, {List<String>? params}) _ =
+        getTranslator(context, ref);
+
+    return input.FlutterFormInputMultiLine(
+      label: label,
+      hint: hint,
+      maxCharacters: maxCharacters,
+      onChanged: controller.onChanged,
+      onSaved: controller.onSaved,
+      validator: (v) => controller.onValidate(v, _),
     );
   }
 }

@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_wizard/flutter_form.dart';
-import 'package:flutter_form_wizard/src/widgets/input/input_types/input_switch/input_switch_field.dart';
+import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:flutter_form_wizard/utils/translation_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,10 +25,8 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
 
     super.registerController(context);
 
-    return SwitchFormField(
-      onSaved: (value) {
-        controller.onSaved(value);
-      },
+    return input.FlutterFormInputSwitch(
+      onSaved: (value) => controller.onSaved(value),
       onChanged: controller.onChanged,
       validator: (value) => controller.onValidate(value, _),
       initialValue: controller.value ?? false,
