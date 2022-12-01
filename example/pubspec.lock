@@ -66,8 +66,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "0.0.3"
-      resolved-ref: "739198b0b8b6fb80fa71dff8a2a11bdda67dcdd7"
+      ref: "0.0.4"
+      resolved-ref: "13067633de12c0af2694010f02cc631c5d9d57b9"
       url: "https://github.com/Iconica-Development/flutter_input_library"
     source: git
     version: "0.0.1"
