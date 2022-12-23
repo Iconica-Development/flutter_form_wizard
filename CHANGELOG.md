@@ -43,3 +43,7 @@
 ## 4.0.3 - November 29th 2022
 
 - Change from input to `flutter_input_library`
+
+## 5.0.0 - November 29th 2022
+
+- `flutter_input_library` now enforces 24h time requirements
