@@ -15,8 +15,13 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
   const FlutterFormInputSwitch({
     Key? key,
     required FlutterFormInputController<bool> controller,
+    FocusNode? focusNode,
     Widget? label,
-  }) : super(key: key, controller: controller, label: label);
+  }) : super(
+            key: key,
+            controller: controller,
+            focusNode: focusNode,
+            label: label);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,6 +31,7 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
     super.registerController(context);
 
     return input.FlutterFormInputSwitch(
+      focusNode: focusNode,
       onSaved: (value) => controller.onSaved(value),
       onChanged: controller.onChanged,
       validator: (value) => controller.onValidate(value, _),

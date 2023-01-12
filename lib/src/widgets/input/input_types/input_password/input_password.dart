@@ -15,8 +15,13 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   const FlutterFormInputPassword({
     Key? key,
     required FlutterFormInputController<String> controller,
+    FocusNode? focusNode,
     Widget? label,
-  }) : super(key: key, controller: controller, label: label);
+  }) : super(
+            key: key,
+            controller: controller,
+            focusNode: focusNode,
+            label: label);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,6 +32,7 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
 
     return input.FlutterFormInputPassword(
       initialValue: controller.value,
+      focusNode: focusNode,
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
       onChanged: (value) => controller.onChanged?.call(value),

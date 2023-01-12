@@ -18,6 +18,7 @@ abstract class FlutterFormInputWidget<T> extends ConsumerWidget {
   const FlutterFormInputWidget({
     Key? key,
     required this.controller,
+    this.focusNode,
     this.label,
     String? hintText,
   }) : super(key: key);
@@ -27,6 +28,8 @@ abstract class FlutterFormInputWidget<T> extends ConsumerWidget {
 
   /// [label] is a standard parameter to normally sets the label of the input.
   final Widget? label;
+
+  final FocusNode? focusNode;
 
   /// [registerController] should be called to register the given [controller] to the form page.
   registerController(BuildContext context) {

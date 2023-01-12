@@ -16,11 +16,16 @@ class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
   const FlutterFormInputSlider({
     Key? key,
     required FlutterFormInputController<double> controller,
+    FocusNode? focusNode,
     Widget? label,
     this.minValue = 0,
     this.maxValue = 100,
   })  : assert(minValue < maxValue),
-        super(key: key, controller: controller, label: label);
+        super(
+            key: key,
+            controller: controller,
+            focusNode: focusNode,
+            label: label);
 
   final int minValue;
   final int maxValue;
@@ -33,6 +38,7 @@ class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
     super.registerController(context);
 
     return input.FlutterFormInputSlider(
+      focusNode: focusNode,
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
     );

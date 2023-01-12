@@ -16,6 +16,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   const FlutterFormInputPlainText({
     Key? key,
     required FlutterFormInputController<String> controller,
+    FocusNode? focusNode,
     Widget? label,
     this.decoration,
     this.textAlignVertical,
@@ -24,7 +25,11 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.scrollPadding,
     this.maxLength,
     this.keyboardType,
-  }) : super(key: key, controller: controller, label: label);
+  }) : super(
+            key: key,
+            controller: controller,
+            focusNode: focusNode,
+            label: label);
 
   final InputDecoration? decoration;
   final TextAlignVertical? textAlignVertical;
@@ -49,6 +54,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     return input.FlutterFormInputPlainText(
       scrollPadding: scrollPadding ?? const EdgeInsets.all(20.0),
       initialValue: controller.value,
+      focusNode: focusNode,
       onSaved: (value) => controller.onSaved(value),
       validator: (value) => controller.onValidate(value, _),
       onChanged: (value) => controller.onChanged?.call(value),
