@@ -47,3 +47,7 @@
 ## 5.0.0 - November 29th 2022
 
 - `flutter_input_library` now enforces 24h time requirements
+
+## 5.0.3 - January 12th 2023
+
+- Add FocusNode option to inputs

@@ -16,10 +16,12 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
   const FlutterFormInputEmail({
     Key? key,
     required FlutterFormInputController<String> controller,
+    FocusNode? focusNode,
     Widget? label,
   }) : super(
           key: key,
           controller: controller,
+          focusNode: focusNode,
           label: label,
         );
 
@@ -35,6 +37,7 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
       onSaved: (value) {
         controller.onSaved(value);
       },
+      focusNode: focusNode,
       validator: (value) => controller.onValidate(value, _),
       onChanged: (value) => controller.onChanged?.call(value),
       decoration: InputDecoration(

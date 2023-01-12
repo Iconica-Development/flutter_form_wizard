@@ -19,6 +19,7 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
     Key? key,
     required FlutterFormInputController<int> controller,
     Widget? label,
+    FocusNode? focusNode,
     this.minValue = 0,
     this.maxValue = 100,
   })  : assert(minValue < maxValue),
