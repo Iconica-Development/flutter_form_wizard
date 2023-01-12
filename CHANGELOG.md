@@ -51,3 +51,7 @@
 ## 5.0.4 - January 12th 2023
 
 - Add FocusNode option to inputs
+
+## 5.0.5 - January 12th 2023
+
+- Expose translations
