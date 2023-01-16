@@ -55,3 +55,7 @@
 ## 5.0.5 - January 12th 2023
 
 - Expose translations
+
+## 5.0.6 - January 12th 2023
+
+- `flutter_input_library` datetime validator fix

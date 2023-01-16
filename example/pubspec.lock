@@ -61,16 +61,16 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "5.0.5"
+    version: "5.0.6"
   flutter_input_library:
     dependency: transitive
     description:
       path: "."
-      ref: "1.0.3"
-      resolved-ref: "159e5723b993723751aedd3e1b838b3066ec229c"
+      ref: "1.0.4"
+      resolved-ref: "2832867b63e57b4d655f77d83d910293357c10dd"
       url: "https://github.com/Iconica-Development/flutter_input_library"
     source: git
-    version: "1.0.3"
+    version: "1.0.4"
   flutter_lints:
     dependency: "direct dev"
     description:
