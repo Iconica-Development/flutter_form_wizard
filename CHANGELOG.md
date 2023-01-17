@@ -59,3 +59,7 @@
 ## 5.0.6 - January 12th 2023
 
 - `flutter_input_library` datetime validator fix
+
+## 5.0.7 - January 12th 2023
+
+- `flutter_input_library` add styling text datetime fix
