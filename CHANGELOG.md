@@ -63,3 +63,7 @@
 ## 5.0.7 - January 12th 2023
 
 - `flutter_input_library` add styling text datetime fix
+
+## 5.0.8 - January 18th 2023
+
+- `flutter_input_library` add focusNode option to `FlutterFormInputMultiLine`

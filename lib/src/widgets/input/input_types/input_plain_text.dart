@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_wizard/utils/translation_service.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -80,6 +79,7 @@ class FlutterFormInputMultiLine extends ConsumerWidget {
   const FlutterFormInputMultiLine({
     Key? key,
     required this.controller,
+    this.focusNode,
     this.label,
     this.hint,
     this.maxCharacters,
@@ -87,6 +87,7 @@ class FlutterFormInputMultiLine extends ConsumerWidget {
 
   final FlutterFormInputController<String> controller;
   final Widget? label;
+  final FocusNode? focusNode;
 
   final String? hint;
   final int? maxCharacters;
@@ -99,6 +100,7 @@ class FlutterFormInputMultiLine extends ConsumerWidget {
     return input.FlutterFormInputMultiLine(
       label: label,
       hint: hint,
+      focusNode: focusNode,
       maxCharacters: maxCharacters,
       onChanged: controller.onChanged,
       onSaved: controller.onSaved,
