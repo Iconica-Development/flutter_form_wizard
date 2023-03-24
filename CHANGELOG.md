@@ -67,3 +67,7 @@
 ## 5.0.8 - January 18th 2023
 
 - `flutter_input_library` add focusNode option to `FlutterFormInputMultiLine`
+
+## 5.0.9 - January 18th 2023
+
+- `flutter_input_library` add initial time picker parameter
