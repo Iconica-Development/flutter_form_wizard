@@ -25,8 +25,7 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   Widget build(BuildContext context) {
     super.registerController(context);
 
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context);
+    String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     return input.FlutterFormInputPassword(
       initialValue: controller.value,

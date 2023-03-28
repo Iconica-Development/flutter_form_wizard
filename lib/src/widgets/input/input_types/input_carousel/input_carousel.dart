@@ -27,8 +27,7 @@ class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context);
+    String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     super.registerController(context);
 

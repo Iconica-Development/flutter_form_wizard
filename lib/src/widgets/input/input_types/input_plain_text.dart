@@ -39,8 +39,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context);
+    String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     super.registerController(context);
 
@@ -93,8 +92,7 @@ class FlutterFormInputMultiLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context);
+    String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     return input.FlutterFormInputMultiLine(
       label: label,
