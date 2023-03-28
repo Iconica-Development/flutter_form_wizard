@@ -3,8 +3,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_wizard/utils/providers.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class TranslationService {
   TranslationService._();
@@ -35,9 +33,9 @@ class ShellTranslationService implements TranslationService {
   }
 }
 
-Translator getTranslator(BuildContext context, WidgetRef ref) {
+Translator getTranslator(BuildContext context) {
   try {
-    var translator = ref.read(translationServiceProvider).translate;
+    var translator = ShellTranslationService().translate;
     return (
       String key, {
       List<String>? params,

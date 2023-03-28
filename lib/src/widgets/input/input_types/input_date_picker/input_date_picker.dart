@@ -4,8 +4,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
-import 'package:flutter_form_wizard/utils/translation_service.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../flutter_form.dart';
@@ -41,9 +39,9 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
   final IconData icon;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     String Function(String, {List<String>? params}) _ =
-        getTranslator(context, ref);
+        getTranslator(context);
     super.registerController(context);
 
     return input.FlutterFormInputDateTime(

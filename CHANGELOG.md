@@ -71,3 +71,8 @@
 ## 5.0.9 - January 18th 2023
 
 - `flutter_input_library` add initial time picker parameter
+
+## 6.0.0 - march 28th 2023
+
+- Bump `flutter_input_library` to version 2.0.0
+- Remove unnecessary `riverpod` dependency

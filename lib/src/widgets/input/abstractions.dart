@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/src/utils/formstate.dart' as fs;
 
 /// Abstract class for the input widgets used in a [FlutterForm].
@@ -14,7 +13,7 @@ import '/src/utils/formstate.dart' as fs;
 /// label is a standard parameter to normally sets the label of the input.
 ///
 /// [registerController] should be called to register the given [controller] to the form page.
-abstract class FlutterFormInputWidget<T> extends ConsumerWidget {
+abstract class FlutterFormInputWidget<T> extends StatelessWidget {
   const FlutterFormInputWidget({
     Key? key,
     required this.controller,
