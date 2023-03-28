@@ -3,9 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_wizard/utils/translation_service.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../flutter_form.dart';
 
 /// Input for a number used in a [FlutterForm].
@@ -29,9 +27,8 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
   final int maxValue;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context, ref);
+  Widget build(BuildContext context) {
+    String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     super.registerController(context);
 

@@ -4,7 +4,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../flutter_form.dart';
 
@@ -39,9 +38,8 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   final TextInputType? keyboardType;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context, ref);
+  Widget build(BuildContext context) {
+    String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     super.registerController(context);
 
@@ -75,7 +73,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
 /// Hint can be set to set a hint inside the field.
 ///
 /// MaxCharacters can be set to set a maximum amount of characters.
-class FlutterFormInputMultiLine extends ConsumerWidget {
+class FlutterFormInputMultiLine extends StatelessWidget {
   const FlutterFormInputMultiLine({
     Key? key,
     required this.controller,
@@ -93,9 +91,8 @@ class FlutterFormInputMultiLine extends ConsumerWidget {
   final int? maxCharacters;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    String Function(String, {List<String>? params}) _ =
-        getTranslator(context, ref);
+  Widget build(BuildContext context) {
+    String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     return input.FlutterFormInputMultiLine(
       label: label,

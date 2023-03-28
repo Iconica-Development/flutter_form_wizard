@@ -68,16 +68,16 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "5.0.9"
+    version: "6.0.0"
   flutter_input_library:
     dependency: transitive
     description:
       path: "."
-      ref: "1.0.6"
-      resolved-ref: c55174c2a35071677b6dd5bfba1afe5c466103aa
+      ref: "2.0.0"
+      resolved-ref: "7b3a6dba90b85c108983fa8b94fa2e79aeb67316"
       url: "https://github.com/Iconica-Development/flutter_input_library"
     source: git
-    version: "1.0.6"
+    version: "2.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -128,14 +128,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  localization:
-    dependency: transitive
-    description:
-      name: localization
-      sha256: "01d892155364dc456e1141dd8003e43c98d457f2b51fe1b8984766bad2a3fd72"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.0"
   matcher:
     dependency: transitive
     description:

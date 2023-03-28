@@ -3,8 +3,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_wizard/utils/translation_service.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../flutter_form.dart';
 import 'utils/form_page_controller.dart';
 import 'utils/formstate.dart' as fs;
@@ -180,7 +178,7 @@ import 'utils/formstate.dart' as fs;
 ///   ),
 /// ),
 /// ```
-class FlutterForm extends ConsumerStatefulWidget {
+class FlutterForm extends StatefulWidget {
   const FlutterForm({
     Key? key,
     required this.options,
@@ -191,10 +189,10 @@ class FlutterForm extends ConsumerStatefulWidget {
   final FlutterFormController formController;
 
   @override
-  ConsumerState<FlutterForm> createState() => _FlutterFormState();
+  State<FlutterForm> createState() => _FlutterFormState();
 }
 
-class _FlutterFormState extends ConsumerState<FlutterForm> {
+class _FlutterFormState extends State<FlutterForm> {
   late FlutterFormController _formController;
 
   @override
@@ -228,7 +226,7 @@ class _FlutterFormState extends ConsumerState<FlutterForm> {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context, ref);
+    var _ = getTranslator(context);
 
     return Stack(
       children: [
