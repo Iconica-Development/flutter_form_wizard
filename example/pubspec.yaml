@@ -1,12 +1,12 @@
 name: form_example
 description: Form example made with Flutter Form Package.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -16,8 +16,7 @@ dependencies:
   flutter_riverpod: ^2.1.1
   flutter_form_wizard:
     path: ../
-  intl: ^0.17.0
-
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
