@@ -80,3 +80,7 @@
 ## 6.1.0 - May 12th 2023
 
 - Make compatible to flutter 3.10
+
+## 6.1.1 - August 10th 2023
+
+- - Bump `flutter_input_library` to version 2.2.0
