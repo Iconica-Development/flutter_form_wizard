@@ -18,7 +18,7 @@ dependencies:
   flutter_input_library:
     git:
       url: https://github.com/Iconica-Development/flutter_input_library
-      ref: 2.1.1
+      ref: 2.2.0
 
 dev_dependencies:
   flutter_test:
