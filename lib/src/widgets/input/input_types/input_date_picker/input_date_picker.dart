@@ -76,7 +76,11 @@ class FlutterFormInputDateTimeController
     required this.dateTimeType,
     required this.dateFormat,
     this.onChanged,
-  });
+  }) {
+    if (value != null) {
+      value = dateFormat.format(DateTime.parse(value!));
+    }
+  }
 
   final DateTime? initialDate;
   final DateTimeRange? initialDateTimeRange;
