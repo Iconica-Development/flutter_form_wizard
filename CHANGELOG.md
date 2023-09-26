@@ -87,3 +87,6 @@
 ## 6.1.2 - August 11th 2023
 
 - Bump `flutter_input_library` to version 2.2.1
+
+## 6.1.3 - September 26th 2023
+- Fix date format for datecontroller
