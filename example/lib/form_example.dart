@@ -9,6 +9,7 @@ import 'package:form_example/example_pages/age_page.dart';
 import 'package:form_example/example_pages/carousel_page.dart';
 import 'package:form_example/example_pages/check_page.dart';
 import 'package:form_example/example_pages/name_page.dart';
+import 'package:intl/intl.dart';
 
 import 'example_pages/date_page.dart';
 
@@ -69,13 +70,16 @@ class _FormExampleState extends ConsumerState<FormExample> {
     onChanged: (value) => debugPrint(value),
   );
 
-  FlutterFormInputPlainTextController dateController =
-      FlutterFormInputPlainTextController(
-    mandatory: true,
+  FlutterFormInputDateTimeController dateController =
+      FlutterFormInputDateTimeController(
     id: "date",
-    checkPageTitle: (dynamic date) {
-      return "Date: $date";
+    dateTimeType: FlutterFormDateTimeType.date,
+    dateFormat: DateFormat('dd-MM-yyyy'),
+    checkPageTitle: (dynamic date) => "Date: $date",
+    onChanged: (String? value) => () {
+      debugPrint(value.toString());
     },
+    value: DateTime.now().toString(),
   );
 
   @override
@@ -113,21 +117,6 @@ class _FormExampleState extends ConsumerState<FormExample> {
               },
               onNext: (int pageNumber, Map<String, dynamic> results) {
                 debugPrint("Results page $pageNumber: $results");
-
-                if (pageNumber == 0) {
-                  if (results['age'] >= 18) {
-                    if (showLastName == false) {
-                      showLastName = true;
-                      formController.disableCheckingPages();
-                    }
-                  } else {
-                    if (showLastName == true) {
-                      showLastName = false;
-                      formController.disableCheckingPages();
-                    }
-                  }
-                  setState(() {});
-                }
               },
               nextButton: (int pageNumber, bool checkingPages) {
                 return Align(

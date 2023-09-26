@@ -13,7 +13,7 @@ class DatePage extends StatefulWidget {
     super.key,
   });
 
-  final FlutterFormInputPlainTextController dateController;
+  final FlutterFormInputDateTimeController dateController;
 
   @override
   State<DatePage> createState() => _DatePageState();
@@ -35,8 +35,8 @@ class _DatePageState extends State<DatePage> {
         Padding(
           padding: const EdgeInsets.fromLTRB(40, 0, 40, 40),
           child: FlutterFormInputDateTime(
-            inputType: FlutterFormDateTimeType.range,
-            dateFormat: DateFormat.yMd(),
+            inputType: FlutterFormDateTimeType.dateTime,
+            dateFormat: DateFormat('dd-MM-yyyy'),
             firstDate: DateTime.now(),
             initialDateTimeRange: DateTimeRange(
               start: DateTime.now(),
