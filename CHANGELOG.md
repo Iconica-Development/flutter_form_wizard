@@ -93,3 +93,6 @@
 
 ## 6.1.4 - October 26th 2023
 - Bump `flutter_input_library` to version 2.3.0
+
+## 6.1.5 - October 26th 2023
+- Bump `flutter_input_library` to version 2.4.0
