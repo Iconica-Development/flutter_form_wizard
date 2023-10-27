@@ -16,11 +16,13 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
     required FlutterFormInputController<String> controller,
     FocusNode? focusNode,
     Widget? label,
+    bool? enabled,
   }) : super(
           key: key,
           controller: controller,
           focusNode: focusNode,
           label: label,
+          enabled: enabled ?? true,
         );
 
   @override
@@ -30,6 +32,7 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
     super.registerController(context);
 
     return input.FlutterFormInputPlainText(
+      enabled: enabled,
       initialValue: controller.value,
       onSaved: (value) {
         controller.onSaved(value);

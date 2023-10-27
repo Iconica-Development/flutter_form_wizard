@@ -96,3 +96,6 @@
 
 ## 6.1.5 - October 26th 2023
 - Bump `flutter_input_library` to version 2.4.0
+
+## 6.1.6 - October 26th 2023
+- Add enabled property to FlutterFormInputPlainText and FlutterFormInputDateTime

@@ -19,6 +19,7 @@ abstract class FlutterFormInputWidget<T> extends StatelessWidget {
     required this.controller,
     this.focusNode,
     this.label,
+    this.enabled = true,
     String? hintText,
   }) : super(key: key);
 
@@ -29,6 +30,8 @@ abstract class FlutterFormInputWidget<T> extends StatelessWidget {
   final Widget? label;
 
   final FocusNode? focusNode;
+
+  final bool enabled;
 
   /// [registerController] should be called to register the given [controller] to the form page.
   registerController(BuildContext context) {
