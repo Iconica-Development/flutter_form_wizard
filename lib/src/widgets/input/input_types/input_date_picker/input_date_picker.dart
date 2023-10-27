@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+// ignore_for_file: overridden_fields, annotate_overrides
+
 import 'package:flutter/material.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:intl/intl.dart';
@@ -24,6 +26,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
     this.initialDate,
     this.initialDateTimeRange,
     this.icon = Icons.calendar_today,
+    this.enabled = true,
+    this.onTapEnabled = true,
   }) : super(
           key: key,
           controller: controller,
@@ -37,6 +41,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
   final DateTime? firstDate;
   final DateTime? lastDate;
   final IconData icon;
+  final bool enabled;
+  final bool onTapEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +50,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
     super.registerController(context);
 
     return input.FlutterFormInputDateTime(
+      enabled: enabled,
+      onTapEnabled: onTapEnabled,
       label: label,
       icon: icon,
       firstDate: firstDate,

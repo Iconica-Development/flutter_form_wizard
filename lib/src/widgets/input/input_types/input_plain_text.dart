@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+// ignore_for_file: overridden_fields
+
 import 'package:flutter/material.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
 
@@ -23,6 +25,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.scrollPadding,
     this.maxLength,
     this.keyboardType,
+    this.enabled = true,
   }) : super(
             key: key,
             controller: controller,
@@ -36,6 +39,8 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   final int? maxLength;
   final EdgeInsets? scrollPadding;
   final TextInputType? keyboardType;
+  @override
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +54,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
         );
 
     return input.FlutterFormInputPlainText(
+      enabled: enabled,
       scrollPadding: scrollPadding ?? const EdgeInsets.all(20.0),
       initialValue: controller.value,
       focusNode: focusNode,
@@ -81,6 +87,7 @@ class FlutterFormInputMultiLine extends StatelessWidget {
     this.label,
     this.hint,
     this.maxCharacters,
+    this.enabled = true,
   }) : super(key: key);
 
   final FlutterFormInputController<String> controller;
@@ -89,12 +96,14 @@ class FlutterFormInputMultiLine extends StatelessWidget {
 
   final String? hint;
   final int? maxCharacters;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     String Function(String, {List<String>? params}) _ = getTranslator(context);
 
     return input.FlutterFormInputMultiLine(
+      enabled: enabled,
       label: label,
       hint: hint,
       focusNode: focusNode,
