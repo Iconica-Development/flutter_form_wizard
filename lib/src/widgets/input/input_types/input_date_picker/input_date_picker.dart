@@ -51,6 +51,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
 
     return input.FlutterFormInputDateTime(
       enabled: enabled,
+      showIcon: showIcon,
       onTapEnabled: onTapEnabled,
       label: label,
       icon: icon,
