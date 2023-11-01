@@ -99,3 +99,6 @@
 
 ## 6.1.6 - October 26th 2023
 - Add enabled property to FlutterFormInputPlainText and FlutterFormInputDateTime
+
+## 6.1.7 - November 1st 2023
+- pass on the show icon property to flutter form input date time widget
