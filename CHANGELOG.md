@@ -102,3 +102,7 @@
 
 ## 6.1.7 - November 1st 2023
 - pass on the show icon property to flutter form input date time widget
+
+## 6.1.8 - December 6th 2023
+- Pass on the style property to the FlutterFormPlainText input widget
+- Bump `flutter_input_library` to version 2.5.0
