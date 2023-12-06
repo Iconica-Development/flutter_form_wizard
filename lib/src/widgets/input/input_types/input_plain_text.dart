@@ -26,6 +26,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.maxLength,
     this.keyboardType,
     this.enabled = true,
+    this.style,
   }) : super(
             key: key,
             controller: controller,
@@ -41,6 +42,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   final TextInputType? keyboardType;
   @override
   final bool enabled;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
         );
 
     return input.FlutterFormInputPlainText(
+      style: style,
       enabled: enabled,
       scrollPadding: scrollPadding ?? const EdgeInsets.all(20.0),
       initialValue: controller.value,
