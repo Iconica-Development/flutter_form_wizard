@@ -106,3 +106,6 @@
 ## 6.1.8 - December 6th 2023
 - Pass on the style property to the FlutterFormPlainText input widget
 - Bump `flutter_input_library` to version 2.5.0
+
+## 6.2.0 - December 14th 2023
+- Pass on the `textCapitalization` property to FlutterFormPlainText and FlutterFormMultiLine
