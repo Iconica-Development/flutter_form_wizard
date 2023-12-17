@@ -5,6 +5,10 @@ Flutter Form Wizard is a package you can use to create a multi page form with pr
 
 ![Form GIF](flutter_form.gif)
 
+Figma Design that defines this component (only accessible for Iconica developers): https://www.figma.com/file/4WkjwynOz5wFeFBRqTHPeP/Iconica-Design-System?type=design&node-id=357%3A3348&mode=design&t=XulkAJNPQ32ARxWh-1
+Figma clickable prototype that demonstrates this component (only accessible for Iconica developers): https://www.figma.com/proto/4WkjwynOz5wFeFBRqTHPeP/Iconica-Design-System?type=design&node-id=340-611&viewport=-201%2C47%2C0.11&t=XulkAJNPQ32ARxWh-0&scaling=min-zoom&starting-point-node-id=516%3A2399&show-proto-sidebar=1
+
+
 ## Features
 
 - Multi page form with the ability to define the navigational buttons.
