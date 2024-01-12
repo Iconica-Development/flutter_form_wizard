@@ -115,6 +115,7 @@ class FlutterFormInputMultiLine extends StatelessWidget {
       label: label,
       hint: hint,
       focusNode: focusNode,
+      initialValue: controller.value,
       maxCharacters: maxCharacters,
       onChanged: controller.onChanged,
       onSaved: controller.onSaved,
