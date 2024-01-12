@@ -109,3 +109,6 @@
 
 ## 6.2.0 - December 14th 2023
 - Pass on the `textCapitalization` property to FlutterFormPlainText and FlutterFormMultiLine
+
+## 6.2.1 - January 12th 2024
+- Pass on the `initialValue` property to FlutterFormMultiLine
