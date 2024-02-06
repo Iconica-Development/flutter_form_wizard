@@ -112,3 +112,6 @@
 
 ## 6.2.1 - January 12th 2024
 - Pass on the `initialValue` property to FlutterFormMultiLine
+
+## 6.2.2 - February 6th 2024
+- Updated the `flutter_input_library` from 2.6.0 to 3.0.0

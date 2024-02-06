@@ -27,12 +27,13 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
 
     super.registerController(context);
 
-    return input.FlutterFormInputSwitch(
+    return input.FlutterFormInputBool(
       focusNode: focusNode,
       onSaved: (value) => controller.onSaved(value),
       onChanged: controller.onChanged,
       validator: (value) => controller.onValidate(value, _),
       initialValue: controller.value ?? false,
+      widgetType: input.BoolWidgetType.switchWidget,
     );
   }
 }
