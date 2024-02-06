@@ -3,46 +3,42 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
 
-import '../../../../../flutter_form.dart';
-
-/// Input for a number value between two values via a slider. Used in a [FlutterForm].
+/// Input for a number value between two values via a slider. Used in a
+/// [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputSliderController].
 class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
   const FlutterFormInputSlider({
-    Key? key,
-    required FlutterFormInputController<double> controller,
-    FocusNode? focusNode,
-    Widget? label,
+    required super.controller,
+    super.key,
+    super.focusNode,
+    super.label,
     this.minValue = 0,
     this.maxValue = 100,
-  })  : assert(minValue < maxValue),
-        super(
-            key: key,
-            controller: controller,
-            focusNode: focusNode,
-            label: label);
+  }) : assert(minValue < maxValue, 'minValue must be less than maxValue');
 
   final int minValue;
   final int maxValue;
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     super.registerController(context);
 
     return input.FlutterFormInputSlider(
       focusNode: focusNode,
-      onSaved: (value) => controller.onSaved(value),
+      onSaved: controller.onSaved,
       validator: (value) => controller.onValidate(value, _),
     );
   }
 }
 
-/// Controller for slider used by a [FlutterFormInputWidget] used in a [FlutterForm].
+/// Controller for slider used by a [FlutterFormInputWidget] used in a
+/// [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputSlider].
 class FlutterFormInputSliderController
@@ -83,8 +79,10 @@ class FlutterFormInputSliderController
   }
 
   @override
-  String? onValidate(double? value,
-      String Function(String, {List<String>? params}) translator) {
+  String? onValidate(
+    double? value,
+    String Function(String, {List<String>? params}) translator,
+  ) {
     if (mandatory) {}
 
     return null;

@@ -3,24 +3,20 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
-import '../../../../../flutter_form.dart';
 
 /// Input for a password used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputEmailController].
 class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   const FlutterFormInputPassword({
-    Key? key,
-    required FlutterFormInputController<String> controller,
-    FocusNode? focusNode,
-    Widget? label,
+    required super.controller,
+    super.key,
+    super.focusNode,
+    super.label,
     bool? enabled,
   }) : super(
-          key: key,
-          controller: controller,
-          focusNode: focusNode,
-          label: label,
           enabled: enabled ?? true,
         );
 
@@ -28,13 +24,13 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   Widget build(BuildContext context) {
     super.registerController(context);
 
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     return input.FlutterFormInputPassword(
       enabled: enabled,
       initialValue: controller.value,
       focusNode: focusNode,
-      onSaved: (value) => controller.onSaved(value),
+      onSaved: controller.onSaved,
       validator: (value) => controller.onValidate(value, _),
       onChanged: (value) => controller.onChanged?.call(value),
       onFieldSubmitted: (value) => controller.onSubmit?.call(value),
@@ -42,7 +38,8 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   }
 }
 
-/// Controller for passwords used by a [FlutterFormInputWidget] used in a [ShellFrom].
+/// Controller for passwords used by a [FlutterFormInputWidget] used in a
+/// [ShellFrom].
 ///
 /// Mainly used by [FlutterFormInputPassword].
 class FlutterFormInputPasswordController
@@ -79,13 +76,15 @@ class FlutterFormInputPasswordController
   void Function(String? value)? onSubmit;
 
   @override
-  void onSaved(dynamic value) {
+  void onSaved(value) {
     this.value = value;
   }
 
   @override
-  String? onValidate(String? value,
-      String Function(String, {List<String>? params}) translator) {
+  String? onValidate(
+    String? value,
+    String Function(String, {List<String>? params}) translator,
+  ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
         return translator('Field can not be empty');

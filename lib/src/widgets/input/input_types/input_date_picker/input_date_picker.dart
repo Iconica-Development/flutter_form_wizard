@@ -5,22 +5,21 @@
 // ignore_for_file: overridden_fields, annotate_overrides
 
 import 'package:flutter/material.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
 import 'package:intl/intl.dart';
-
-import '../../../../../flutter_form.dart';
 
 /// Input for a dateTime used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputDateController].
 class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
   const FlutterFormInputDateTime({
-    Key? key,
-    required FlutterFormInputController<String> controller,
-    Widget? label,
-    this.showIcon = true,
+    required super.controller,
     required this.inputType,
     required this.dateFormat,
+    super.key,
+    super.label,
+    this.showIcon = true,
     this.firstDate,
     this.lastDate,
     this.initialDate,
@@ -28,11 +27,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
     this.icon = Icons.calendar_today,
     this.enabled = true,
     this.onTapEnabled = true,
-  }) : super(
-          key: key,
-          controller: controller,
-          label: label,
-        );
+  });
   final bool showIcon;
   final input.FlutterFormDateTimeType inputType;
   final DateFormat dateFormat;
@@ -46,7 +41,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
     super.registerController(context);
 
     return input.FlutterFormInputDateTime(
@@ -59,7 +54,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
       lastDate: lastDate,
       inputType: inputType,
       onChanged: (value) => controller.onChanged?.call(value),
-      onSaved: (value) => controller.onSaved(value),
+      onSaved: controller.onSaved,
       validator: (value) => controller.onValidate(value, _),
       initialValue: controller.value,
       dateFormat: dateFormat,
@@ -69,21 +64,22 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
   }
 }
 
-/// Controller for dates used by a [FlutterFormInputWidget] used in a [FlutterForm].
+/// Controller for dates used by a [FlutterFormInputWidget] used in a 
+/// [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputDateTime].
 class FlutterFormInputDateTimeController
     implements FlutterFormInputController<String> {
   FlutterFormInputDateTimeController({
     required this.id,
+    required this.dateTimeType,
+    required this.dateFormat,
     this.mandatory = true,
     this.value,
     this.checkPageTitle,
     this.checkPageDescription,
     this.initialDate,
     this.initialDateTimeRange,
-    required this.dateTimeType,
-    required this.dateFormat,
     this.onChanged,
   }) {
     if (value != null) {
@@ -118,13 +114,15 @@ class FlutterFormInputDateTimeController
   void Function(String? value)? onSubmit;
 
   @override
-  void onSaved(dynamic value) {
+  void onSaved(value) {
     this.value = value;
   }
 
   @override
-  String? onValidate(String? value,
-      String Function(String, {List<String>? params}) translator) {
+  String? onValidate(
+    String? value,
+    String Function(String, {List<String>? params}) translator,
+  ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
         return translator('shell.form.error.empty');

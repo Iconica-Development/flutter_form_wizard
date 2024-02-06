@@ -3,18 +3,23 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import '../flutter_form.dart';
-import 'utils/form_page_controller.dart';
-import 'utils/formstate.dart' as fs;
+import 'package:flutter_form_wizard/flutter_form.dart';
+import 'package:flutter_form_wizard/src/utils/form_page_controller.dart';
+import 'package:flutter_form_wizard/src/utils/formstate.dart' as fs;
 
-/// A wrapper for flutters [Form] that can be controlled by a controller and provides multiple pre-defined input types/fields
-/// [FlutterForm] also provides multi page forms and a check page for validation.
+/// A wrapper for flutters [Form] that can be controlled by a controller and
+/// provides multiple pre-defined input types/fields
+/// [FlutterForm] also provides multi page forms and a check page
+/// for validation.
 ///
-/// A [FlutterFormController] has to be given to control what happens to values and pages within the FlutterForm.
+/// A [FlutterFormController] has to be given to control what happens to values
+/// and pages within the FlutterForm.
 ///
-/// [FlutterFormOptions] have to be provided to control the appearance of the form.
+/// [FlutterFormOptions] have to be provided to control the appearance of
+/// the form.
 ///
-/// WARNING Define your FormInputController above your FlutterForm. Otherwise when rebuild the controller will differ from the registered ones.
+/// WARNING Define your FormInputController above your FlutterForm. Otherwise
+/// when rebuild the controller will differ from the registered ones.
 /// ``` dart
 /// FlutterFormInputEmailController emailController =
 ///     FlutterFormInputEmailController(id: 'email');
@@ -180,10 +185,10 @@ import 'utils/formstate.dart' as fs;
 /// ```
 class FlutterForm extends StatefulWidget {
   const FlutterForm({
-    Key? key,
     required this.options,
     required this.formController,
-  }) : super(key: key);
+    super.key,
+  });
 
   final FlutterFormOptions options;
   final FlutterFormController formController;
@@ -203,9 +208,9 @@ class _FlutterFormState extends State<FlutterForm> {
 
     _formController.setFlutterFormOptions(widget.options);
 
-    List<GlobalKey<FormState>> keys = [];
+    var keys = <GlobalKey<FormState>>[];
 
-    for (FlutterFormPage _ in widget.options.pages) {
+    for (var _ in widget.options.pages) {
       keys.add(GlobalKey<FormState>());
     }
 
@@ -215,9 +220,9 @@ class _FlutterFormState extends State<FlutterForm> {
       setState(() {});
     });
 
-    List<FlutterFormPageController> controllers = [];
+    var controllers = <FlutterFormPageController>[];
 
-    for (int i = 0; i < widget.options.pages.length; i++) {
+    for (var i = 0; i < widget.options.pages.length; i++) {
       controllers.add(FlutterFormPageController());
     }
 
@@ -278,27 +283,37 @@ class _FlutterFormState extends State<FlutterForm> {
               ),
           ],
         ),
-        widget.options.nextButton != null
-            ? widget.options.nextButton!(_formController.getCurrentStep(),
-                _formController.getCheckpages())
-            : Align(
-                alignment: AlignmentDirectional.bottomCenter,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 15),
-                      textStyle: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold)),
-                  onPressed: () async {
-                    await _formController.autoNextStep();
-                  },
-                  child: Text(_formController.getCurrentStep() >=
-                          widget.options.pages.length - 1
-                      ? "Finish"
-                      : "Next"),
+        if (widget.options.nextButton != null)
+          widget.options.nextButton!(
+            _formController.getCurrentStep(),
+            _formController.getCheckpages(),
+          )
+        else
+          Align(
+            alignment: AlignmentDirectional.bottomCenter,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 40,
+                  vertical: 15,
+                ),
+                textStyle: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
+              onPressed: () async {
+                await _formController.autoNextStep();
+              },
+              child: Text(
+                _formController.getCurrentStep() >=
+                        widget.options.pages.length - 1
+                    ? 'Finish'
+                    : 'Next',
+              ),
+            ),
+          ),
         if (widget.options.backButton != null)
           widget.options.backButton!(
             _formController.getCurrentStep(),
@@ -310,12 +325,12 @@ class _FlutterFormState extends State<FlutterForm> {
   }
 
   List<Widget> getResultWidgets() {
-    List<Widget> widgets = [];
+    var widgets = <Widget>[];
 
     _formController.getAllResults().forEach(
       (pageNumber, pageResults) {
         pageResults.forEach((inputId, inputResult) {
-          FlutterFormInputController? inputController = _formController
+          var inputController = _formController
               .getFormPageControllers()[pageNumber]
               .getController(inputId);
 
@@ -327,10 +342,8 @@ class _FlutterFormState extends State<FlutterForm> {
                   inputController.checkPageTitle != null
                       ? inputController.checkPageTitle!(inputController.value)
                       : inputController.value.toString(),
-                  inputController.checkPageDescription != null
-                      ? inputController
-                          .checkPageDescription!(inputController.value)
-                      : null,
+                  inputController.checkPageDescription
+                      ?.call(inputController.value),
                   () async {
                     await _formController.jumpToPage(pageNumber);
                   },
@@ -378,7 +391,7 @@ class _FlutterFormState extends State<FlutterForm> {
                         Text(
                           inputController.checkPageDescription!(inputResult),
                           style: const TextStyle(fontSize: 16),
-                        )
+                        ),
                     ],
                   ),
                 ),
@@ -412,15 +425,14 @@ class FlutterFormController extends ChangeNotifier {
 
   late List<FlutterFormPageController> _formPageControllers;
 
-  List<FlutterFormPageController> getFormPageControllers() {
-    return _formPageControllers;
-  }
+  List<FlutterFormPageController> getFormPageControllers() =>
+      _formPageControllers;
 
-  setFormPageControllers(List<FlutterFormPageController> controllers) {
+  void setFormPageControllers(List<FlutterFormPageController> controllers) {
     _formPageControllers = controllers;
   }
 
-  disableCheckingPages() {
+  void voidisableCheckingPages() {
     _checkingPages = false;
 
     for (var controller in _formPageControllers) {
@@ -436,7 +448,9 @@ class FlutterFormController extends ChangeNotifier {
         FocusManager.instance.primaryFocus?.unfocus();
 
         _options.onNext(
-            _currentStep, _formPageControllers[_currentStep].getAllValues());
+          _currentStep,
+          _formPageControllers[_currentStep].getAllValues(),
+        );
 
         if (_currentStep >= _options.pages.length - 1 &&
                 _options.checkPage == null ||
@@ -449,9 +463,11 @@ class FlutterFormController extends ChangeNotifier {
 
             notifyListeners();
 
-            await _pageController.animateToPage(_currentStep,
-                duration: const Duration(milliseconds: 250),
-                curve: Curves.ease);
+            await _pageController.animateToPage(
+              _currentStep,
+              duration: const Duration(milliseconds: 250),
+              curve: Curves.ease,
+            );
           } else {
             _currentStep += 1;
 
@@ -462,9 +478,11 @@ class FlutterFormController extends ChangeNotifier {
 
             notifyListeners();
 
-            await _pageController.animateToPage(_currentStep,
-                duration: const Duration(milliseconds: 250),
-                curve: Curves.ease);
+            await _pageController.animateToPage(
+              _currentStep,
+              duration: const Duration(milliseconds: 250),
+              curve: Curves.ease,
+            );
           }
         }
       }
@@ -507,13 +525,14 @@ class FlutterFormController extends ChangeNotifier {
     return false;
   }
 
-  Map<String, dynamic> getCurrentStepResults() {
-    return _formPageControllers[_currentStep].getAllValues();
-  }
+  Map<String, dynamic> getCurrentStepResults() =>
+      _formPageControllers[_currentStep].getAllValues();
 
   Future<void> nextStep() async {
     _options.onNext(
-        _currentStep, _formPageControllers[_currentStep].getAllValues());
+      _currentStep,
+      _formPageControllers[_currentStep].getAllValues(),
+    );
 
     _currentStep += 1;
 
@@ -523,16 +542,19 @@ class FlutterFormController extends ChangeNotifier {
 
     notifyListeners();
 
-    await _pageController.animateToPage(_currentStep,
-        duration: const Duration(milliseconds: 250), curve: Curves.ease);
+    await _pageController.animateToPage(
+      _currentStep,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.ease,
+    );
   }
 
-  finishForm() {
+  void finishForm() {
     _options.onFinished(getAllResults());
   }
 
   Map<int, Map<String, dynamic>> getAllResults() {
-    Map<int, Map<String, dynamic>> allValues = {};
+    var allValues = <int, Map<String, dynamic>>{};
 
     for (var i = 0; i < _options.pages.length; i++) {
       allValues.addAll({i: _formPageControllers[i].getAllValues()});
@@ -540,27 +562,19 @@ class FlutterFormController extends ChangeNotifier {
     return allValues;
   }
 
-  setFlutterFormOptions(FlutterFormOptions options) {
+  void setFlutterFormOptions(FlutterFormOptions options) {
     _options = options;
   }
 
-  setKeys(List<GlobalKey<FormState>> keys) {
+  void setKeys(List<GlobalKey<FormState>> keys) {
     _keys = keys;
   }
 
-  List<GlobalKey<FormState>> getKeys() {
-    return _keys;
-  }
+  List<GlobalKey<FormState>> getKeys() => _keys;
 
-  int getCurrentStep() {
-    return _currentStep;
-  }
+  int getCurrentStep() => _currentStep;
 
-  bool getCheckpages() {
-    return _checkingPages;
-  }
+  bool getCheckpages() => _checkingPages;
 
-  PageController getPageController() {
-    return _pageController;
-  }
+  PageController getPageController() => _pageController;
 }

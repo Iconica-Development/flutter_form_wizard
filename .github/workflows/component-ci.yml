@@ -1,0 +1,14 @@
+name: Iconica Standard Component CI Workflow
+# Workflow Caller version: 2.0.0
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  call-global-iconica-workflow:
+    uses: Iconica-Development/.github/.github/workflows/component-ci.yml@master
+    secrets: inherit
+    permissions: write-all
+    with:
+      subfolder: "." # add optional subfolder to run workflow in

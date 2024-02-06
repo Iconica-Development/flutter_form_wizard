@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+// ignore_for_file: avoid_positional_boolean_parameters
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
@@ -11,25 +13,21 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 /// Standard controller is [FlutterFormInputSwitchController].
 class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
   const FlutterFormInputSwitch({
-    Key? key,
-    required FlutterFormInputController<bool> controller,
-    FocusNode? focusNode,
-    Widget? label,
-  }) : super(
-            key: key,
-            controller: controller,
-            focusNode: focusNode,
-            label: label);
+    required super.controller,
+    super.key,
+    super.focusNode,
+    super.label,
+  });
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     super.registerController(context);
 
     return input.FlutterFormInputBool(
       focusNode: focusNode,
-      onSaved: (value) => controller.onSaved(value),
+      onSaved: controller.onSaved,
       onChanged: controller.onChanged,
       validator: (value) => controller.onValidate(value, _),
       initialValue: controller.value ?? false,
@@ -38,7 +36,8 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
   }
 }
 
-/// Controller for the switch used by a [FlutterFormInputWidget] used in a [FlutterForm].
+/// Controller for the switch used by a [FlutterFormInputWidget] used in a
+/// [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputSwitch].
 class FlutterFormInputSwitchController
@@ -80,7 +79,8 @@ class FlutterFormInputSwitchController
 
   @override
   String? onValidate(
-      bool? value, String Function(String, {List<String>? params}) translator) {
-    return null;
-  }
+    bool? value,
+    String Function(String, {List<String>? params}) translator,
+  ) =>
+      null;
 }

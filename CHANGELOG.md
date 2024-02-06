@@ -115,3 +115,7 @@
 
 ## 6.2.2 - February 6th 2024
 - Updated the `flutter_input_library` from 2.6.0 to 3.0.0
+
+## 6.2.3 - February 7th 2024
+
+- Added CI and linter
