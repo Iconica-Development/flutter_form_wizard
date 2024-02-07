@@ -23,14 +23,11 @@ typedef Translator = String Function(
 
 class ShellTranslationService implements TranslationService {
   @override
-  String number(double value) {
-    return value.toStringAsFixed(2);
-  }
+  String number(double value) => value.toStringAsFixed(2);
 
   @override
-  String translate(BuildContext context, String key, {List<String>? params}) {
-    return key;
-  }
+  String translate(BuildContext context, String key, {List<String>? params}) =>
+      key;
 }
 
 Translator getTranslator(BuildContext context) {
@@ -39,15 +36,13 @@ Translator getTranslator(BuildContext context) {
     return (
       String key, {
       List<String>? params,
-    }) {
-      return translator(context, key, params: params);
-    };
-  } catch (e) {
+    }) =>
+        translator(context, key, params: params);
+  } on Exception catch (_) {
     return (
       String key, {
       List<String>? params,
-    }) {
-      return key;
-    };
+    }) =>
+        key;
   }
 }

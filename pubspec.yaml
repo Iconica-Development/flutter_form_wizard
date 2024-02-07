@@ -1,6 +1,6 @@
 name: flutter_form_wizard
 description: A new Flutter package project.
-version: 6.2.2
+version: 6.2.3
 homepage: https://github.com/Iconica-Development/flutter_form_wizard
 
 publish_to: none
@@ -23,7 +23,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_iconica_analysis:
+    git:
+      url: https://github.com/Iconica-Development/flutter_iconica_analysis
+      ref: 6.0.0
 
 flutter:
 

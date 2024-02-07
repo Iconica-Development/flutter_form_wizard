@@ -11,13 +11,12 @@ class FlutterFormPageController {
     _controllers.add(inputController);
   }
 
-  clearControllers() {
+  void clearControllers() {
     _controllers = [];
   }
 
-  bool _isRegisteredById(String id) {
-    return _controllers.any((element) => (element.id == id));
-  }
+  bool _isRegisteredById(String id) =>
+      _controllers.any((element) => element.id == id);
 
   FlutterFormInputController? getController(String key) {
     if (_isRegisteredById(key)) {
@@ -27,9 +26,9 @@ class FlutterFormPageController {
   }
 
   Map<String, dynamic> getAllValues() {
-    Map<String, dynamic> values = {};
+    var values = <String, dynamic>{};
 
-    for (FlutterFormInputController controller in _controllers) {
+    for (var controller in _controllers) {
       if (controller.value != null) {
         values.addAll({controller.id!: controller.value});
       }

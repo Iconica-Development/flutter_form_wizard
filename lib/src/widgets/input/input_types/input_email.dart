@@ -3,31 +3,26 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
-
-import '../../../../flutter_form.dart';
 
 /// Input for an email used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputEmailController].
 class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
   const FlutterFormInputEmail({
-    Key? key,
-    required FlutterFormInputController<String> controller,
-    FocusNode? focusNode,
-    Widget? label,
+    required super.controller,
+    super.key,
+    super.focusNode,
+    super.label,
     bool? enabled,
   }) : super(
-          key: key,
-          controller: controller,
-          focusNode: focusNode,
-          label: label,
           enabled: enabled ?? true,
         );
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     super.registerController(context);
 
@@ -42,13 +37,14 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
       onChanged: (value) => controller.onChanged?.call(value),
       decoration: InputDecoration(
         focusColor: Theme.of(context).primaryColor,
-        label: label ?? const Text("Email"),
+        label: label ?? const Text('Email'),
       ),
     );
   }
 }
 
-/// Controller for emails used by a [FlutterFormInputWidget] used in a [FlutterForm].
+/// Controller for emails used by a [FlutterFormInputWidget] used in
+/// a [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputEmail].
 class FlutterFormInputEmailController
@@ -85,21 +81,23 @@ class FlutterFormInputEmailController
   void Function(String? value)? onSubmit;
 
   @override
-  void onSaved(dynamic value) {
+  void onSaved(value) {
     this.value = value;
   }
 
   @override
-  String? onValidate(String? value,
-      String Function(String, {List<String>? params}) translator) {
+  String? onValidate(
+    String? value,
+    String Function(String, {List<String>? params}) translator,
+  ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
         return translator('shell.form.error.empty');
       }
 
       if (!RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(value)) {
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+      ).hasMatch(value)) {
         return translator('shell.form.error.email.notValid');
       }
     }

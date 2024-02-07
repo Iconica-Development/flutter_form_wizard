@@ -5,19 +5,18 @@
 // ignore_for_file: overridden_fields
 
 import 'package:flutter/material.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
-
-import '../../../../flutter_form.dart';
 
 /// Input for plain text input used in a [FlutterForm].
 ///
 /// Standard controller is [FlutterFormInputPlainTextController].
 class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   const FlutterFormInputPlainText({
-    Key? key,
-    required FlutterFormInputController<String> controller,
-    FocusNode? focusNode,
-    Widget? label,
+    required super.controller,
+    super.key,
+    super.focusNode,
+    super.label,
     this.decoration,
     this.textAlignVertical,
     this.expands = false,
@@ -28,11 +27,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.enabled = true,
     this.style,
     this.textCapitalization = TextCapitalization.none,
-  }) : super(
-            key: key,
-            controller: controller,
-            focusNode: focusNode,
-            label: label);
+  });
 
   final InputDecoration? decoration;
   final TextAlignVertical? textAlignVertical;
@@ -48,13 +43,13 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     super.registerController(context);
 
-    InputDecoration inputDecoration = decoration ??
+    var inputDecoration = decoration ??
         InputDecoration(
-          label: label ?? const Text("Plain text"),
+          label: label ?? const Text('Plain text'),
         );
 
     return input.FlutterFormInputPlainText(
@@ -63,7 +58,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
       scrollPadding: scrollPadding ?? const EdgeInsets.all(20.0),
       initialValue: controller.value,
       focusNode: focusNode,
-      onSaved: (value) => controller.onSaved(value),
+      onSaved: controller.onSaved,
       validator: (value) => controller.onValidate(value, _),
       onChanged: (value) => controller.onChanged?.call(value),
       onFieldSubmitted: (value) => controller.onSubmit?.call(value),
@@ -87,15 +82,15 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
 /// MaxCharacters can be set to set a maximum amount of characters.
 class FlutterFormInputMultiLine extends StatelessWidget {
   const FlutterFormInputMultiLine({
-    Key? key,
     required this.controller,
+    super.key,
     this.focusNode,
     this.label,
     this.hint,
     this.maxCharacters,
     this.enabled = true,
     this.textCapitalization = TextCapitalization.sentences,
-  }) : super(key: key);
+  });
 
   final FlutterFormInputController<String> controller;
   final Widget? label;
@@ -108,7 +103,7 @@ class FlutterFormInputMultiLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     return input.FlutterFormInputMultiLine(
       enabled: enabled,
@@ -125,7 +120,8 @@ class FlutterFormInputMultiLine extends StatelessWidget {
   }
 }
 
-/// Controller for plain text used by a [FlutterFormInputWidget] used in a [FlutterForm].
+/// Controller for plain text used by a [FlutterFormInputWidget] used in a
+/// [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputPlainText].
 class FlutterFormInputPlainTextController
@@ -167,8 +163,10 @@ class FlutterFormInputPlainTextController
   }
 
   @override
-  String? onValidate(String? value,
-      String Function(String, {List<String>? params}) translator) {
+  String? onValidate(
+    String? value,
+    String Function(String, {List<String>? params}) translator,
+  ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
         return translator('Field can not be empty');

@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_input_library/flutter_input_library.dart' as input;
-import '../../../../../flutter_form.dart';
 
 /// Input for a number used in a [FlutterForm].
 ///
@@ -14,28 +14,26 @@ import '../../../../../flutter_form.dart';
 /// Standard controller is [FlutterFormInputNumberPickerController].
 class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
   const FlutterFormInputNumberPicker({
-    Key? key,
-    required FlutterFormInputController<int> controller,
-    Widget? label,
-    FocusNode? focusNode,
+    required super.controller,
+    super.key,
+    super.label,
     this.minValue = 0,
     this.maxValue = 100,
-  })  : assert(minValue < maxValue),
-        super(key: key, controller: controller, label: label);
+  }) : assert(minValue < maxValue, 'minValue must be less than maxValue');
 
   final int minValue;
   final int maxValue;
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     super.registerController(context);
 
     return input.FlutterFormInputNumberPicker(
       minValue: minValue,
       maxValue: maxValue,
-      onSaved: (value) => controller.onSaved(value),
+      onSaved: controller.onSaved,
       validator: (value) => controller.onValidate(value, _),
       onChanged: (value) => controller.onChanged?.call(value),
       initialValue: controller.value ?? minValue,
@@ -82,7 +80,9 @@ class FlutterFormInputNumberPickerController
 
   @override
   String? onValidate(
-      int? value, String Function(String, {List<String>? params}) translator) {
+    int? value,
+    String Function(String, {List<String>? params}) translator,
+  ) {
     if (mandatory) {}
 
     return null;

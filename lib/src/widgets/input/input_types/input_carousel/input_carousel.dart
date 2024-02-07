@@ -15,24 +15,24 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 /// Height sets the height of the inputfield. Default to 425.
 class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
   const FlutterFormInputCarousel({
-    Key? key,
-    required FlutterFormInputController<int> controller,
-    Widget? label,
+    required super.controller,
     required this.items,
+    super.key,
+    super.label,
     this.height = 425,
-  }) : super(key: key, controller: controller, label: label);
+  });
 
   final List<Widget> items;
   final double height;
 
   @override
   Widget build(BuildContext context) {
-    String Function(String, {List<String>? params}) _ = getTranslator(context);
+    var _ = getTranslator(context);
 
     super.registerController(context);
 
     return input.FlutterFormInputCarousel(
-      onSaved: (value) => controller.onSaved(value),
+      onSaved: controller.onSaved,
       validator: (value) => controller.onValidate(value, _),
       onChanged: controller.onChanged,
       initialValue: controller.value ?? 0,
@@ -42,7 +42,8 @@ class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
   }
 }
 
-/// Controller for the carousel used by a [FlutterFormInputWidget] used in a [FlutterForm].
+/// Controller for the carousel used by a [FlutterFormInputWidget] used in 
+/// a [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputCarousel].
 class FlutterFormInputCarouselController
@@ -84,7 +85,9 @@ class FlutterFormInputCarouselController
 
   @override
   String? onValidate(
-      int? value, String Function(String, {List<String>? params}) translator) {
+    int? value,
+    String Function(String, {List<String>? params}) translator,
+  ) {
     if (mandatory) {}
 
     return null;
