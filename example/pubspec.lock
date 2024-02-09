@@ -68,7 +68,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "6.2.2"
+    version: "6.2.3"
   flutter_input_library:
     dependency: transitive
     description:
