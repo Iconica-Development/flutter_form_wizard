@@ -66,16 +66,16 @@ abstract class FlutterFormInputWidget<T> extends StatelessWidget {
 /// },
 /// ```
 ///
-/// [checkPageDescription] is the same as checkPageTitle but for the 
+/// [checkPageDescription] is the same as checkPageTitle but for the
 /// description. If null no description will be shown.
 ///
-/// [onChanged] can be set to get the value whenever the user changes it. 
+/// [onChanged] can be set to get the value whenever the user changes it.
 /// Should not be used to save the value.
 ///
-/// [onSubmit] can be set to get the value whenever the user submits it. 
+/// [onSubmit] can be set to get the value whenever the user submits it.
 /// Should not be used to save the value.
 ///
-/// [onSaved] goes of when the save function is called for the page if 
+/// [onSaved] goes of when the save function is called for the page if
 /// [onValidate] return null.
 ///
 /// [onValidate] is used to validate the given input by the user.
@@ -83,14 +83,14 @@ abstract class FlutterFormInputController<T> {
   /// The [id] determines the key in the [Map] returned by the [FlutterForm].
   String? id;
 
-  /// [value] is a way to set a initial value and will be the value when 
+  /// [value] is a way to set a initial value and will be the value when
   /// change by the user.
   T? value;
 
   /// [mandatory] determines if the input is mandatory.
   bool mandatory = false;
 
-  /// [checkPageTitle] is a function where you can transform the value from the 
+  /// [checkPageTitle] is a function where you can transform the value from the
   /// input into something representable.
   /// This value will be given when defining the check page widgets.
   /// If this function is not set, the value will be used as is.
@@ -102,20 +102,20 @@ abstract class FlutterFormInputController<T> {
   /// ```
   String Function(T? value)? checkPageTitle;
 
-  /// [checkPageDescription] is the same as checkPageTitle but for the 
+  /// [checkPageDescription] is the same as checkPageTitle but for the
   /// description.
   /// If null no description will be shown.
   String Function(T? value)? checkPageDescription;
 
-  /// [onChanged] can be set to get the value whenever the user changes it. 
+  /// [onChanged] can be set to get the value whenever the user changes it.
   /// Should not be used to save the value.
   void Function(T? value)? onChanged;
 
-  /// [onSubmit] can be set to get the value whenever the user submits it. 
+  /// [onSubmit] can be set to get the value whenever the user submits it.
   /// Should not be used to save the value.
   void Function(T? value)? onSubmit;
 
-  /// [onSaved] goes of when the save function is called for the page if 
+  /// [onSaved] goes of when the save function is called for the page if
   /// [onValidate] return null.
   void onSaved(T? value);
 

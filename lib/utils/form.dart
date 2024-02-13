@@ -62,7 +62,7 @@ class FlutterFormPage {
 }
 
 /// [CheckPage] is used to set a check page at the end of a [FlutterForm].
-/// A [CheckPage] is a page where the user can check all input values before 
+/// A [CheckPage] is a page where the user can check all input values before
 /// commiting.
 ///
 /// [title] is the widget shown at the top of the page.
@@ -71,15 +71,15 @@ class FlutterFormPage {
 ///
 /// [inputCheckWidget] determines how every input is represented on the page.
 /// [title] is the value given in the input.
-/// This input can be modified by setting the [checkPageTitle] of that input 
+/// This input can be modified by setting the [checkPageTitle] of that input
 /// controller.
 ///
-/// Same for the [description] but if the description is not set in the input 
+/// Same for the [description] but if the description is not set in the input
 /// controller no description will be given.
 ///
-/// [onPressed] can be set so that when the user triggers it the user will be 
+/// [onPressed] can be set so that when the user triggers it the user will be
 /// sent back to the page including the input.
-/// Here the user can modify the input and save it. Afterwards the user will be 
+/// Here the user can modify the input and save it. Afterwards the user will be
 /// sent back to the check page.
 class CheckPage {
   const CheckPage({

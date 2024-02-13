@@ -42,7 +42,7 @@ class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
   }
 }
 
-/// Controller for the carousel used by a [FlutterFormInputWidget] used in 
+/// Controller for the carousel used by a [FlutterFormInputWidget] used in
 /// a [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputCarousel].

@@ -64,7 +64,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
   }
 }
 
-/// Controller for dates used by a [FlutterFormInputWidget] used in a 
+/// Controller for dates used by a [FlutterFormInputWidget] used in a
 /// [FlutterForm].
 ///
 /// Mainly used by [FlutterFormInputDateTime].
