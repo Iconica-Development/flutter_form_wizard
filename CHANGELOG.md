@@ -122,3 +122,7 @@
 
 ## 6.2.4 - February 9th 2024
 - Updated the `flutter_input_library` from 3.0.0 to 3.0.1
+
+## 6.2.5 - February 15th 2024
+
+- Updated the `flutter_input_library` from 3.0.1 to 3.1.0
