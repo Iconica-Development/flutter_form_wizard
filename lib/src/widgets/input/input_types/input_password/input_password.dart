@@ -44,6 +44,12 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
 /// Mainly used by [FlutterFormInputPassword].
 class FlutterFormInputPasswordController
     implements FlutterFormInputController<String> {
+  /// Creates a [FlutterFormInputPasswordController].
+  ///
+  /// The [id] parameter specifies the unique identifier for the controller.
+  /// The [mandatory] parameter specifies whether the input is mandatory.
+  /// The [value], [checkPageTitle], [checkPageDescription], [onChanged],
+  ///  and [onSubmit] parameters are optional.
   FlutterFormInputPasswordController({
     required this.id,
     this.mandatory = true,
@@ -91,7 +97,7 @@ class FlutterFormInputPasswordController
       }
 
       if (value.length < 6) {
-        return translator('Field should be atleast 6 characters long');
+        return translator('Field should be at least 6 characters long');
       }
     }
 

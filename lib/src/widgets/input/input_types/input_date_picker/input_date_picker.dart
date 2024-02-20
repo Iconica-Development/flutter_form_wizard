@@ -13,6 +13,22 @@ import 'package:intl/intl.dart';
 ///
 /// Standard controller is [FlutterFormInputDateController].
 class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
+  /// Creates a [FlutterFormInputDateTime].
+  ///
+  /// The [controller], [inputType], [dateFormat] are required parameters.
+  /// The [label] parameter specifies the label of the input field.
+  /// The [showIcon] parameter determines whether to show an icon
+  /// with the input field.
+  /// The [firstDate] and [lastDate] parameters specify the range
+  /// of selectable dates.
+  /// The [initialDate] parameter specifies the initial date for
+  /// the input field.
+  /// The [initialDateTimeRange] parameter specifies the initial
+  /// date time range for the input field.
+  /// The [icon] parameter specifies the icon to show with the input field.
+  /// The [enabled] parameter specifies whether the input field is enabled.
+  /// The [onTapEnabled] parameter specifies whether tapping on
+  /// the input field is enabled.
   const FlutterFormInputDateTime({
     required super.controller,
     required this.inputType,
@@ -70,6 +86,12 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
 /// Mainly used by [FlutterFormInputDateTime].
 class FlutterFormInputDateTimeController
     implements FlutterFormInputController<String> {
+  /// Creates a [FlutterFormInputDateTimeController].
+  ///
+  /// The [id], [dateTimeType], and [dateFormat] are required parameters.
+  /// The [mandatory] parameter specifies whether the input is mandatory.
+  /// The [value], [initialDate], [initialDateTimeRange], [checkPageTitle],
+  /// [checkPageDescription], and [onChanged] parameters are optional.
   FlutterFormInputDateTimeController({
     required this.id,
     required this.dateTimeType,

@@ -42,6 +42,12 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
 /// Mainly used by [FlutterFormInputSwitch].
 class FlutterFormInputSwitchController
     implements FlutterFormInputController<bool> {
+  /// Creates a [FlutterFormInputSwitchController].
+  ///
+  /// The [id] parameter specifies the unique identifier for the controller.
+  /// The [mandatory] parameter specifies whether the input is mandatory.
+  /// The [value], [checkPageTitle], [checkPageDescription],
+  /// and [onChanged] parameters are optional.
   FlutterFormInputSwitchController({
     required this.id,
     this.mandatory = true,
