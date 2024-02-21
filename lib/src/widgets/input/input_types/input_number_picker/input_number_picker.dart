@@ -26,7 +26,7 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     super.registerController(context);
 
@@ -34,7 +34,7 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
       minValue: minValue,
       maxValue: maxValue,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
       onChanged: (value) => controller.onChanged?.call(value),
       initialValue: controller.value ?? minValue,
     );

@@ -25,6 +25,14 @@ class _FormExampleState extends ConsumerState<FormExample> {
 
   final String checkPageText = "All entered info: ";
 
+  final phoneInputController = FlutterFormInputPhoneController(
+    id: 'phone',
+    onChanged: (value) {
+      debugPrint(
+          '${value?.dialCode ?? 'no dial'} ${value?.number ?? 'no number'}');
+    },
+  );
+
   final ageInputController = FlutterFormInputNumberPickerController(
     id: "age",
     checkPageTitle: (dynamic amount) {
@@ -177,6 +185,13 @@ class _FormExampleState extends ConsumerState<FormExample> {
                 return Container();
               },
               pages: [
+                FlutterFormPage(
+                  child: Center(
+                    child: FlutterFormInputPhone(
+                      controller: phoneInputController,
+                    ),
+                  ),
+                ),
                 FlutterFormPage(
                   child: AgePage(
                     inputController: ageInputController,

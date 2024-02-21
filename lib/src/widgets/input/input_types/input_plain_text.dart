@@ -43,7 +43,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     super.registerController(context);
 
@@ -59,7 +59,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
       initialValue: controller.value,
       focusNode: focusNode,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
       onChanged: (value) => controller.onChanged?.call(value),
       onFieldSubmitted: (value) => controller.onSubmit?.call(value),
       decoration: inputDecoration,
@@ -103,7 +103,7 @@ class FlutterFormInputMultiLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     return input.FlutterFormInputMultiLine(
       enabled: enabled,
@@ -114,7 +114,7 @@ class FlutterFormInputMultiLine extends StatelessWidget {
       maxCharacters: maxCharacters,
       onChanged: controller.onChanged,
       onSaved: controller.onSaved,
-      validator: (v) => controller.onValidate(v, _),
+      validator: (v) => controller.onValidate(v, translator),
       textCapitalization: textCapitalization,
     );
   }

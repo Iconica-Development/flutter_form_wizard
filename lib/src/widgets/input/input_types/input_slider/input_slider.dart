@@ -25,14 +25,14 @@ class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     super.registerController(context);
 
     return input.FlutterFormInputSlider(
       focusNode: focusNode,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
     );
   }
 }

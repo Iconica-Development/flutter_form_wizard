@@ -27,13 +27,13 @@ class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     super.registerController(context);
 
     return input.FlutterFormInputCarousel(
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
       onChanged: controller.onChanged,
       initialValue: controller.value ?? 0,
       items: items,

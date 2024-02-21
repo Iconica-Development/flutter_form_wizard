@@ -21,7 +21,7 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     super.registerController(context);
 
@@ -29,7 +29,7 @@ class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
       focusNode: focusNode,
       onSaved: controller.onSaved,
       onChanged: controller.onChanged,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
       initialValue: controller.value ?? false,
       widgetType: input.BoolWidgetType.switchWidget,
     );

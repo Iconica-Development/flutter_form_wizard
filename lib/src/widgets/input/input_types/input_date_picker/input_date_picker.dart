@@ -41,7 +41,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
 
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
     super.registerController(context);
 
     return input.FlutterFormInputDateTime(
@@ -55,7 +55,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
       inputType: inputType,
       onChanged: (value) => controller.onChanged?.call(value),
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
       initialValue: controller.value,
       dateFormat: dateFormat,
       initialDate: initialDate,
