@@ -230,99 +230,95 @@ class _FlutterFormState extends State<FlutterForm> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    var _ = getTranslator(context);
-
-    return Stack(
-      children: [
-        PageView(
-          scrollDirection: _formController._options.scrollDirection,
-          controller: _formController.getPageController(),
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            for (int i = 0; i < widget.options.pages.length; i++) ...[
-              Form(
-                key: _formController.getKeys()[i],
-                child: fs.FormState(
-                  formController: _formController.getFormPageControllers()[i],
-                  child: CustomScrollView(
-                    physics: _formController._options.scrollPhysics ??
-                        const ClampingScrollPhysics(),
-                    slivers: [
-                      SliverFillRemaining(
-                        hasScrollBody: false,
-                        child: widget.options.pages[i].child,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-            if (widget.options.checkPage != null)
-              Column(
-                children: [
-                  if (widget.options.checkPage!.title != null)
-                    widget.options.checkPage!.title!,
-                  Expanded(
+  Widget build(BuildContext context) => Stack(
+        children: [
+          PageView(
+            scrollDirection: _formController._options.scrollDirection,
+            controller: _formController.getPageController(),
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              for (int i = 0; i < widget.options.pages.length; i++) ...[
+                Form(
+                  key: _formController.getKeys()[i],
+                  child: fs.FormState(
+                    formController: _formController.getFormPageControllers()[i],
                     child: CustomScrollView(
                       physics: _formController._options.scrollPhysics ??
                           const ClampingScrollPhysics(),
                       slivers: [
                         SliverFillRemaining(
                           hasScrollBody: false,
-                          child: Column(
-                            mainAxisAlignment:
-                                widget.options.checkPage!.mainAxisAlignment,
-                            children: getResultWidgets(),
-                          ),
+                          child: widget.options.pages[i].child,
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-          ],
-        ),
-        if (widget.options.nextButton != null)
-          widget.options.nextButton!(
-            _formController.getCurrentStep(),
-            _formController.getCheckpages(),
-          )
-        else
-          Align(
-            alignment: AlignmentDirectional.bottomCenter,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).primaryColor,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 15,
                 ),
-                textStyle: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              ],
+              if (widget.options.checkPage != null)
+                Column(
+                  children: [
+                    if (widget.options.checkPage!.title != null)
+                      widget.options.checkPage!.title!,
+                    Expanded(
+                      child: CustomScrollView(
+                        physics: _formController._options.scrollPhysics ??
+                            const ClampingScrollPhysics(),
+                        slivers: [
+                          SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: Column(
+                              mainAxisAlignment:
+                                  widget.options.checkPage!.mainAxisAlignment,
+                              children: getResultWidgets(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              onPressed: () async {
-                await _formController.autoNextStep();
-              },
-              child: Text(
-                _formController.getCurrentStep() >=
-                        widget.options.pages.length - 1
-                    ? 'Finish'
-                    : 'Next',
+            ],
+          ),
+          if (widget.options.nextButton != null)
+            widget.options.nextButton!(
+              _formController.getCurrentStep(),
+              _formController.getCheckpages(),
+            )
+          else
+            Align(
+              alignment: AlignmentDirectional.bottomCenter,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                    vertical: 15,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () async {
+                  await _formController.autoNextStep();
+                },
+                child: Text(
+                  _formController.getCurrentStep() >=
+                          widget.options.pages.length - 1
+                      ? 'Finish'
+                      : 'Next',
+                ),
               ),
             ),
-          ),
-        if (widget.options.backButton != null)
-          widget.options.backButton!(
-            _formController.getCurrentStep(),
-            _formController.getCheckpages(),
-            widget.options.pages.length,
-          ),
-      ],
-    );
-  }
+          if (widget.options.backButton != null)
+            widget.options.backButton!(
+              _formController.getCurrentStep(),
+              _formController.getCheckpages(),
+              widget.options.pages.length,
+            ),
+        ],
+      );
 
   List<Widget> getResultWidgets() {
     var widgets = <Widget>[];

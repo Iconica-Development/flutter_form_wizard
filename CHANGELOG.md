@@ -117,12 +117,15 @@
 - Updated the `flutter_input_library` from 2.6.0 to 3.0.0
 
 ## 6.2.3 - February 7th 2024
-
 - Added CI and linter
 
 ## 6.2.4 - February 9th 2024
 - Updated the `flutter_input_library` from 3.0.0 to 3.0.1
 
 ## 6.2.5 - February 15th 2024
-
 - Updated the `flutter_input_library` from 3.0.1 to 3.1.0
+
+## 6.3.0 - February 21th 2024
+- Updated the `flutter_input_library` from 3.1.0 to 3.2.1
+- Added `FlutterFormInputPhone` for phone number with dial code selection.
+- Added `InputDecoration` parameter to the following inputfields: `FlutterFormInputEmail` and `FlutterFormInputPassword`

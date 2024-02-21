@@ -16,13 +16,16 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
     super.focusNode,
     super.label,
     bool? enabled,
+    this.decoration,
   }) : super(
           enabled: enabled ?? true,
         );
 
+  final InputDecoration? decoration;
+
   @override
   Widget build(BuildContext context) {
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     super.registerController(context);
 
@@ -33,12 +36,9 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
         controller.onSaved(value);
       },
       focusNode: focusNode,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
       onChanged: (value) => controller.onChanged?.call(value),
-      decoration: InputDecoration(
-        focusColor: Theme.of(context).primaryColor,
-        label: label ?? const Text('Email'),
-      ),
+      decoration: decoration,
     );
   }
 }

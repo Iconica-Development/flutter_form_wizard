@@ -16,24 +16,28 @@ class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
     super.focusNode,
     super.label,
     bool? enabled,
+    this.decoration,
   }) : super(
           enabled: enabled ?? true,
         );
+
+  final InputDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
     super.registerController(context);
 
-    var _ = getTranslator(context);
+    var translator = getTranslator(context);
 
     return input.FlutterFormInputPassword(
       enabled: enabled,
       initialValue: controller.value,
       focusNode: focusNode,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, _),
+      validator: (value) => controller.onValidate(value, translator),
       onChanged: (value) => controller.onChanged?.call(value),
       onFieldSubmitted: (value) => controller.onSubmit?.call(value),
+      decoration: decoration,
     );
   }
 }
