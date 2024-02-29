@@ -35,6 +35,7 @@ class _AgePageState extends State<AgePage> {
           minValue: 12,
           maxValue: 120,
           controller: widget.inputController,
+          validationMessage: 'Please fill in your age.',
         ),
       ],
     );

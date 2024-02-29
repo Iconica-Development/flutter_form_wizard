@@ -19,26 +19,29 @@ class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
   /// The [enabled] parameter specifies whether the input field is enabled.
   const FlutterFormInputSlider({
     required super.controller,
+    required this.validationMessage,
     super.key,
     super.focusNode,
     super.label,
+    this.validator,
     this.minValue = 0,
     this.maxValue = 100,
   }) : assert(minValue < maxValue, 'minValue must be less than maxValue');
 
   final int minValue;
   final int maxValue;
+  final String validationMessage;
+  final String? Function(double?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
-
     super.registerController(context);
 
     return input.FlutterFormInputSlider(
       focusNode: focusNode,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
     );
   }
 }
@@ -93,7 +96,7 @@ class FlutterFormInputSliderController
   @override
   String? onValidate(
     double? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {}
 

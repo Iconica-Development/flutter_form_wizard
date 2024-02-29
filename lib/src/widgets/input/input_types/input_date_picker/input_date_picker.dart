@@ -33,36 +33,57 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
     required super.controller,
     required this.inputType,
     required this.dateFormat,
+    required this.validationMessage,
+    this.decoration,
+    this.style,
     super.key,
-    super.label,
+    this.label,
     this.showIcon = true,
     this.firstDate,
     this.lastDate,
     this.initialDate,
     this.initialDateTimeRange,
+    this.initialTime,
     this.icon = Icons.calendar_today,
+    this.initialValue,
+    this.onChanged,
+    this.onSaved,
+    this.validator,
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.timePickerEntryMode = TimePickerEntryMode.dial,
     this.enabled = true,
     this.onTapEnabled = true,
   });
+  final TextStyle? style;
+  final InputDecoration? decoration;
+  final Widget? label;
   final bool showIcon;
   final input.FlutterFormDateTimeType inputType;
   final DateFormat dateFormat;
   final DateTime? initialDate;
   final DateTimeRange? initialDateTimeRange;
+  final TimeOfDay? initialTime;
   final DateTime? firstDate;
   final DateTime? lastDate;
   final IconData icon;
+  final String? initialValue;
+  final String? Function(String?)? validator;
+  final String validationMessage;
+  final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
+  final AutovalidateMode autovalidateMode;
+  final TimePickerEntryMode timePickerEntryMode;
   final bool enabled;
   final bool onTapEnabled;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
     super.registerController(context);
 
     return input.FlutterFormInputDateTime(
       enabled: enabled,
       showIcon: showIcon,
+      decoration: decoration,
       onTapEnabled: onTapEnabled,
       label: label,
       icon: icon,
@@ -71,7 +92,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
       inputType: inputType,
       onChanged: (value) => controller.onChanged?.call(value),
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       initialValue: controller.value,
       dateFormat: dateFormat,
       initialDate: initialDate,
@@ -143,11 +165,11 @@ class FlutterFormInputDateTimeController
   @override
   String? onValidate(
     String? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('shell.form.error.empty');
+        return validationMessage;
       }
     }
 

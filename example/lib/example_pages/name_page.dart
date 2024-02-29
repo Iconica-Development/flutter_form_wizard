@@ -40,6 +40,7 @@ class _NamePageState extends State<NamePage> {
           child: FlutterFormInputPlainText(
             label: const Text("First Name"),
             controller: widget.firstNameController,
+            validationMessage: 'Please fill in your first name.',
           ),
         ),
         if (widget.showLastName)
@@ -48,6 +49,7 @@ class _NamePageState extends State<NamePage> {
             child: FlutterFormInputPlainText(
               label: const Text("Last Name"),
               controller: widget.lastNameController,
+              validationMessage: 'Please fill in your last name.',
             ),
           ),
       ],

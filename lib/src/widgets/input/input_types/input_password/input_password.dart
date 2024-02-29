@@ -12,29 +12,31 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 class FlutterFormInputPassword extends FlutterFormInputWidget<String> {
   const FlutterFormInputPassword({
     required super.controller,
+    required this.validationMessage,
     super.key,
     super.focusNode,
     super.label,
     bool? enabled,
+    this.validator,
     this.decoration,
   }) : super(
           enabled: enabled ?? true,
         );
 
   final InputDecoration? decoration;
+  final String validationMessage;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     super.registerController(context);
-
-    var translator = getTranslator(context);
-
     return input.FlutterFormInputPassword(
       enabled: enabled,
       initialValue: controller.value,
       focusNode: focusNode,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       onChanged: (value) => controller.onChanged?.call(value),
       onFieldSubmitted: (value) => controller.onSubmit?.call(value),
       decoration: decoration,
@@ -93,15 +95,15 @@ class FlutterFormInputPasswordController
   @override
   String? onValidate(
     String? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('Field can not be empty');
+        return validationMessage;
       }
 
       if (value.length < 6) {
-        return translator('Field should be at least 6 characters long');
+        return validationMessage;
       }
     }
 

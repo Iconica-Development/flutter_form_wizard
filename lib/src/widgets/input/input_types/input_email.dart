@@ -16,21 +16,23 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
   /// The [key], [focusNode], [label], and [enabled] parameters are optional.
   const FlutterFormInputEmail({
     required super.controller,
+    required this.validationMessage,
     super.key,
     super.focusNode,
     super.label,
     bool? enabled,
+    this.validator,
     this.decoration,
   }) : super(
           enabled: enabled ?? true,
         );
 
   final InputDecoration? decoration;
+  final String validationMessage;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
-
     super.registerController(context);
 
     return input.FlutterFormInputPlainText(
@@ -40,7 +42,8 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
         controller.onSaved(value);
       },
       focusNode: focusNode,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       onChanged: (value) => controller.onChanged?.call(value),
       decoration: decoration,
     );
@@ -98,17 +101,17 @@ class FlutterFormInputEmailController
   @override
   String? onValidate(
     String? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('shell.form.error.empty');
+        return validationMessage;
       }
 
       if (!RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
       ).hasMatch(value)) {
-        return translator('shell.form.error.email.notValid');
+        return validationMessage;
       }
     }
 

@@ -122,6 +122,6 @@ abstract class FlutterFormInputController<T> {
   /// [onValidate] is used to validate the given input by the user.
   String? onValidate(
     T? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   );
 }
