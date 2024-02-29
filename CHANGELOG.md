@@ -129,3 +129,8 @@
 - Updated the `flutter_input_library` from 3.1.0 to 3.2.1
 - Added `FlutterFormInputPhone` for phone number with dial code selection.
 - Added `InputDecoration` parameter to the following inputfields: `FlutterFormInputEmail` and `FlutterFormInputPassword`
+
+## 6.3.1 - February 29th 2024
+- Removed `TranslationService` and add `validationMessage` property to fields with validation.
+- Added a way to override a input field validator.
+- Exposed all properties for `FlutterFormInputDateTime` provided by `flutter_input_library`.
