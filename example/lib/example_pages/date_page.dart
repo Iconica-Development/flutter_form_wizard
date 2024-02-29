@@ -46,6 +46,7 @@ class _DatePageState extends State<DatePage> {
             ),
             label: const Text("Custom date label"),
             controller: widget.dateController,
+            validationMessage: 'Please fill in a date.',
           ),
         ),
       ],

@@ -14,12 +14,14 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 class FlutterFormInputPhone extends FlutterFormInputWidget<input.PhoneNumber?> {
   const FlutterFormInputPhone({
     required super.controller,
+    required this.validationMessage,
     super.key,
     super.focusNode,
     super.label,
     this.decoration,
     this.enabled = true,
     this.numberFieldStyle,
+    this.validator,
     this.dialCodeSelectorStyle,
     this.dialCodeSelectorPadding = const EdgeInsets.only(top: 6),
     this.textAlignVertical = TextAlignVertical.top,
@@ -32,11 +34,11 @@ class FlutterFormInputPhone extends FlutterFormInputWidget<input.PhoneNumber?> {
   final TextStyle? dialCodeSelectorStyle;
   final EdgeInsets dialCodeSelectorPadding;
   final TextAlignVertical textAlignVertical;
+  final String validationMessage;
+  final String? Function(PhoneNumber?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
-
     super.registerController(context);
 
     var inputDecoration = decoration ??
@@ -50,7 +52,8 @@ class FlutterFormInputPhone extends FlutterFormInputWidget<input.PhoneNumber?> {
       enabled: enabled,
       initialValue: controller.value,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       onChanged: (value) => controller.onChanged?.call(value),
       onFieldSubmitted: (value) => controller.onSubmit?.call(value),
       decoration: inputDecoration,
@@ -100,11 +103,11 @@ class FlutterFormInputPhoneController
   @override
   String? onValidate(
     input.PhoneNumber? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {
       if (value == null || value.number == null) {
-        return translator('Field can not be empty');
+        return validationMessage;
       }
     }
 

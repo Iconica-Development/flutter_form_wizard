@@ -56,6 +56,7 @@ void main() {
                     child: FlutterFormInputPlainText(
                       label: const Text('Field1Label'),
                       controller: testField1Controller,
+                      validationMessage: 'Please fill in this field',
                     ),
                   ),
                 ),
@@ -64,6 +65,7 @@ void main() {
                     child: FlutterFormInputPlainText(
                       label: const Text('Field2Label'),
                       controller: testField2Controller,
+                      validationMessage: 'Please fill in this field',
                     ),
                   ),
                 ),
@@ -154,6 +156,7 @@ void main() {
                     child: FlutterFormInputPlainText(
                       label: const Text('Field1Label'),
                       controller: testField1Controller,
+                      validationMessage: 'Please fill in this field',
                     ),
                   ),
                 ),
@@ -162,6 +165,7 @@ void main() {
                     child: FlutterFormInputPlainText(
                       label: const Text('Field2Label'),
                       controller: testField2Controller,
+                      validationMessage: 'Please fill in this field',
                     ),
                   ),
                 ),
@@ -260,6 +264,7 @@ void main() {
                     child: FlutterFormInputPlainText(
                       label: const Text('Field1Label'),
                       controller: testField1Controller,
+                      validationMessage: 'Field can not be empty',
                     ),
                   ),
                 ),

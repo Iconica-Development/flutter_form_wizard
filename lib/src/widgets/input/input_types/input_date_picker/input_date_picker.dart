@@ -33,9 +33,11 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
     required super.controller,
     required this.inputType,
     required this.dateFormat,
+    required this.validationMessage,
     super.key,
     super.label,
     this.showIcon = true,
+    this.validator,
     this.firstDate,
     this.lastDate,
     this.initialDate,
@@ -54,10 +56,11 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
   final IconData icon;
   final bool enabled;
   final bool onTapEnabled;
+  final String validationMessage;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
     super.registerController(context);
 
     return input.FlutterFormInputDateTime(
@@ -71,7 +74,8 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
       inputType: inputType,
       onChanged: (value) => controller.onChanged?.call(value),
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       initialValue: controller.value,
       dateFormat: dateFormat,
       initialDate: initialDate,
@@ -143,11 +147,11 @@ class FlutterFormInputDateTimeController
   @override
   String? onValidate(
     String? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('shell.form.error.empty');
+        return validationMessage;
       }
     }
 

@@ -15,26 +15,29 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
   const FlutterFormInputNumberPicker({
     required super.controller,
+    required this.validationMessage,
     super.key,
     super.label,
+    this.validator,
     this.minValue = 0,
     this.maxValue = 100,
   }) : assert(minValue < maxValue, 'minValue must be less than maxValue');
 
   final int minValue;
   final int maxValue;
+  final String validationMessage;
+  final String? Function(int?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
-
     super.registerController(context);
 
     return input.FlutterFormInputNumberPicker(
       minValue: minValue,
       maxValue: maxValue,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       onChanged: (value) => controller.onChanged?.call(value),
       initialValue: controller.value ?? minValue,
     );
@@ -91,7 +94,7 @@ class FlutterFormInputNumberPickerController
   @override
   String? onValidate(
     int? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {}
 

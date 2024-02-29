@@ -16,24 +16,27 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 class FlutterFormInputCarousel extends FlutterFormInputWidget<int> {
   const FlutterFormInputCarousel({
     required super.controller,
+    required this.validationMessage,
     required this.items,
     super.key,
     super.label,
+    this.validator,
     this.height = 425,
   });
 
   final List<Widget> items;
   final double height;
+  final String validationMessage;
+  final String? Function(int?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
-
     super.registerController(context);
 
     return input.FlutterFormInputCarousel(
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       onChanged: controller.onChanged,
       initialValue: controller.value ?? 0,
       items: items,
@@ -86,7 +89,7 @@ class FlutterFormInputCarouselController
   @override
   String? onValidate(
     int? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {}
 

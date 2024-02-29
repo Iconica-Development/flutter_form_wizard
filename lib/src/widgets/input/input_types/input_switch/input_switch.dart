@@ -14,22 +14,26 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 class FlutterFormInputSwitch extends FlutterFormInputWidget<bool> {
   const FlutterFormInputSwitch({
     required super.controller,
+    required this.validationMessage,
     super.key,
     super.focusNode,
     super.label,
+    this.validator,
   });
+
+  final String validationMessage;
+  final String? Function(bool?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
-
     super.registerController(context);
 
     return input.FlutterFormInputBool(
       focusNode: focusNode,
       onSaved: controller.onSaved,
       onChanged: controller.onChanged,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       initialValue: controller.value ?? false,
       widgetType: input.BoolWidgetType.switchWidget,
     );
@@ -86,7 +90,7 @@ class FlutterFormInputSwitchController
   @override
   String? onValidate(
     bool? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) =>
       null;
 }

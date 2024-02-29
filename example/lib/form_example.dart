@@ -189,6 +189,7 @@ class _FormExampleState extends ConsumerState<FormExample> {
                   child: Center(
                     child: FlutterFormInputPhone(
                       controller: phoneInputController,
+                      validationMessage: 'Please fill in a valid phone number',
                     ),
                   ),
                 ),

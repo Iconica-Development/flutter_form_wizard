@@ -20,6 +20,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   /// [enabled], [style], and [textCapitalization] parameters are optional.
   const FlutterFormInputPlainText({
     required super.controller,
+    required this.validationMessage,
     super.key,
     super.focusNode,
     super.label,
@@ -30,6 +31,7 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
     this.scrollPadding,
     this.maxLength,
     this.keyboardType,
+    this.validator,
     this.enabled = true,
     this.style,
     this.textCapitalization = TextCapitalization.none,
@@ -46,11 +48,11 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
   final bool enabled;
   final TextStyle? style;
   final TextCapitalization textCapitalization;
+  final String validationMessage;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    var translator = getTranslator(context);
-
     super.registerController(context);
 
     var inputDecoration = decoration ??
@@ -65,7 +67,8 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
       initialValue: controller.value,
       focusNode: focusNode,
       onSaved: controller.onSaved,
-      validator: (value) => controller.onValidate(value, translator),
+      validator: validator ??
+          (value) => controller.onValidate(value, validationMessage),
       onChanged: (value) => controller.onChanged?.call(value),
       onFieldSubmitted: (value) => controller.onSubmit?.call(value),
       decoration: inputDecoration,
@@ -89,10 +92,12 @@ class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
 class FlutterFormInputMultiLine extends StatelessWidget {
   const FlutterFormInputMultiLine({
     required this.controller,
+    required this.validationMessage,
     super.key,
     this.focusNode,
     this.label,
     this.hint,
+    this.validator,
     this.maxCharacters,
     this.enabled = true,
     this.textCapitalization = TextCapitalization.sentences,
@@ -119,23 +124,24 @@ class FlutterFormInputMultiLine extends StatelessWidget {
   /// The capitalization behavior for the input field.
   final TextCapitalization textCapitalization;
 
-  @override
-  Widget build(BuildContext context) {
-    var translator = getTranslator(context);
+  final String validationMessage;
 
-    return input.FlutterFormInputMultiLine(
-      enabled: enabled,
-      label: label,
-      hint: hint,
-      focusNode: focusNode,
-      initialValue: controller.value,
-      maxCharacters: maxCharacters,
-      onChanged: controller.onChanged,
-      onSaved: controller.onSaved,
-      validator: (v) => controller.onValidate(v, translator),
-      textCapitalization: textCapitalization,
-    );
-  }
+  final String? Function(String?)? validator;
+
+  @override
+  Widget build(BuildContext context) => input.FlutterFormInputMultiLine(
+        enabled: enabled,
+        label: label,
+        hint: hint,
+        focusNode: focusNode,
+        initialValue: controller.value,
+        maxCharacters: maxCharacters,
+        onChanged: controller.onChanged,
+        onSaved: controller.onSaved,
+        validator: validator ??
+            (value) => controller.onValidate(value, validationMessage),
+        textCapitalization: textCapitalization,
+      );
 }
 
 /// Controller for plain text used by a [FlutterFormInputWidget] used in a
@@ -189,11 +195,11 @@ class FlutterFormInputPlainTextController
   @override
   String? onValidate(
     String? value,
-    String Function(String, {List<String>? params}) translator,
+    String validationMessage,
   ) {
     if (mandatory) {
       if (value == null || value.isEmpty) {
-        return translator('Field can not be empty');
+        return validationMessage;
       }
     }
 

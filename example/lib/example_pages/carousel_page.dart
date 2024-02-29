@@ -34,7 +34,10 @@ class _CarouselPageState extends State<CarouselPage> {
       amountOfPages: 4,
       flutterFormWidgets: [
         FlutterFormInputCarousel(
-            controller: widget.inputController, items: getCars())
+          controller: widget.inputController,
+          items: getCars(),
+          validationMessage: 'Validation error message.',
+        )
       ],
     );
   }
