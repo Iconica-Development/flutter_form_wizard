@@ -11,6 +11,12 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 ///
 /// Standard controller is [FlutterFormInputSliderController].
 class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
+  /// Creates a [FlutterFormInputPassword].
+  ///
+  /// The [controller] parameter is required.
+  /// The [focusNode] parameter specifies the focus node of the input field.
+  /// The [label] parameter specifies the label of the input field.
+  /// The [enabled] parameter specifies whether the input field is enabled.
   const FlutterFormInputSlider({
     required super.controller,
     super.key,
@@ -43,6 +49,12 @@ class FlutterFormInputSlider extends FlutterFormInputWidget<double> {
 /// Mainly used by [FlutterFormInputSlider].
 class FlutterFormInputSliderController
     implements FlutterFormInputController<double> {
+  /// Creates a [FlutterFormInputPasswordController].
+  ///
+  /// The [id] parameter specifies the unique identifier for the controller.
+  /// The [mandatory] parameter specifies whether the input is mandatory.
+  /// The [value], [checkPageTitle], [checkPageDescription], [onChanged],
+  /// and [onSubmit] parameters are optional.
   FlutterFormInputSliderController({
     required this.id,
     this.mandatory = true,

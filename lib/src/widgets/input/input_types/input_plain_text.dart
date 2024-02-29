@@ -12,6 +12,12 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 ///
 /// Standard controller is [FlutterFormInputPlainTextController].
 class FlutterFormInputPlainText extends FlutterFormInputWidget<String> {
+  /// Creates a [FlutterFormInputPlainText].
+  ///
+  /// The [controller] parameter is required.
+  /// The [key], [focusNode], [label], [decoration], [textAlignVertical],
+  /// [expands], [maxLines], [scrollPadding], [maxLength], [keyboardType],
+  /// [enabled], [style], and [textCapitalization] parameters are optional.
   const FlutterFormInputPlainText({
     required super.controller,
     super.key,
@@ -92,13 +98,25 @@ class FlutterFormInputMultiLine extends StatelessWidget {
     this.textCapitalization = TextCapitalization.sentences,
   });
 
+  /// The controller for the multi-line input.
   final FlutterFormInputController<String> controller;
+
+  /// The optional label widget for the input.
   final Widget? label;
+
+  /// The optional focus node for the input.
   final FocusNode? focusNode;
 
+  /// The optional hint text displayed inside the input field.
   final String? hint;
+
+  /// The optional maximum number of characters allowed in the input field.
   final int? maxCharacters;
+
+  /// A flag indicating whether the input field is enabled.
   final bool enabled;
+
+  /// The capitalization behavior for the input field.
   final TextCapitalization textCapitalization;
 
   @override
@@ -126,6 +144,12 @@ class FlutterFormInputMultiLine extends StatelessWidget {
 /// Mainly used by [FlutterFormInputPlainText].
 class FlutterFormInputPlainTextController
     implements FlutterFormInputController<String> {
+  /// Creates a [FlutterFormInputPlainTextController].
+  ///
+  /// The [id] parameter specifies the unique identifier for the controller.
+  /// The [mandatory] parameter specifies whether the input is mandatory.
+  /// The [value], [checkPageTitle], [checkPageDescription], [onChanged],
+  /// and [onSubmit] parameters are optional.
   FlutterFormInputPlainTextController({
     required this.id,
     this.mandatory = false,

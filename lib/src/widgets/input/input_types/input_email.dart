@@ -10,6 +10,10 @@ import 'package:flutter_input_library/flutter_input_library.dart' as input;
 ///
 /// Standard controller is [FlutterFormInputEmailController].
 class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
+  /// Creates a [FlutterFormInputEmail].
+  ///
+  /// The [controller] parameter is required.
+  /// The [key], [focusNode], [label], and [enabled] parameters are optional.
   const FlutterFormInputEmail({
     required super.controller,
     super.key,
@@ -49,6 +53,12 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
 /// Mainly used by [FlutterFormInputEmail].
 class FlutterFormInputEmailController
     implements FlutterFormInputController<String> {
+  /// Creates a [FlutterFormInputEmailController].
+  ///
+  /// The [id] parameter specifies the unique identifier for the controller.
+  /// The [mandatory] parameter specifies whether the input is mandatory.
+  /// The [value], [checkPageTitle], [checkPageDescription], [onChanged],
+  /// and [onSubmit] parameters are optional.
   FlutterFormInputEmailController({
     required this.id,
     this.mandatory = true,

@@ -41,8 +41,18 @@ class FlutterFormInputNumberPicker extends FlutterFormInputWidget<int> {
   }
 }
 
+/// Controller for numbers used by a [FlutterFormInputWidget] used in a
+/// [FlutterForm].
+///
+/// Mainly used by [FlutterFormInputNumberPicker].
 class FlutterFormInputNumberPickerController
     implements FlutterFormInputController<int> {
+  /// Creates a [FlutterFormInputNumberPickerController].
+  ///
+  /// The [id] parameter specifies the unique identifier for the controller.
+  /// The [mandatory] parameter specifies whether the input is mandatory.
+  /// The [value], [checkPageTitle], [checkPageDescription],
+  /// and [onChanged] parameters are optional.
   FlutterFormInputNumberPickerController({
     required this.id,
     this.mandatory = true,
