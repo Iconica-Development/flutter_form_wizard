@@ -34,30 +34,47 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
     required this.inputType,
     required this.dateFormat,
     required this.validationMessage,
+    this.decoration,
+    this.style,
     super.key,
-    super.label,
+    this.label,
     this.showIcon = true,
-    this.validator,
     this.firstDate,
     this.lastDate,
     this.initialDate,
     this.initialDateTimeRange,
+    this.initialTime,
     this.icon = Icons.calendar_today,
+    this.initialValue,
+    this.onChanged,
+    this.onSaved,
+    this.validator,
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.timePickerEntryMode = TimePickerEntryMode.dial,
     this.enabled = true,
     this.onTapEnabled = true,
   });
+  final TextStyle? style;
+  final InputDecoration? decoration;
+  final Widget? label;
   final bool showIcon;
   final input.FlutterFormDateTimeType inputType;
   final DateFormat dateFormat;
   final DateTime? initialDate;
   final DateTimeRange? initialDateTimeRange;
+  final TimeOfDay? initialTime;
   final DateTime? firstDate;
   final DateTime? lastDate;
   final IconData icon;
+  final String? initialValue;
+  final String? Function(String?)? validator;
+  final String validationMessage;
+  final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
+  final AutovalidateMode autovalidateMode;
+  final TimePickerEntryMode timePickerEntryMode;
   final bool enabled;
   final bool onTapEnabled;
-  final String validationMessage;
-  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +83,7 @@ class FlutterFormInputDateTime extends FlutterFormInputWidget<String> {
     return input.FlutterFormInputDateTime(
       enabled: enabled,
       showIcon: showIcon,
+      decoration: decoration,
       onTapEnabled: onTapEnabled,
       label: label,
       icon: icon,
