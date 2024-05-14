@@ -14,11 +14,11 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.18.0
+  intl: ">=0.18.0 <1.0.0"
   flutter_input_library:
     git:
       url: https://github.com/Iconica-Development/flutter_input_library
-      ref: 3.2.1
+      ref: 3.3.1
 
 dev_dependencies:
   flutter_test:

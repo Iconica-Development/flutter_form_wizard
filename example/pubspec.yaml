@@ -16,7 +16,7 @@ dependencies:
   flutter_riverpod: ^2.1.1
   flutter_form_wizard:
     path: ../
-  intl: ^0.18.0
+  intl: any
 
 dev_dependencies:
   flutter_test:
