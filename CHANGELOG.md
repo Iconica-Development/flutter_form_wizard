@@ -134,3 +134,6 @@
 - Removed `TranslationService` and add `validationMessage` property to fields with validation.
 - Added a way to override a input field validator.
 - Exposed all properties for `FlutterFormInputDateTime` provided by `flutter_input_library`.
+
+## 6.3.2 - May 15th 2024
+- Loosened the dependency on intl to be more compatible with several Flutter versions

@@ -1,6 +1,6 @@
 name: flutter_form_wizard
 description: A new Flutter package project.
-version: 6.3.1
+version: 6.3.2
 homepage: https://github.com/Iconica-Development/flutter_form_wizard
 
 publish_to: none
@@ -14,11 +14,11 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.18.0
+  intl: ">=0.18.0 <1.0.0"
   flutter_input_library:
     git:
       url: https://github.com/Iconica-Development/flutter_input_library
-      ref: 3.2.1
+      ref: 3.3.1
 
 dev_dependencies:
   flutter_test:
