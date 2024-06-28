@@ -23,6 +23,7 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
     bool? enabled,
     this.validator,
     this.decoration,
+    this.style,
   }) : super(
           enabled: enabled ?? true,
         );
@@ -30,12 +31,14 @@ class FlutterFormInputEmail extends FlutterFormInputWidget<String> {
   final InputDecoration? decoration;
   final String validationMessage;
   final String? Function(String?)? validator;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     super.registerController(context);
 
     return input.FlutterFormInputPlainText(
+      style: style,
       enabled: enabled,
       initialValue: controller.value,
       onSaved: (value) {
