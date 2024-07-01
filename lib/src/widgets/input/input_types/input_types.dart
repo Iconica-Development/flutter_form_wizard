@@ -15,3 +15,4 @@ export 'input_phone.dart';
 export 'input_plain_text.dart';
 export 'input_slider/input_slider.dart';
 export 'input_switch/input_switch.dart';
+export 'multiple_choice.dart';

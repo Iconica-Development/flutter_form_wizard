@@ -142,3 +142,6 @@
 ## 6.4.0 - June 28th 2024
 - Added `FlutterFormInputDropdown` for dropdown selection
 - Added style property to `FlutterFormInputEmail`
+
+## 6.5.0 - July 1st 2024
+- Added `FlutterFormMultipleChoice` for multiple choice selection
