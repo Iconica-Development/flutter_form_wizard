@@ -137,3 +137,8 @@
 
 ## 6.3.2 - May 15th 2024
 - Loosened the dependency on intl to be more compatible with several Flutter versions
+
+
+## 6.4.0 - June 28th 2024
+- Added `FlutterFormInputDropdown` for dropdown selection
+- Added style property to `FlutterFormInputEmail`
