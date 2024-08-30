@@ -3,10 +3,10 @@ description: A new Flutter package project.
 version: 6.5.0
 homepage: https://github.com/Iconica-Development/flutter_form_wizard
 
-publish_to: none
+publish_to: https://forgejo.internal.iconica.nl/api/packages/internal/pub
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -16,9 +16,8 @@ dependencies:
     sdk: flutter
   intl: ">=0.18.0 <1.0.0"
   flutter_input_library:
-    git:
-      url: https://github.com/Iconica-Development/flutter_input_library
-      ref: 3.4.0
+    hosted: https://forgejo.internal.iconica.nl/api/packages/internal/pub
+    version: ^3.4.0
 
 dev_dependencies:
   flutter_test:
