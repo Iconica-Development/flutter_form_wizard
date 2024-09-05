@@ -1,6 +1,6 @@
 name: flutter_form_wizard
 description: A new Flutter package project.
-version: 6.5.0
+version: 6.6.0
 homepage: https://github.com/Iconica-Development/flutter_form_wizard
 
 publish_to: https://forgejo.internal.iconica.nl/api/packages/internal/pub
@@ -26,5 +26,4 @@ dev_dependencies:
     git:
       url: https://github.com/Iconica-Development/flutter_iconica_analysis
       ref: 6.0.0
-
-flutter:
+  

@@ -22,6 +22,7 @@ import 'package:flutter/material.dart';
 ///
 /// [onFinished] and [onNext] are both callbacks which give the users results.
 /// [onNext] is called when the user goes to the next page.
+/// [onBack] is called when the user goes back a page.
 /// [onFinished] is called when the form is finished. When checkpage is set
 /// [onFinished] is called when the checkpage is finished.
 ///
@@ -35,6 +36,7 @@ class FlutterFormOptions {
     required this.pages,
     required this.onFinished,
     required this.onNext,
+    this.onBack,
     this.checkPage,
     this.nextButton,
     this.backButton,
@@ -49,6 +51,11 @@ class FlutterFormOptions {
       backButton;
   final void Function(Map<int, Map<String, dynamic>>) onFinished;
   final void Function(int pageNumber, Map<String, dynamic>) onNext;
+
+  /// [onBack] is called when the user goes back a page. The [pageNumber] is the
+  /// page the user is going back to. Not the page that the user was on when the
+  /// user pressed the back button.
+  final void Function(int pageNumber)? onBack;
   final Axis scrollDirection;
   final ScrollPhysics? scrollPhysics;
 }

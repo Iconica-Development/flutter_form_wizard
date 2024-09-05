@@ -487,7 +487,7 @@ class FlutterFormController extends ChangeNotifier {
 
   Future<void> previousStep() async {
     _currentStep -= 1;
-
+    _options.onBack?.call(_currentStep);
     _checkingPages = false;
 
     notifyListeners();
